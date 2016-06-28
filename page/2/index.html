@@ -273,6 +273,124 @@
             
               
                 
+                <a class="post-title-link" href="/2016/06/28/UILabel修改行距,首行缩进/" itemprop="url">
+                  未命名
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-28T16:30:40+08:00" content="2016-06-28">
+              2016-06-28
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/06/28/UILabel修改行距,首行缩进/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/28/UILabel修改行距,首行缩进/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h6 id="1-UILabel修改文字行距-首行缩进"><a href="#1-UILabel修改文字行距-首行缩进" class="headerlink" title="1.UILabel修改文字行距,首行缩进"></a>1.UILabel修改文字行距,首行缩进</h6><hr>
+<ul>
+<li>lineSpacing: 行间距</li>
+<li>firstLineHeadIndent：首行缩进</li>
+<li>font: 字体</li>
+<li>textColor: 字体颜色</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">－ (NSDictionary *)settingAttributesWithLineSpacing:(CGFloat)lineSpacing FirstLineHeadIndent:(CGFloat)firstLineHeadIndent Font:(UIFont *)font TextColor:(UIColor *)textColor&#123;</span><br><span class="line">    //分段样式</span><br><span class="line">    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];</span><br><span class="line">    //行间距</span><br><span class="line">    paragraphStyle.lineSpacing = lineSpacing;</span><br><span class="line">    //首行缩进</span><br><span class="line">    paragraphStyle.firstLineHeadIndent = firstLineHeadIndent;</span><br><span class="line">    //富文本样式</span><br><span class="line">    NSDictionary *attributeDic = @&#123;</span><br><span class="line">                                   NSFontAttributeName : font,</span><br><span class="line">                                   NSParagraphStyleAttributeName : paragraphStyle,</span><br><span class="line">                                   NSForegroundColorAttributeName : textColor</span><br><span class="line">                                   &#125;;</span><br><span class="line">    return attributeDic;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>UILabel 调用带属性字符串</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">NSDictionary *attributesDic = [self settingAttributesWithLineSpacing:5 FirstLineHeadIndent:2 * 14 Font:[UIFont systemFontOfSize:14] TextColor:COLOR_TEXT_BLACK21];</span><br><span class="line">    label.attributedText = [[NSAttributedString alloc] initWithString:@&quot;容易实现的它不是梦想,轻言放弃的它不是诺言,要想成功就得敢于挑战,有了梦想才有美好的明天!容易实现的它不是梦想,轻言放弃的它不是诺言,要想成功就得敢于挑战,有了梦想才有美好的明天!容易实现的它不是梦想,轻言放弃的它不是诺言,要想成功就得敢于挑战,有了梦想才有美好的明天!容易实现的它不是梦想,轻言放弃的它不是诺言,要想成功就得敢于挑战,有了梦想才有美好的明天!容易实现的它不是梦想,轻言放弃的它不是诺言,要想成功就得敢于挑战,有了梦想才有美好的明天!\n容易实现的它不是梦想,轻言放弃的它不是诺言,要想成功就得敢于挑战,有了梦想才有美好的明天!容易实现的它不是梦想,轻言放弃的它不是诺言,要想成功就得敢于挑战,有了梦想才有美好的明天!容易实现的它不是梦想,轻言放弃的它不是诺言,要想成功就得敢于挑战,有了梦想才有美好的明天!&quot; attributes:attributesDic];</span><br><span class="line">    label.numberOfLines = 0;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>效果</li>
+</ul>
+<p><img src="http://upload-images.jianshu.io/upload_images/1519620-21938b0062ae33ba.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="UILabel行间距"></p>
+<hr>
+<p><a href="http://jianshu.io" target="_blank" rel="external">简书</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/06/28/玩转GCD(不信你看)/" itemprop="url">
                   未命名
                 </a>
@@ -670,7 +788,7 @@
             
               
                 
-                <a class="post-title-link" href="/2016/06/28/Swift和Objective-C混编/" itemprop="url">
+                <a class="post-title-link" href="/2016/06/28/玩转iOS设计模式/" itemprop="url">
                   未命名
                 </a>
               
@@ -695,8 +813,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/06/28/Swift和Objective-C混编/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/28/Swift和Objective-C混编/" itemprop="commentsCount"></span>
+                <a href="/2016/06/28/玩转iOS设计模式/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/28/玩转iOS设计模式/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -721,71 +839,33 @@
       
         
           
-            <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Swift和Objective-C混编</title>
-    <style type="text/css" media="all">
-      body {
-        margin: 0;
-        font-family: "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", sans-serif;
-        font-size: 14px;
-        line-height: 20px;
-        color: #777;
-        background-color: white;
-      }
-      .container {
-        width: 700px;
-        margin-right: auto;
-        margin-left: auto;
-      }
-
-      .post {
-        font-family: Georgia, "Times New Roman", Times, "SimSun", serif;
-        position: relative;
-        padding: 70px;
-        bottom: 0;
-        overflow-y: auto;
-        font-size: 16px;
-        font-weight: normal;
-        line-height: 25px;
-        color: #515151;
-      }
-
-      .post h1{
-        font-size: 50px;
-        font-weight: 500;
-        line-height: 60px;
-        margin-bottom: 40px;
-        color: inherit;
-      }
-
-      .post p {
-        margin: 0 0 35px 0;
-      }
-
-      .post img {
-        border: 1px solid #D9D9D9;
-      }
-
-      .post a {
-        color: #28A1C5;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="container">
-      <div class="post">
-        <h1 class="title">Swift和Objective-C混编</h1>
-        <div class="show-content">
-          <h4>Swift中调用Objective-C文件</h4><p>1.新建Swift文件SwiftViewController.swift</p><div class="image-package"><img src="http://upload-images.jianshu.io/upload_images/1519620-cdecce6313bdf71f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br><div class="image-caption"></div></div><p>2.因为工程为OC编写,第一次创建会提示需要创建"桥接文件"</p><div class="image-package"><img src="http://upload-images.jianshu.io/upload_images/1519620-031994af25b77e3c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br><div class="image-caption"></div></div><p>3.此时的工程会有SwiftViewController.swift文件和HelloWorld-Bridging-Header.h桥接文件</p><div class="image-package"><img src="http://upload-images.jianshu.io/upload_images/1519620-eb017eda26d3d701.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br><div class="image-caption"></div></div><p>4.检查桥接文件HelloWorld-Bridging-Header.h是否正确</p><div class="image-package"><img src="http://upload-images.jianshu.io/upload_images/1519620-0ef91590ed6718cf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br><div class="image-caption"></div></div><p>5.在桥接文件HelloWorld-Bridging-Header.h中引入要调用的Objective-C文件ViewController.h</p><div class="image-package"><img src="http://upload-images.jianshu.io/upload_images/1519620-98f315104a57dd99.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br><div class="image-caption"></div></div><p>6.在SwiftViewController.swift中调用Objective-C代码</p><div class="image-package"><img src="http://upload-images.jianshu.io/upload_images/1519620-2a85bf26b03ef6f6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br><div class="image-caption"></div></div><h1>Objective-C调用Swift文件</h1><p>1.修改Build Settings -&gt; Packaging -&gt; Defines Module 为YES</p><div class="image-package"><img src="http://upload-images.jianshu.io/upload_images/1519620-ff7651dc7067230d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br><div class="image-caption"></div></div><p>2.在ViewController.m中 引入隐藏文件HelloWorld-swift.h后可调用Swift文件</p><hr><p>命名方式: &nbsp; 工程名-swift.h</p><hr><div class="image-package"><img src="http://upload-images.jianshu.io/upload_images/1519620-2ed2731927be5a0c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br><div class="image-caption"></div></div><h1>注意:</h1><p>1.Xcode7.3 需要编译后才有代码提示(command + B)</p><p>2.若调用swift文件没有代码提示,需要手写.m文件中,才能有代码提示(可能是编译器bug)</p>
-        </div>
-      </div>
-    </div>
-  </body>
-</html>
+            <p>###（一）代理模式(委托)</p>
+<blockquote>
+<p><strong>应用场景：</strong><br>当一个类的某些功能需要由别的类来实现，但是又不确定具体会是哪个类实现。<br><strong>优势：</strong><br>解耦合<br><strong>实例：</strong><br>tableview的数据源delegate，通过和protocol的配合，完成委托诉求。<br>列表row个数delegate<br>自定义的delegate</p>
+</blockquote>
+<p>###（二）观察者模式</p>
+<blockquote>
+<p><strong>应用场景：</strong><br>一般为model层对，controller和view进行的通知方式，不关心谁去接收，只负责发布信息。<br><strong>优势：</strong><br>解耦合<br><strong>实例：</strong><br>Notification通知中心，注册通知中心，任何位置可以发送消息，注册观察者的对象可以接收。<br>kvo，键值对改变通知的观察者，平时基本没用过。</p>
+</blockquote>
+<p>###（三）MVC模式</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1519620-16f5b73bbb4eda3f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="MVC"></p>
+<blockquote>
+<p><strong>应用场景：</strong><br>是一中非常古老的设计模式，通过数据模型，控制器逻辑，视图展示将应用程序进行逻辑划分。<br><strong>优势：</strong><br>使系统，层次清晰，职责分明，易于维护<br><strong>实例：</strong><br>model-即数据模型，view-视图展示，controller-进行UI展现和数据交互的逻辑控制。</p>
+</blockquote>
+<p>###（四）单例模式</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1519620-9bf34c46da21e83e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="单例"></p>
+<blockquote>
+<p><strong>应用场景：</strong><br>确保程序运行期某个类，只有一份实例，用于进行资源共享控制。<br><strong>优势：</strong><br>使用简单，延时求值，易于跨模块<br><strong>实例：</strong><br>[UIApplication sharedApplication]。<br><strong>注意事项：</strong><br>确保使用者只能通过 getInstance方法才能获得，单例类的唯一实例。<br>java，C++中使其没有公有构造函数，私有化并覆盖其构造函数。<br>object c中，重写allocWithZone方法，保证即使用户用 alloc方法直接创建单例类的实例，返回的也只是此单例类的唯一静态变量。</p>
+</blockquote>
+<p>###（五）策略模式</p>
+<blockquote>
+<p><strong>应用场景：</strong><br>定义算法族，封装起来，使他们之间可以相互替换。<br><strong>优势：</strong><br>使算法的变化独立于使用算法的用户<br><strong>实例：</strong><br>排序算法，NSArray的sortedArrayUsingSelector；经典的鸭子会叫，会飞案例。<br><strong>注意事项：</strong><br>1，剥离类中易于变化的行为，通过组合的方式嵌入抽象基类<br>2，变化的行为抽象基类为，所有可变变化的父类<br>3，用户类的最终实例，通过注入行为实例的方式，设定易变行为<br>防止了继承行为方式，导致无关行为污染子类。完成了策略封装和可替换性。</p>
+</blockquote>
+<p>###（六）工厂模式</p>
+<blockquote>
+<p><strong>应用场景：</strong><br>工厂方式创建类的实例，多与proxy模式配合，创建可替换代理类。<br><strong>优势：</strong><br>易于替换，面向抽象编程，application只与抽象工厂和易变类的共性抽象类发生调用关系。<br><strong>实例：</strong><br>项目部署环境中依赖多个不同类型的数据库时，需要使用工厂配合proxy完成易用性替换<br><strong>注意事项：</strong><br>项目初期，软件结构和需求都没有稳定下来时，不建议使用此模式，因为其劣势也很明显， 增加了代码的复杂度，增加了调用层次，增加了内存负担。所以要注意防止模式的滥用。</p>
+</blockquote>
+<p>扩展阅读:<br><a href="http://www.cnblogs.com/beijiguangyong/archive/2010/11/15/2302807.html" target="_blank" rel="external">23种设计模式</a><br><a href="http://design-patterns.readthedocs.io/zh_CN/latest/index.html" target="_blank" rel="external">图说设计模式</a></p>
 
           
         
@@ -911,133 +991,6 @@
 <p>6.使用UIFont调用字体</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[UIFont fontWithName:@&quot;FZLTXHKM&quot; size:17];</span><br><span class="line">[UIFont fontWithName:@&quot;FZLTHJW--GB1-0&quot; size:17];</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/06/28/玩转iOS设计模式/" itemprop="url">
-                  未命名
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-28T16:30:40+08:00" content="2016-06-28">
-              2016-06-28
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/06/28/玩转iOS设计模式/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/28/玩转iOS设计模式/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>###（一）代理模式(委托)</p>
-<blockquote>
-<p><strong>应用场景：</strong><br>当一个类的某些功能需要由别的类来实现，但是又不确定具体会是哪个类实现。<br><strong>优势：</strong><br>解耦合<br><strong>实例：</strong><br>tableview的数据源delegate，通过和protocol的配合，完成委托诉求。<br>列表row个数delegate<br>自定义的delegate</p>
-</blockquote>
-<p>###（二）观察者模式</p>
-<blockquote>
-<p><strong>应用场景：</strong><br>一般为model层对，controller和view进行的通知方式，不关心谁去接收，只负责发布信息。<br><strong>优势：</strong><br>解耦合<br><strong>实例：</strong><br>Notification通知中心，注册通知中心，任何位置可以发送消息，注册观察者的对象可以接收。<br>kvo，键值对改变通知的观察者，平时基本没用过。</p>
-</blockquote>
-<p>###（三）MVC模式</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1519620-16f5b73bbb4eda3f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="MVC"></p>
-<blockquote>
-<p><strong>应用场景：</strong><br>是一中非常古老的设计模式，通过数据模型，控制器逻辑，视图展示将应用程序进行逻辑划分。<br><strong>优势：</strong><br>使系统，层次清晰，职责分明，易于维护<br><strong>实例：</strong><br>model-即数据模型，view-视图展示，controller-进行UI展现和数据交互的逻辑控制。</p>
-</blockquote>
-<p>###（四）单例模式</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1519620-9bf34c46da21e83e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="单例"></p>
-<blockquote>
-<p><strong>应用场景：</strong><br>确保程序运行期某个类，只有一份实例，用于进行资源共享控制。<br><strong>优势：</strong><br>使用简单，延时求值，易于跨模块<br><strong>实例：</strong><br>[UIApplication sharedApplication]。<br><strong>注意事项：</strong><br>确保使用者只能通过 getInstance方法才能获得，单例类的唯一实例。<br>java，C++中使其没有公有构造函数，私有化并覆盖其构造函数。<br>object c中，重写allocWithZone方法，保证即使用户用 alloc方法直接创建单例类的实例，返回的也只是此单例类的唯一静态变量。</p>
-</blockquote>
-<p>###（五）策略模式</p>
-<blockquote>
-<p><strong>应用场景：</strong><br>定义算法族，封装起来，使他们之间可以相互替换。<br><strong>优势：</strong><br>使算法的变化独立于使用算法的用户<br><strong>实例：</strong><br>排序算法，NSArray的sortedArrayUsingSelector；经典的鸭子会叫，会飞案例。<br><strong>注意事项：</strong><br>1，剥离类中易于变化的行为，通过组合的方式嵌入抽象基类<br>2，变化的行为抽象基类为，所有可变变化的父类<br>3，用户类的最终实例，通过注入行为实例的方式，设定易变行为<br>防止了继承行为方式，导致无关行为污染子类。完成了策略封装和可替换性。</p>
-</blockquote>
-<p>###（六）工厂模式</p>
-<blockquote>
-<p><strong>应用场景：</strong><br>工厂方式创建类的实例，多与proxy模式配合，创建可替换代理类。<br><strong>优势：</strong><br>易于替换，面向抽象编程，application只与抽象工厂和易变类的共性抽象类发生调用关系。<br><strong>实例：</strong><br>项目部署环境中依赖多个不同类型的数据库时，需要使用工厂配合proxy完成易用性替换<br><strong>注意事项：</strong><br>项目初期，软件结构和需求都没有稳定下来时，不建议使用此模式，因为其劣势也很明显， 增加了代码的复杂度，增加了调用层次，增加了内存负担。所以要注意防止模式的滥用。</p>
-</blockquote>
-<p>扩展阅读:<br><a href="http://www.cnblogs.com/beijiguangyong/archive/2010/11/15/2302807.html" target="_blank" rel="external">23种设计模式</a><br><a href="http://design-patterns.readthedocs.io/zh_CN/latest/index.html" target="_blank" rel="external">图说设计模式</a></p>
 
           
         
