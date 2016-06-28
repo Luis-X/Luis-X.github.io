@@ -84,43 +84,31 @@
 
 
 
-<meta name="description" content="Swift和Objective-C混编
-    
-      body {
-        margin: 0;
-        font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, &quot;Hiragino Sans GB&quot;, sans-serif;
-        font-size: 14px;
-        li">
+<meta name="description" content="Key Value Observing(键-值-观察)
+被观察者和观察者同时实现一个协议: NSKeyValueObserving
+源于设计模式中的观察者模式。
+指定被观察对象的属性被修改后，KVO就会自动通知相应的观察者。注意:不要忘记解除注册，否则会导致资源泄露
+
+1234567#pragma mark   //////////KVO方法////////////注册监听- (void)add">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LuisX">
-<meta property="og:url" content="http://yoursite.com/2016/06/28/Swift和Objective-C混编/index.html">
+<meta property="og:url" content="http://yoursite.com/2016/06/28/Objective-C/Objective-C-「KVO键值观察」/index.html">
 <meta property="og:site_name" content="LuisX">
-<meta property="og:description" content="Swift和Objective-C混编
-    
-      body {
-        margin: 0;
-        font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, &quot;Hiragino Sans GB&quot;, sans-serif;
-        font-size: 14px;
-        li">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1519620-cdecce6313bdf71f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1519620-031994af25b77e3c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1519620-eb017eda26d3d701.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1519620-0ef91590ed6718cf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1519620-98f315104a57dd99.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1519620-2a85bf26b03ef6f6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1519620-ff7651dc7067230d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1519620-2ed2731927be5a0c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:description" content="Key Value Observing(键-值-观察)
+被观察者和观察者同时实现一个协议: NSKeyValueObserving
+源于设计模式中的观察者模式。
+指定被观察对象的属性被修改后，KVO就会自动通知相应的观察者。注意:不要忘记解除注册，否则会导致资源泄露
+
+1234567#pragma mark   //////////KVO方法////////////注册监听- (void)add">
 <meta property="og:updated_time" content="2016-06-28T08:30:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LuisX">
-<meta name="twitter:description" content="Swift和Objective-C混编
-    
-      body {
-        margin: 0;
-        font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, &quot;Hiragino Sans GB&quot;, sans-serif;
-        font-size: 14px;
-        li">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1519620-cdecce6313bdf71f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:description" content="Key Value Observing(键-值-观察)
+被观察者和观察者同时实现一个协议: NSKeyValueObserving
+源于设计模式中的观察者模式。
+指定被观察对象的属性被修改后，KVO就会自动通知相应的观察者。注意:不要忘记解除注册，否则会导致资源泄露
+
+1234567#pragma mark   //////////KVO方法////////////注册监听- (void)add">
 
 
 
@@ -321,8 +309,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/06/28/Swift和Objective-C混编/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/28/Swift和Objective-C混编/" itemprop="commentsCount"></span>
+                <a href="/2016/06/28/Objective-C/Objective-C-「KVO键值观察」/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/28/Objective-C/Objective-C-「KVO键值观察」/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -345,71 +333,28 @@
       
 
       
-        <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Swift和Objective-C混编</title>
-    <style type="text/css" media="all">
-      body {
-        margin: 0;
-        font-family: "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", sans-serif;
-        font-size: 14px;
-        line-height: 20px;
-        color: #777;
-        background-color: white;
-      }
-      .container {
-        width: 700px;
-        margin-right: auto;
-        margin-left: auto;
-      }
-
-      .post {
-        font-family: Georgia, "Times New Roman", Times, "SimSun", serif;
-        position: relative;
-        padding: 70px;
-        bottom: 0;
-        overflow-y: auto;
-        font-size: 16px;
-        font-weight: normal;
-        line-height: 25px;
-        color: #515151;
-      }
-
-      .post h1{
-        font-size: 50px;
-        font-weight: 500;
-        line-height: 60px;
-        margin-bottom: 40px;
-        color: inherit;
-      }
-
-      .post p {
-        margin: 0 0 35px 0;
-      }
-
-      .post img {
-        border: 1px solid #D9D9D9;
-      }
-
-      .post a {
-        color: #28A1C5;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="container">
-      <div class="post">
-        <h1 class="title">Swift和Objective-C混编</h1>
-        <div class="show-content">
-          <h4>Swift中调用Objective-C文件</h4><p>1.新建Swift文件SwiftViewController.swift</p><div class="image-package"><img src="http://upload-images.jianshu.io/upload_images/1519620-cdecce6313bdf71f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br><div class="image-caption"></div></div><p>2.因为工程为OC编写,第一次创建会提示需要创建"桥接文件"</p><div class="image-package"><img src="http://upload-images.jianshu.io/upload_images/1519620-031994af25b77e3c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br><div class="image-caption"></div></div><p>3.此时的工程会有SwiftViewController.swift文件和HelloWorld-Bridging-Header.h桥接文件</p><div class="image-package"><img src="http://upload-images.jianshu.io/upload_images/1519620-eb017eda26d3d701.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br><div class="image-caption"></div></div><p>4.检查桥接文件HelloWorld-Bridging-Header.h是否正确</p><div class="image-package"><img src="http://upload-images.jianshu.io/upload_images/1519620-0ef91590ed6718cf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br><div class="image-caption"></div></div><p>5.在桥接文件HelloWorld-Bridging-Header.h中引入要调用的Objective-C文件ViewController.h</p><div class="image-package"><img src="http://upload-images.jianshu.io/upload_images/1519620-98f315104a57dd99.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br><div class="image-caption"></div></div><p>6.在SwiftViewController.swift中调用Objective-C代码</p><div class="image-package"><img src="http://upload-images.jianshu.io/upload_images/1519620-2a85bf26b03ef6f6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br><div class="image-caption"></div></div><h1>Objective-C调用Swift文件</h1><p>1.修改Build Settings -&gt; Packaging -&gt; Defines Module 为YES</p><div class="image-package"><img src="http://upload-images.jianshu.io/upload_images/1519620-ff7651dc7067230d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br><div class="image-caption"></div></div><p>2.在ViewController.m中 引入隐藏文件HelloWorld-swift.h后可调用Swift文件</p><hr><p>命名方式: &nbsp; 工程名-swift.h</p><hr><div class="image-package"><img src="http://upload-images.jianshu.io/upload_images/1519620-2ed2731927be5a0c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br><div class="image-caption"></div></div><h1>注意:</h1><p>1.Xcode7.3 需要编译后才有代码提示(command + B)</p><p>2.若调用swift文件没有代码提示,需要手写.m文件中,才能有代码提示(可能是编译器bug)</p>
-        </div>
-      </div>
-    </div>
-  </body>
-</html>
+        <ul>
+<li>Key Value Observing(键-值-观察)</li>
+<li>被观察者和观察者同时实现一个协议: NSKeyValueObserving</li>
+<li>源于设计模式中的观察者模式。</li>
+<li>指定被观察对象的属性被修改后，KVO就会自动通知相应的观察者。<br><strong>注意:不要忘记解除注册，否则会导致资源泄露</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#pragma mark   //////////KVO方法//////////</span><br><span class="line">//注册监听</span><br><span class="line">- (void)addObserver:(NSObject *)observer forKeyPath:(NSString *)keyPath options:(NSKeyValueObservingOptions)options context:(nullable void *)context;</span><br><span class="line">//移除监听</span><br><span class="line">- (void)removeObserver:(NSObject *)observer forKeyPath:(NSString *)keyPath;</span><br><span class="line">//监听回调</span><br><span class="line">- (void)observeValueForKeyPath:(nullable NSString *)keyPath ofObject:(nullable id)object change:(nullable NSDictionary&lt;NSString*, id&gt; *)change context:(nullable void *)context;</span><br></pre></td></tr></table></figure>
+<h3 id="使用KVO"><a href="#使用KVO" class="headerlink" title="使用KVO"></a>使用KVO</h3><p>Student.h文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#import &lt;Foundation/Foundation.h&gt;</span><br><span class="line"></span><br><span class="line">@interface Student : NSObject</span><br><span class="line">@property (nonatomic, copy) NSString *name;</span><br><span class="line">@property (nonatomic, assign) NSInteger age;</span><br><span class="line">@end</span><br></pre></td></tr></table></figure></p>
+<p>KVOViewController.m文件中<br>1.监听Student的属性</p>
+<blockquote>
+<p>observer:     观察者对象<br>keyPath:      被观察的属性<br>options:      设定通知观察者时传递的属性值<br>context:      一些其他的需要传递给观察者的上下文信息</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">#import &quot;KVOViewController.h&quot;</span><br><span class="line">#import &quot;Student.h&quot;</span><br><span class="line"></span><br><span class="line">@interface KVOViewController ()</span><br><span class="line"></span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">@implementation KVOViewController&#123;</span><br><span class="line">    Student *_student;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)viewDidLoad &#123;</span><br><span class="line">    [super viewDidLoad];</span><br><span class="line">    </span><br><span class="line">    _student = [[Student alloc] init];</span><br><span class="line">    _student.name = @&quot;LuisX&quot;;</span><br><span class="line">    _student.age = 24;</span><br><span class="line">    //为属性添加观察者</span><br><span class="line">    [_student addObserver:self forKeyPath:@&quot;age&quot; options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];</span><br><span class="line">    </span><br><span class="line">    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];</span><br><span class="line">    button.frame = CGRectMake(100, 100, 100, 100);</span><br><span class="line">    button.backgroundColor = [UIColor orangeColor];</span><br><span class="line">    [self.view addSubview:button];</span><br><span class="line">    [button addTarget:self action:@selector(changeStudentAgeValue:) forControlEvents:UIControlEventTouchUpInside];</span><br><span class="line">  </span><br><span class="line">&#125;</span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+<p>2.点击button修改student的属性</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- (void)changeStudentAgeValue:(UIButton *)button&#123;</span><br><span class="line">    _student.age++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3.实现监听回调方法</p>
+<blockquote>
+<p>keyPath:   被观察的属性<br>object:     被观察者的对象<br>change:   属性值，根据上面提到的Options设置，给出对应的属性值<br>context:  上面传递的context对象</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">//观察者通过实现下面的方法，完成对属性改变的响应</span><br><span class="line">- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary&lt;NSString *,id&gt; *)change context:(void *)context&#123;</span><br><span class="line">    </span><br><span class="line">    if ([keyPath isEqualToString:@&quot;age&quot;] &amp;&amp; object == _student) &#123;</span><br><span class="line">        </span><br><span class="line">        NSLog(@&quot;age:%ld&quot;, _student.age);</span><br><span class="line">        NSLog(@&quot;old age:%@&quot;, [change objectForKey:@&quot;old&quot;]);</span><br><span class="line">        NSLog(@&quot;new age:%@&quot;, [change objectForKey:@&quot;new&quot;]);</span><br><span class="line">        //输出: age:25</span><br><span class="line">        //输出: old age:24</span><br><span class="line">        //输出: new age:25</span><br><span class="line">      </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>4.移除监听</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">- (void)viewDidDisappear:(BOOL)animated&#123;</span><br><span class="line">    [super viewDidDisappear:animated];</span><br><span class="line">    //移除观察者</span><br><span class="line">    [_student removeObserver:self forKeyPath:@&quot;age&quot;];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -434,7 +379,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/06/28/UILabel修改行距,首行缩进/" rel="next" title="">
+              <a href="/2016/06/28/Objective-C/Objective-C「遍历」/" rel="next" title="">
                 <i class="fa fa-chevron-left"></i> 
               </a>
             
@@ -442,7 +387,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/06/28/Objective-C「遍历」/" rel="prev" title="">
+              <a href="/2016/06/28/Objective-C/Objective-C-「类目、延展、协议」/" rel="prev" title="">
                  <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -459,10 +404,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/06/28/Swift和Objective-C混编/"
+        <div class="ds-share flat" data-thread-key="2016/06/28/Objective-C/Objective-C-「KVO键值观察」/"
      data-title=""
      data-content=""
-     data-url="http://yoursite.com/2016/06/28/Swift和Objective-C混编/">
+     data-url="http://yoursite.com/2016/06/28/Objective-C/Objective-C-「KVO键值观察」/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -489,8 +434,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/06/28/Swift和Objective-C混编/"
-           data-title="" data-url="http://yoursite.com/2016/06/28/Swift和Objective-C混编/">
+      <div class="ds-thread" data-thread-key="2016/06/28/Objective-C/Objective-C-「KVO键值观察」/"
+           data-title="" data-url="http://yoursite.com/2016/06/28/Objective-C/Objective-C-「KVO键值观察」/">
       </div>
     
   </div>
@@ -535,7 +480,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-count">12</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -587,7 +532,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">Swift和Objective-C混编</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">Swift中调用Objective-C文件</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">Objective-C调用Swift文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">注意:</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用KVO"><span class="nav-number">1.</span> <span class="nav-text">使用KVO</span></a></li></ol></div>
             
           </div>
         </section>

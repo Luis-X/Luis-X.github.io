@@ -84,43 +84,37 @@
 
 
 
-<meta name="description" content="CocoaPods使用「iOS应用的依赖管理」
-    
-      body {
-        margin: 0;
-        font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, &quot;Hiragino Sans GB&quot;, sans-serif;
-        font-size: 14px;">
+<meta name="description" content="###（一）代理模式(委托)
+
+应用场景：当一个类的某些功能需要由别的类来实现，但是又不确定具体会是哪个类实现。优势：解耦合实例：tableview的数据源delegate，通过和protocol的配合，完成委托诉求。列表row个数delegate自定义的delegate
+
+###（二）观察者模式
+
+应用场景：一般为model层对，controller和view进行的通知方式，不关心谁去接收，只负">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LuisX">
-<meta property="og:url" content="http://yoursite.com/2016/06/28/CocoaPods使用「iOS应用的依赖管理」/index.html">
+<meta property="og:url" content="http://yoursite.com/2016/06/28/玩转iOS/玩转iOS设计模式/index.html">
 <meta property="og:site_name" content="LuisX">
-<meta property="og:description" content="CocoaPods使用「iOS应用的依赖管理」
-    
-      body {
-        margin: 0;
-        font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, &quot;Hiragino Sans GB&quot;, sans-serif;
-        font-size: 14px;">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1519620-71714d299ca8e040.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1519620-69ec15fbc10017be.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1519620-a9d476e9143c4a46.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1519620-2b80e8e66e473691.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1519620-c74d742aaaf430c6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1519620-b843b8f6863ef150.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1519620-e3dc5a6d0e3fab29.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1519620-c17bddcef3154236.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1519620-ad1d18c2e0b8d341.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1519620-eaaf3733ed7a7980.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1519620-d1b3b977025037b8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:description" content="###（一）代理模式(委托)
+
+应用场景：当一个类的某些功能需要由别的类来实现，但是又不确定具体会是哪个类实现。优势：解耦合实例：tableview的数据源delegate，通过和protocol的配合，完成委托诉求。列表row个数delegate自定义的delegate
+
+###（二）观察者模式
+
+应用场景：一般为model层对，controller和view进行的通知方式，不关心谁去接收，只负">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1519620-16f5b73bbb4eda3f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1519620-9bf34c46da21e83e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:updated_time" content="2016-06-28T08:30:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LuisX">
-<meta name="twitter:description" content="CocoaPods使用「iOS应用的依赖管理」
-    
-      body {
-        margin: 0;
-        font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, &quot;Hiragino Sans GB&quot;, sans-serif;
-        font-size: 14px;">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1519620-71714d299ca8e040.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:description" content="###（一）代理模式(委托)
+
+应用场景：当一个类的某些功能需要由别的类来实现，但是又不确定具体会是哪个类实现。优势：解耦合实例：tableview的数据源delegate，通过和protocol的配合，完成委托诉求。列表row个数delegate自定义的delegate
+
+###（二）观察者模式
+
+应用场景：一般为model层对，controller和view进行的通知方式，不关心谁去接收，只负">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1519620-16f5b73bbb4eda3f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -321,8 +315,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/06/28/CocoaPods使用「iOS应用的依赖管理」/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/28/CocoaPods使用「iOS应用的依赖管理」/" itemprop="commentsCount"></span>
+                <a href="/2016/06/28/玩转iOS/玩转iOS设计模式/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/28/玩转iOS/玩转iOS设计模式/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -345,71 +339,33 @@
       
 
       
-        <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CocoaPods使用「iOS应用的依赖管理」</title>
-    <style type="text/css" media="all">
-      body {
-        margin: 0;
-        font-family: "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", sans-serif;
-        font-size: 14px;
-        line-height: 20px;
-        color: #777;
-        background-color: white;
-      }
-      .container {
-        width: 700px;
-        margin-right: auto;
-        margin-left: auto;
-      }
-
-      .post {
-        font-family: Georgia, "Times New Roman", Times, "SimSun", serif;
-        position: relative;
-        padding: 70px;
-        bottom: 0;
-        overflow-y: auto;
-        font-size: 16px;
-        font-weight: normal;
-        line-height: 25px;
-        color: #515151;
-      }
-
-      .post h1{
-        font-size: 50px;
-        font-weight: 500;
-        line-height: 60px;
-        margin-bottom: 40px;
-        color: inherit;
-      }
-
-      .post p {
-        margin: 0 0 35px 0;
-      }
-
-      .post img {
-        border: 1px solid #D9D9D9;
-      }
-
-      .post a {
-        color: #28A1C5;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="container">
-      <div class="post">
-        <h1 class="title">CocoaPods使用「iOS应用的依赖管理」</h1>
-        <div class="show-content">
-          <h1>Ruby环境搭建<br></h1><p>1.查看下当前Ruby版本：打开终端输入 ruby -v</p><div class="image-package"><img src="http://upload-images.jianshu.io/upload_images/1519620-71714d299ca8e040.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br><div class="image-caption"></div></div><p>2.更新Ruby版本</p><p>终端输入如下命令（把Ruby镜像指向taobao，避免被墙，你懂得）</p><hr><p>1、gem sources --remove https://rubygems.org/ （该地址被墙了）</p><p>2、gem sources -a https://ruby.taobao.org/</p><p>3、gem sources -l &nbsp;（用来检查使用替换镜像位置成功)</p><hr><div class="image-package"><img src="http://upload-images.jianshu.io/upload_images/1519620-69ec15fbc10017be.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br><div class="image-caption"></div></div><h1>下载安装CocoaPods</h1><p>1.终端输入：sudo gem install cocoapods</p><div class="image-package"><img src="http://upload-images.jianshu.io/upload_images/1519620-a9d476e9143c4a46.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br><div class="image-caption"></div></div><h1>使用CocoaPods<br></h1><p>1.新建一个项目</p><div class="image-package"><img src="http://upload-images.jianshu.io/upload_images/1519620-2b80e8e66e473691.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br><div class="image-caption"></div></div><p>2.终端输入cd到项目总目录(打开 终端 输入cd将要进入的文件夹拖入终端)</p><div class="image-package"><img src="http://upload-images.jianshu.io/upload_images/1519620-c74d742aaaf430c6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br><div class="image-caption"></div></div><p>3.新建Podfile(配置文件),并编辑文件</p><div class="image-package"><img src="http://upload-images.jianshu.io/upload_images/1519620-b843b8f6863ef150.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br><div class="image-caption"></div></div><p>4.键盘输入i进入编辑模式</p><p>输入完成 按ESC输入:再输入wq(保存)</p><p>编辑配置文件 将依赖库文件名字依次放在文件中(根据github第三方库 修改)</p><div class="image-package"><img src="http://upload-images.jianshu.io/upload_images/1519620-e3dc5a6d0e3fab29.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br><div class="image-caption"></div></div><p>5.总目录中多了一个Podfile文件</p><div class="image-package"><img src="http://upload-images.jianshu.io/upload_images/1519620-c17bddcef3154236.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br><div class="image-caption"></div></div><p>6.安装 第三方库 在总目录中输入pod install等待完成</p><div class="image-package"><img src="http://upload-images.jianshu.io/upload_images/1519620-ad1d18c2e0b8d341.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br><div class="image-caption"></div></div><h1>问题解决:</h1><hr><p>1.CocoaPods自动补齐失效解决:</p><blockquote><p>选择Target -&gt; Build Settings 菜单，找到\”User Header Search Paths\”设置项</p><p>新增一个值"${SRCROOT}"，并且选择"Recursive"，这样xcode就会在项目目录中递归搜索文件自动补齐功能马上就好使了。</p></blockquote><div class="image-package"><img src="http://upload-images.jianshu.io/upload_images/1519620-eaaf3733ed7a7980.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" data-original-src="http://upload-images.jianshu.io/upload_images/1519620-eaaf3733ed7a7980.png?imageMogr2/auto-orient/strip" data-image-slug="eaaf3733ed7a7980" data-width="1982" data-height="808"><br><div class="image-caption">解决自动补齐失效</div></div><p>2.删除CocoaPods</p><blockquote><p>1.删除工程文件夹下的Podfile、Podfile.lock及Pods文件夹</p><p>2.删除.xcworkspace文件</p><p>3.使用.xcodeproj文件打开工程，删除Frameworks组下的Pods.xcconfig及libPods.a引用</p><p>4.在工程设置中的Build Phases下删除Check Pods Manifest.lock和Copy Pods Resources</p></blockquote><p>3.引用依赖库版本</p><div class="image-package"><img src="http://upload-images.jianshu.io/upload_images/1519620-d1b3b977025037b8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" data-original-src="http://upload-images.jianshu.io/upload_images/1519620-d1b3b977025037b8.png?imageMogr2/auto-orient/strip" data-image-slug="d1b3b977025037b8" data-width="1514" data-height="456"><br><div class="image-caption">语法含义</div></div>
-        </div>
-      </div>
-    </div>
-  </body>
-</html>
+        <p>###（一）代理模式(委托)</p>
+<blockquote>
+<p><strong>应用场景：</strong><br>当一个类的某些功能需要由别的类来实现，但是又不确定具体会是哪个类实现。<br><strong>优势：</strong><br>解耦合<br><strong>实例：</strong><br>tableview的数据源delegate，通过和protocol的配合，完成委托诉求。<br>列表row个数delegate<br>自定义的delegate</p>
+</blockquote>
+<p>###（二）观察者模式</p>
+<blockquote>
+<p><strong>应用场景：</strong><br>一般为model层对，controller和view进行的通知方式，不关心谁去接收，只负责发布信息。<br><strong>优势：</strong><br>解耦合<br><strong>实例：</strong><br>Notification通知中心，注册通知中心，任何位置可以发送消息，注册观察者的对象可以接收。<br>kvo，键值对改变通知的观察者，平时基本没用过。</p>
+</blockquote>
+<p>###（三）MVC模式</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1519620-16f5b73bbb4eda3f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="MVC"></p>
+<blockquote>
+<p><strong>应用场景：</strong><br>是一中非常古老的设计模式，通过数据模型，控制器逻辑，视图展示将应用程序进行逻辑划分。<br><strong>优势：</strong><br>使系统，层次清晰，职责分明，易于维护<br><strong>实例：</strong><br>model-即数据模型，view-视图展示，controller-进行UI展现和数据交互的逻辑控制。</p>
+</blockquote>
+<p>###（四）单例模式</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1519620-9bf34c46da21e83e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="单例"></p>
+<blockquote>
+<p><strong>应用场景：</strong><br>确保程序运行期某个类，只有一份实例，用于进行资源共享控制。<br><strong>优势：</strong><br>使用简单，延时求值，易于跨模块<br><strong>实例：</strong><br>[UIApplication sharedApplication]。<br><strong>注意事项：</strong><br>确保使用者只能通过 getInstance方法才能获得，单例类的唯一实例。<br>java，C++中使其没有公有构造函数，私有化并覆盖其构造函数。<br>object c中，重写allocWithZone方法，保证即使用户用 alloc方法直接创建单例类的实例，返回的也只是此单例类的唯一静态变量。</p>
+</blockquote>
+<p>###（五）策略模式</p>
+<blockquote>
+<p><strong>应用场景：</strong><br>定义算法族，封装起来，使他们之间可以相互替换。<br><strong>优势：</strong><br>使算法的变化独立于使用算法的用户<br><strong>实例：</strong><br>排序算法，NSArray的sortedArrayUsingSelector；经典的鸭子会叫，会飞案例。<br><strong>注意事项：</strong><br>1，剥离类中易于变化的行为，通过组合的方式嵌入抽象基类<br>2，变化的行为抽象基类为，所有可变变化的父类<br>3，用户类的最终实例，通过注入行为实例的方式，设定易变行为<br>防止了继承行为方式，导致无关行为污染子类。完成了策略封装和可替换性。</p>
+</blockquote>
+<p>###（六）工厂模式</p>
+<blockquote>
+<p><strong>应用场景：</strong><br>工厂方式创建类的实例，多与proxy模式配合，创建可替换代理类。<br><strong>优势：</strong><br>易于替换，面向抽象编程，application只与抽象工厂和易变类的共性抽象类发生调用关系。<br><strong>实例：</strong><br>项目部署环境中依赖多个不同类型的数据库时，需要使用工厂配合proxy完成易用性替换<br><strong>注意事项：</strong><br>项目初期，软件结构和需求都没有稳定下来时，不建议使用此模式，因为其劣势也很明显， 增加了代码的复杂度，增加了调用层次，增加了内存负担。所以要注意防止模式的滥用。</p>
+</blockquote>
+<p>扩展阅读:<br><a href="http://www.cnblogs.com/beijiguangyong/archive/2010/11/15/2302807.html" target="_blank" rel="external">23种设计模式</a><br><a href="http://design-patterns.readthedocs.io/zh_CN/latest/index.html" target="_blank" rel="external">图说设计模式</a></p>
 
       
     </div>
@@ -434,15 +390,11 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/06/28/Objective-C-「KVC键值编码」/" rel="next" title="">
-                <i class="fa fa-chevron-left"></i> 
-              </a>
-            
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/06/28/Objective-C-「传值总结」/" rel="prev" title="">
+              <a href="/2016/06/28/玩转iOS/玩转字体/" rel="prev" title="">
                  <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -459,10 +411,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/06/28/CocoaPods使用「iOS应用的依赖管理」/"
+        <div class="ds-share flat" data-thread-key="2016/06/28/玩转iOS/玩转iOS设计模式/"
      data-title=""
      data-content=""
-     data-url="http://yoursite.com/2016/06/28/CocoaPods使用「iOS应用的依赖管理」/">
+     data-url="http://yoursite.com/2016/06/28/玩转iOS/玩转iOS设计模式/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -489,8 +441,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/06/28/CocoaPods使用「iOS应用的依赖管理」/"
-           data-title="" data-url="http://yoursite.com/2016/06/28/CocoaPods使用「iOS应用的依赖管理」/">
+      <div class="ds-thread" data-thread-key="2016/06/28/玩转iOS/玩转iOS设计模式/"
+           data-title="" data-url="http://yoursite.com/2016/06/28/玩转iOS/玩转iOS设计模式/">
       </div>
     
   </div>
@@ -535,7 +487,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-count">12</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -587,7 +539,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">CocoaPods使用「iOS应用的依赖管理」</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">Ruby环境搭建</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">下载安装CocoaPods</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">使用CocoaPods</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">5.</span> <span class="nav-text">问题解决:</span></a></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目录</p>
             
           </div>
         </section>
