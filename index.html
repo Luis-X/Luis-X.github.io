@@ -841,147 +841,6 @@
             
               
                 
-                <a class="post-title-link" href="/2016/06/21/Objective-C/Objective-C-「KVO键值观察」/" itemprop="url">
-                  Objective-C-「KVO键值观察」
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-21T00:00:00+08:00" content="2016-06-21">
-              2016-06-21
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Objective-C/" itemprop="url" rel="index">
-                    <span itemprop="name">Objective-C</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/06/21/Objective-C/Objective-C-「KVO键值观察」/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/21/Objective-C/Objective-C-「KVO键值观察」/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li>Key Value Observing(键-值-观察)</li>
-<li>被观察者和观察者同时实现一个协议: NSKeyValueObserving</li>
-<li>源于设计模式中的观察者模式。</li>
-<li>指定被观察对象的属性被修改后，KVO就会自动通知相应的观察者。<br><strong>注意:不要忘记解除注册，否则会导致资源泄露</strong></li>
-</ul>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#pragma mark   //////////KVO方法//////////</span></span><br><span class="line"><span class="comment">//注册监听</span></span><br><span class="line">- (<span class="keyword">void</span>)addObserver:(<span class="built_in">NSObject</span> *)observer forKeyPath:(<span class="built_in">NSString</span> *)keyPath options:(<span class="built_in">NSKeyValueObservingOptions</span>)options context:(nullable <span class="keyword">void</span> *)context;</span><br><span class="line"><span class="comment">//移除监听</span></span><br><span class="line">- (<span class="keyword">void</span>)removeObserver:(<span class="built_in">NSObject</span> *)observer forKeyPath:(<span class="built_in">NSString</span> *)keyPath;</span><br><span class="line"><span class="comment">//监听回调</span></span><br><span class="line">- (<span class="keyword">void</span>)observeValueForKeyPath:(nullable <span class="built_in">NSString</span> *)keyPath ofObject:(nullable <span class="keyword">id</span>)object change:(nullable <span class="built_in">NSDictionary</span>&lt;<span class="built_in">NSString</span>*, <span class="keyword">id</span>&gt; *)change context:(nullable <span class="keyword">void</span> *)context;</span><br></pre></td></tr></table></figure>
-<h3 id="使用KVO"><a href="#使用KVO" class="headerlink" title="使用KVO"></a>使用KVO</h3><p>Student.h文件<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">&lt;Foundation/Foundation.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">Student</span> : <span class="title">NSObject</span></span></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">copy</span>) <span class="built_in">NSString</span> *name;</span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">assign</span>) <span class="built_in">NSInteger</span> age;</span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure></p>
-<p>KVOViewController.m文件中<br>1.监听Student的属性</p>
-<blockquote>
-<p>observer:     观察者对象<br>keyPath:      被观察的属性<br>options:      设定通知观察者时传递的属性值<br>context:      一些其他的需要传递给观察者的上下文信息</p>
-</blockquote>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">"KVOViewController.h"</span></span></span><br><span class="line"><span class="meta">#import <span class="meta-string">"Student.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">KVOViewController</span> ()</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">KVOViewController</span></span>&#123;</span><br><span class="line">    Student *_student;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)viewDidLoad &#123;</span><br><span class="line">    [<span class="keyword">super</span> viewDidLoad];</span><br><span class="line">    </span><br><span class="line">    _student = [[Student alloc] init];</span><br><span class="line">    _student.name = <span class="string">@"LuisX"</span>;</span><br><span class="line">    _student.age = <span class="number">24</span>;</span><br><span class="line">    <span class="comment">//为属性添加观察者</span></span><br><span class="line">    [_student addObserver:<span class="keyword">self</span> forKeyPath:<span class="string">@"age"</span> options:<span class="built_in">NSKeyValueObservingOptionNew</span>|<span class="built_in">NSKeyValueObservingOptionOld</span> context:<span class="literal">NULL</span>];</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">UIButton</span> *button = [<span class="built_in">UIButton</span> buttonWithType:<span class="built_in">UIButtonTypeCustom</span>];</span><br><span class="line">    button.frame = <span class="built_in">CGRectMake</span>(<span class="number">100</span>, <span class="number">100</span>, <span class="number">100</span>, <span class="number">100</span>);</span><br><span class="line">    button.backgroundColor = [<span class="built_in">UIColor</span> orangeColor];</span><br><span class="line">    [<span class="keyword">self</span>.view addSubview:button];</span><br><span class="line">    [button addTarget:<span class="keyword">self</span> action:<span class="keyword">@selector</span>(changeStudentAgeValue:) forControlEvents:<span class="built_in">UIControlEventTouchUpInside</span>];</span><br><span class="line">  </span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
-<p>2.点击button修改student的属性</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- (void)changeStudentAgeValue:(UIButton *)button&#123;</span><br><span class="line">    _student.age++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>3.实现监听回调方法</p>
-<blockquote>
-<p>keyPath:   被观察的属性<br>object:     被观察者的对象<br>change:   属性值，根据上面提到的Options设置，给出对应的属性值<br>context:  上面传递的context对象</p>
-</blockquote>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//观察者通过实现下面的方法，完成对属性改变的响应</span></span><br><span class="line">- (<span class="keyword">void</span>)observeValueForKeyPath:(<span class="built_in">NSString</span> *)keyPath ofObject:(<span class="keyword">id</span>)object change:(<span class="built_in">NSDictionary</span>&lt;<span class="built_in">NSString</span> *,<span class="keyword">id</span>&gt; *)change context:(<span class="keyword">void</span> *)context&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> ([keyPath isEqualToString:<span class="string">@"age"</span>] &amp;&amp; object == _student) &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"age:%ld"</span>, _student.age);</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"old age:%@"</span>, [change objectForKey:<span class="string">@"old"</span>]);</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"new age:%@"</span>, [change objectForKey:<span class="string">@"new"</span>]);</span><br><span class="line">        <span class="comment">//输出: age:25</span></span><br><span class="line">        <span class="comment">//输出: old age:24</span></span><br><span class="line">        <span class="comment">//输出: new age:25</span></span><br><span class="line">      </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>4.移除监听</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)viewDidDisappear:(<span class="built_in">BOOL</span>)animated&#123;</span><br><span class="line">    [<span class="keyword">super</span> viewDidDisappear:animated];</span><br><span class="line">    <span class="comment">//移除观察者</span></span><br><span class="line">    [_student removeObserver:<span class="keyword">self</span> forKeyPath:<span class="string">@"age"</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/2016/06/21/Objective-C/Objective-C-「KVC键值编码」/" itemprop="url">
                   Objective-C-「KVC键值编码」
                 </a>
@@ -1084,6 +943,147 @@
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">&lt;Foundation/Foundation.h&gt;</span></span></span><br><span class="line"><span class="meta">#import <span class="meta-string">"Address.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">People</span> : <span class="title">NSObject</span></span>&#123;</span><br><span class="line">    <span class="built_in">NSString</span> *name;</span><br><span class="line">    Address *address;</span><br><span class="line">    <span class="built_in">NSInteger</span> number;</span><br><span class="line">    <span class="built_in">NSArray</span> *morePeople;    <span class="comment">//添加集合类型属性</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
 <p>操作集合<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#pragma mark     //////////操作集合//////////</span></span><br><span class="line">    People *people = [[People alloc] init];</span><br><span class="line">    </span><br><span class="line">    People *p1 = [[People alloc] init];</span><br><span class="line">    People *p2 = [[People alloc] init];</span><br><span class="line">    People *p3 = [[People alloc] init];</span><br><span class="line">    [p1 setValue:<span class="string">@"65"</span> forKey:<span class="string">@"number"</span>];</span><br><span class="line">    [p2 setValue:<span class="string">@"77"</span> forKey:<span class="string">@"number"</span>];</span><br><span class="line">    [p3 setValue:<span class="string">@"99"</span> forKey:<span class="string">@"number"</span>];</span><br><span class="line">    <span class="built_in">NSArray</span> *array = [<span class="built_in">NSArray</span> arrayWithObjects:p1, p2, p3, <span class="literal">nil</span>];</span><br><span class="line">    [people setValue:array forKey:<span class="string">@"morePeople"</span>];</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"数组中元素的number值:%@"</span>, [people valueForKeyPath:<span class="string">@"morePeople.number"</span>]);</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"元素个数:%@"</span>, [people valueForKeyPath:<span class="string">@"morePeople.@count"</span>]);</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"元素最大:%@"</span>, [people valueForKeyPath:<span class="string">@"morePeople.@max.number"</span>]);</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"元素最小:%@"</span>, [people valueForKeyPath:<span class="string">@"morePeople.@min.number"</span>]);</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"元素平均:%@"</span>, [people valueForKeyPath:<span class="string">@"morePeople.@avg.number"</span>]);</span><br><span class="line">    <span class="comment">//输出: 数组中元素的number值:(65, 77, 99)</span></span><br><span class="line">    <span class="comment">//输出: 元素个数:3</span></span><br><span class="line">    <span class="comment">//输出: 元素最大:99</span></span><br><span class="line">    <span class="comment">//输出: 元素最小:65</span></span><br><span class="line">    <span class="comment">//输出: 元素平均:80.333333333333333333333333333333333333</span></span><br></pre></td></tr></table></figure></p>
 <p>拓展阅读:<br><a href="http://blog.csdn.net/omegayy/article/details/7381301" target="_blank" rel="external">Objective-C KVC机制</a><br><a href="http://blog.csdn.net/wzzvictory/article/details/9674431" target="_blank" rel="external">KVC/KVO原理详解及编程指南</a><br><a href="http://www.cocoachina.com/industry/20140224/7866.html" target="_blank" rel="external">iOS KVC &amp; KVO</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/06/21/Objective-C/Objective-C-「KVO键值观察」/" itemprop="url">
+                  Objective-C-「KVO键值观察」
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-21T00:00:00+08:00" content="2016-06-21">
+              2016-06-21
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Objective-C/" itemprop="url" rel="index">
+                    <span itemprop="name">Objective-C</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/06/21/Objective-C/Objective-C-「KVO键值观察」/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/21/Objective-C/Objective-C-「KVO键值观察」/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li>Key Value Observing(键-值-观察)</li>
+<li>被观察者和观察者同时实现一个协议: NSKeyValueObserving</li>
+<li>源于设计模式中的观察者模式。</li>
+<li>指定被观察对象的属性被修改后，KVO就会自动通知相应的观察者。<br><strong>注意:不要忘记解除注册，否则会导致资源泄露</strong></li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#pragma mark   //////////KVO方法//////////</span></span><br><span class="line"><span class="comment">//注册监听</span></span><br><span class="line">- (<span class="keyword">void</span>)addObserver:(<span class="built_in">NSObject</span> *)observer forKeyPath:(<span class="built_in">NSString</span> *)keyPath options:(<span class="built_in">NSKeyValueObservingOptions</span>)options context:(nullable <span class="keyword">void</span> *)context;</span><br><span class="line"><span class="comment">//移除监听</span></span><br><span class="line">- (<span class="keyword">void</span>)removeObserver:(<span class="built_in">NSObject</span> *)observer forKeyPath:(<span class="built_in">NSString</span> *)keyPath;</span><br><span class="line"><span class="comment">//监听回调</span></span><br><span class="line">- (<span class="keyword">void</span>)observeValueForKeyPath:(nullable <span class="built_in">NSString</span> *)keyPath ofObject:(nullable <span class="keyword">id</span>)object change:(nullable <span class="built_in">NSDictionary</span>&lt;<span class="built_in">NSString</span>*, <span class="keyword">id</span>&gt; *)change context:(nullable <span class="keyword">void</span> *)context;</span><br></pre></td></tr></table></figure>
+<h3 id="使用KVO"><a href="#使用KVO" class="headerlink" title="使用KVO"></a>使用KVO</h3><p>Student.h文件<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">&lt;Foundation/Foundation.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">Student</span> : <span class="title">NSObject</span></span></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">copy</span>) <span class="built_in">NSString</span> *name;</span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">assign</span>) <span class="built_in">NSInteger</span> age;</span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure></p>
+<p>KVOViewController.m文件中<br>1.监听Student的属性</p>
+<blockquote>
+<p>observer:     观察者对象<br>keyPath:      被观察的属性<br>options:      设定通知观察者时传递的属性值<br>context:      一些其他的需要传递给观察者的上下文信息</p>
+</blockquote>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">"KVOViewController.h"</span></span></span><br><span class="line"><span class="meta">#import <span class="meta-string">"Student.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">KVOViewController</span> ()</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">KVOViewController</span></span>&#123;</span><br><span class="line">    Student *_student;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)viewDidLoad &#123;</span><br><span class="line">    [<span class="keyword">super</span> viewDidLoad];</span><br><span class="line">    </span><br><span class="line">    _student = [[Student alloc] init];</span><br><span class="line">    _student.name = <span class="string">@"LuisX"</span>;</span><br><span class="line">    _student.age = <span class="number">24</span>;</span><br><span class="line">    <span class="comment">//为属性添加观察者</span></span><br><span class="line">    [_student addObserver:<span class="keyword">self</span> forKeyPath:<span class="string">@"age"</span> options:<span class="built_in">NSKeyValueObservingOptionNew</span>|<span class="built_in">NSKeyValueObservingOptionOld</span> context:<span class="literal">NULL</span>];</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">UIButton</span> *button = [<span class="built_in">UIButton</span> buttonWithType:<span class="built_in">UIButtonTypeCustom</span>];</span><br><span class="line">    button.frame = <span class="built_in">CGRectMake</span>(<span class="number">100</span>, <span class="number">100</span>, <span class="number">100</span>, <span class="number">100</span>);</span><br><span class="line">    button.backgroundColor = [<span class="built_in">UIColor</span> orangeColor];</span><br><span class="line">    [<span class="keyword">self</span>.view addSubview:button];</span><br><span class="line">    [button addTarget:<span class="keyword">self</span> action:<span class="keyword">@selector</span>(changeStudentAgeValue:) forControlEvents:<span class="built_in">UIControlEventTouchUpInside</span>];</span><br><span class="line">  </span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+<p>2.点击button修改student的属性</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- (void)changeStudentAgeValue:(UIButton *)button&#123;</span><br><span class="line">    _student.age++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3.实现监听回调方法</p>
+<blockquote>
+<p>keyPath:   被观察的属性<br>object:     被观察者的对象<br>change:   属性值，根据上面提到的Options设置，给出对应的属性值<br>context:  上面传递的context对象</p>
+</blockquote>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//观察者通过实现下面的方法，完成对属性改变的响应</span></span><br><span class="line">- (<span class="keyword">void</span>)observeValueForKeyPath:(<span class="built_in">NSString</span> *)keyPath ofObject:(<span class="keyword">id</span>)object change:(<span class="built_in">NSDictionary</span>&lt;<span class="built_in">NSString</span> *,<span class="keyword">id</span>&gt; *)change context:(<span class="keyword">void</span> *)context&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> ([keyPath isEqualToString:<span class="string">@"age"</span>] &amp;&amp; object == _student) &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"age:%ld"</span>, _student.age);</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"old age:%@"</span>, [change objectForKey:<span class="string">@"old"</span>]);</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"new age:%@"</span>, [change objectForKey:<span class="string">@"new"</span>]);</span><br><span class="line">        <span class="comment">//输出: age:25</span></span><br><span class="line">        <span class="comment">//输出: old age:24</span></span><br><span class="line">        <span class="comment">//输出: new age:25</span></span><br><span class="line">      </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>4.移除监听</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)viewDidDisappear:(<span class="built_in">BOOL</span>)animated&#123;</span><br><span class="line">    [<span class="keyword">super</span> viewDidDisappear:animated];</span><br><span class="line">    <span class="comment">//移除观察者</span></span><br><span class="line">    [_student removeObserver:<span class="keyword">self</span> forKeyPath:<span class="string">@"age"</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
           
         
@@ -1753,8 +1753,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/06/02/玩转iOS/玩转NSString(不信你看)/" itemprop="url">
-                  玩转NSString(不信你看)
+                <a class="post-title-link" href="/2016/06/02/Objective-C/Objective-C「结构体」/" itemprop="url">
+                  Objective-C「结构体」
                 </a>
               
             
@@ -1781,8 +1781,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/玩转iOS/" itemprop="url" rel="index">
-                    <span itemprop="name">玩转iOS</span>
+                  <a href="/categories/Objective-C/" itemprop="url" rel="index">
+                    <span itemprop="name">Objective-C</span>
                   </a>
                 </span>
 
@@ -1797,8 +1797,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/06/02/玩转iOS/玩转NSString(不信你看)/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/02/玩转iOS/玩转NSString(不信你看)/" itemprop="commentsCount"></span>
+                <a href="/2016/06/02/Objective-C/Objective-C「结构体」/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/02/Objective-C/Objective-C「结构体」/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -1823,222 +1823,13 @@
       
         
           
-            <blockquote>
-<p>Objective-C里核心的处理字符串的类就是NSString和NSMutableString这两个类,这两个类完成了Objective-C中字符串大部分功能的处理</p>
-</blockquote>
-<h1 id="NSString"><a href="#NSString" class="headerlink" title="NSString"></a>NSString</h1><hr>
-<h4 id="字符串属性"><a href="#字符串属性" class="headerlink" title="字符串属性"></a>字符串属性</h4><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">    <span class="comment">//////////字符串属性//////////</span></span><br><span class="line">    <span class="built_in">NSString</span> *str1 = <span class="string">@"string"</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"长度:                   %ld"</span>, str1.length);</span><br><span class="line"><span class="built_in">NSLog</span>(<span class="string">@"描述:                   %@"</span>, string.description);</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"哈希地址:                %lu"</span>, (<span class="keyword">unsigned</span> <span class="keyword">long</span>)string.hash);</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"字符串对应下标字符:        %c"</span>, [str1 characterAtIndex:<span class="number">2</span>]);</span><br><span class="line">    <span class="comment">//输出:   长度:                   6</span></span><br><span class="line">    <span class="comment">//输出:   描述:                   string</span></span><br><span class="line">    <span class="comment">//输出:   哈希地址:                10152471993823965</span></span><br><span class="line">    <span class="comment">//输出:   字符串对应下标字符:        r</span></span><br></pre></td></tr></table></figure>
-<h4 id="字符串截取"><a href="#字符串截取" class="headerlink" title="字符串截取"></a>字符串截取</h4><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//截取指定位置之后的字符串</span></span><br><span class="line">- (<span class="built_in">NSString</span> *)substringFromIndex:(<span class="built_in">NSUInteger</span>)from;</span><br><span class="line"><span class="comment">//从0下标开始截取到指定位置的字符串</span></span><br><span class="line">- (<span class="built_in">NSString</span> *)substringToIndex:(<span class="built_in">NSUInteger</span>)to;</span><br><span class="line"><span class="comment">//截取指定范围的字符串</span></span><br><span class="line">- (<span class="built_in">NSString</span> *)substringWithRange:(<span class="built_in">NSRange</span>)range;</span><br><span class="line"><span class="comment">//截取字符串指定范围的字符</span></span><br><span class="line">- (<span class="keyword">void</span>)getCharacters:(<span class="keyword">unichar</span> *)buffer range:(<span class="built_in">NSRange</span>)range;</span><br></pre></td></tr></table></figure>
-<h4 id="字符串比较"><a href="#字符串比较" class="headerlink" title="字符串比较"></a>字符串比较</h4><blockquote>
-<p>将两个字符串进行计较,返回NSComparisonResult枚举结果</p>
-</blockquote>
-<h6 id="比较结果"><a href="#比较结果" class="headerlink" title="比较结果:"></a>比较结果:</h6><table>
-<thead>
-<tr>
-<th style="text-align:left">NSComparisonResult</th>
-<th style="text-align:left">说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">NSOrderedAscending</td>
-<td style="text-align:left">升序     (左小右大)</td>
-</tr>
-<tr>
-<td style="text-align:left">NSOrderedSame</td>
-<td style="text-align:left">相同     (内容相同)</td>
-</tr>
-<tr>
-<td style="text-align:left">NSOrderedDescending</td>
-<td style="text-align:left">降序     (左大右小)</td>
-</tr>
-</tbody>
-</table>
-<h6 id="比较选项"><a href="#比较选项" class="headerlink" title="比较选项:"></a>比较选项:</h6><table>
-<thead>
-<tr>
-<th style="text-align:left">NSStringCompareOptions</th>
-<th style="text-align:left">说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">NSCaseInsensitiveSearch</td>
-<td style="text-align:left">不区分大小写比较</td>
-</tr>
-<tr>
-<td style="text-align:left">NSLiteralSearch</td>
-<td style="text-align:left">区分大小写比较</td>
-</tr>
-<tr>
-<td style="text-align:left">NSBackwardsSearch</td>
-<td style="text-align:left">从字符串末尾开始搜索</td>
-</tr>
-<tr>
-<td style="text-align:left">NSAnchoredSearch</td>
-<td style="text-align:left">搜索限制范围的字符串</td>
-</tr>
-<tr>
-<td style="text-align:left">NSNumericSearch</td>
-<td style="text-align:left">按照字符串里的数字为依据，算出顺序</td>
-</tr>
-<tr>
-<td style="text-align:left">NSDiacriticInsensitiveSearch</td>
-<td style="text-align:left">忽略 “-“ 符号的比较</td>
-</tr>
-<tr>
-<td style="text-align:left">NSWidthInsensitiveSearch</td>
-<td style="text-align:left">忽略字符串的长度，比较出结果</td>
-</tr>
-<tr>
-<td style="text-align:left">NSForcedOrderingSearch</td>
-<td style="text-align:left">忽略不区分大小写比较的选项</td>
-</tr>
-<tr>
-<td style="text-align:left">NSRegularExpressionSearch</td>
-<td style="text-align:left">只能应用于 rangeOfString:…, stringByReplacingOccurrencesOfString:…和 replaceOccurrencesOfString:…方法</td>
-</tr>
-</tbody>
-</table>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">   <span class="comment">//////////字符串比较//////////</span></span><br><span class="line"><span class="comment">//1.比较</span></span><br><span class="line">- (<span class="built_in">NSComparisonResult</span>)compare:(<span class="built_in">NSString</span> *)string;</span><br><span class="line"><span class="comment">//2.比较(指定字符串,条件)</span></span><br><span class="line">- (<span class="built_in">NSComparisonResult</span>)compare:(<span class="built_in">NSString</span> *)string options:(<span class="built_in">NSStringCompareOptions</span>)mask;</span><br><span class="line"><span class="comment">//3.比较(指定字符串,条件,范围)</span></span><br><span class="line">- (<span class="built_in">NSComparisonResult</span>)compare:(<span class="built_in">NSString</span> *)string options:(<span class="built_in">NSStringCompareOptions</span>)mask range:(<span class="built_in">NSRange</span>)compareRange;</span><br><span class="line"><span class="comment">//4.比较(指定字符串,条件,范围,本地化)</span></span><br><span class="line">- (<span class="built_in">NSComparisonResult</span>)compare:(<span class="built_in">NSString</span> *)string options:(<span class="built_in">NSStringCompareOptions</span>)mask range:(<span class="built_in">NSRange</span>)compareRange locale:(nullable <span class="keyword">id</span>)locale;</span><br><span class="line"><span class="comment">//5.比较(不区分大小写)</span></span><br><span class="line">- (<span class="built_in">NSComparisonResult</span>)caseInsensitiveCompare:(<span class="built_in">NSString</span> *)string;</span><br><span class="line"></span><br><span class="line"><span class="comment">//6.本地化比较</span></span><br><span class="line">- (<span class="built_in">NSComparisonResult</span>)localizedCompare:(<span class="built_in">NSString</span> *)string;</span><br><span class="line"><span class="comment">//7.本地化比较(不区分大小写)</span></span><br><span class="line">- (<span class="built_in">NSComparisonResult</span>)localizedCaseInsensitiveCompare:(<span class="built_in">NSString</span> *)string;</span><br><span class="line"><span class="comment">//8.本地化比较(标准)</span></span><br><span class="line">- (<span class="built_in">NSComparisonResult</span>)localizedStandardCompare:(<span class="built_in">NSString</span> *)string;</span><br><span class="line"></span><br><span class="line"><span class="comment">//9.判断两个字符串是否内容一致</span></span><br><span class="line">- (<span class="built_in">BOOL</span>)isEqualToString:(<span class="built_in">NSString</span> *)aString;</span><br></pre></td></tr></table></figure>
-<h4 id="字符串搜索"><a href="#字符串搜索" class="headerlink" title="字符串搜索"></a>字符串搜索</h4><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">   <span class="comment">//////////搜索基本//////////</span></span><br><span class="line"><span class="comment">//1.是否包含前缀(以str开头)</span></span><br><span class="line">- (<span class="built_in">BOOL</span>)hasPrefix:(<span class="built_in">NSString</span> *)str;</span><br><span class="line"><span class="comment">//2.是否包含后缀(以str结尾)</span></span><br><span class="line">- (<span class="built_in">BOOL</span>)hasSuffix:(<span class="built_in">NSString</span> *)str;</span><br><span class="line"><span class="comment">//3.获取公共前缀</span></span><br><span class="line">- (<span class="built_in">NSString</span> *)commonPrefixWithString:(<span class="built_in">NSString</span> *)str options:(<span class="built_in">NSStringCompareOptions</span>)mask;</span><br><span class="line"><span class="comment">//4.是否包含字符串</span></span><br><span class="line">- (<span class="built_in">BOOL</span>)containsString:(<span class="built_in">NSString</span> *)str;</span><br><span class="line"><span class="comment">//5.本地化是否包含字符串(不区分大小写)</span></span><br><span class="line">- (<span class="built_in">BOOL</span>)localizedCaseInsensitiveContainsString:(<span class="built_in">NSString</span> *)str;</span><br><span class="line"><span class="comment">//6.本地化是否包含字符串(标准)</span></span><br><span class="line">- (<span class="built_in">BOOL</span>)localizedStandardContainsString:(<span class="built_in">NSString</span> *)str;</span><br><span class="line"><span class="comment">//7.本地化搜索字符串范围(标准)</span></span><br><span class="line">- (<span class="built_in">NSRange</span>)localizedStandardRangeOfString:(<span class="built_in">NSString</span> *)str;</span><br><span class="line"></span><br><span class="line">   <span class="comment">//////////搜索字符串//////////</span></span><br><span class="line"><span class="comment">//8.搜索(指定字符串)</span></span><br><span class="line">- (<span class="built_in">NSRange</span>)rangeOfString:(<span class="built_in">NSString</span> *)searchString;</span><br><span class="line"><span class="comment">//9.搜索(指定字符串,条件)</span></span><br><span class="line">- (<span class="built_in">NSRange</span>)rangeOfString:(<span class="built_in">NSString</span> *)searchString options:(<span class="built_in">NSStringCompareOptions</span>)mask;</span><br><span class="line"><span class="comment">//10.搜索(指定字符串,条件,范围)</span></span><br><span class="line">- (<span class="built_in">NSRange</span>)rangeOfString:(<span class="built_in">NSString</span> *)searchString options:(<span class="built_in">NSStringCompareOptions</span>)mask range:(<span class="built_in">NSRange</span>)searchRange;</span><br><span class="line"><span class="comment">//11.搜索(指定字符串,条件,范围,本地化)</span></span><br><span class="line">- (<span class="built_in">NSRange</span>)rangeOfString:(<span class="built_in">NSString</span> *)searchString options:(<span class="built_in">NSStringCompareOptions</span>)mask range:(<span class="built_in">NSRange</span>)searchRange locale:(nullable <span class="built_in">NSLocale</span> *)locale;</span><br><span class="line"></span><br><span class="line">   <span class="comment">//////////搜索字符集合//////////</span></span><br><span class="line"><span class="comment">//12.搜索(指定字符集合)</span></span><br><span class="line">- (<span class="built_in">NSRange</span>)rangeOfCharacterFromSet:(<span class="built_in">NSCharacterSet</span> *)searchSet;</span><br><span class="line"><span class="comment">//13.搜索(指定字符集合,条件)</span></span><br><span class="line">- (<span class="built_in">NSRange</span>)rangeOfCharacterFromSet:(<span class="built_in">NSCharacterSet</span> *)searchSet options:(<span class="built_in">NSStringCompareOptions</span>)mask;</span><br><span class="line"><span class="comment">//14.搜索(指定字符集合,条件,范围)</span></span><br><span class="line">- (<span class="built_in">NSRange</span>)rangeOfCharacterFromSet:(<span class="built_in">NSCharacterSet</span> *)searchSet options:(<span class="built_in">NSStringCompareOptions</span>)mask range:(<span class="built_in">NSRange</span>)searchRange;</span><br><span class="line"></span><br><span class="line"><span class="comment">//15.用字符串的字符编码指定索引查找位置</span></span><br><span class="line">- (<span class="built_in">NSRange</span>)rangeOfComposedCharacterSequenceAtIndex:(<span class="built_in">NSUInteger</span>)index;</span><br><span class="line"><span class="comment">//16.用字符串的字符编码指定区域段查找位置</span></span><br><span class="line">- (<span class="built_in">NSRange</span>)rangeOfComposedCharacterSequencesForRange:(<span class="built_in">NSRange</span>)range;</span><br></pre></td></tr></table></figure>
-<h4 id="字符串拼接"><a href="#字符串拼接" class="headerlink" title="字符串拼接"></a>字符串拼接</h4><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">    <span class="comment">//////////字符串拼接//////////</span></span><br><span class="line">    <span class="built_in">NSString</span> *string = <span class="string">@"1"</span>;</span><br><span class="line">    <span class="built_in">NSString</span> *appStr = <span class="string">@"2"</span>;</span><br><span class="line">    <span class="built_in">NSString</span> *resultStr1 = [string stringByAppendingString:appStr];</span><br><span class="line">    <span class="built_in">NSString</span> *resultStr2 = [string stringByAppendingFormat:<span class="string">@" + %@"</span>, appStr];</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"普通拼接:     %@"</span>, resultStr1);</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"格式化拼接:   %@"</span>, resultStr2);</span><br><span class="line">    <span class="comment">//输出:   普通拼接:     12</span></span><br><span class="line">    <span class="comment">//输出:   格式化拼接:   1 + 2</span></span><br></pre></td></tr></table></figure>
-<h4 id="字符串基本类型转换"><a href="#字符串基本类型转换" class="headerlink" title="字符串基本类型转换"></a>字符串基本类型转换</h4><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">    <span class="comment">//////////字符串基本类型转换//////////</span></span><br><span class="line">    <span class="built_in">NSString</span> *numStr = <span class="string">@"87234.2345"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"double型:        %f"</span>, numStr.doubleValue);</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"float型:         %f"</span>, numStr.floatValue);</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"int型:           %d"</span>, numStr.intValue);</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"NSInteger型:     %ld"</span>, numStr.integerValue);</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"long long型:     %lld"</span>, numStr.longLongValue);</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"BOOL型:          %d"</span>, numStr.boolValue);</span><br><span class="line">    <span class="comment">//输出:   double型:        87234.234500</span></span><br><span class="line">    <span class="comment">//输出:   float型:         87234.234375</span></span><br><span class="line">    <span class="comment">//输出:   int型:           87234</span></span><br><span class="line">    <span class="comment">//输出:   NSInteger型:     87234</span></span><br><span class="line">    <span class="comment">//输出:   long long型:     87234</span></span><br><span class="line">    <span class="comment">//输出:   BOOL型:          1</span></span><br></pre></td></tr></table></figure>
-<h4 id="字符串大小写转换"><a href="#字符串大小写转换" class="headerlink" title="字符串大小写转换"></a>字符串大小写转换</h4><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">    <span class="comment">//////////字符串大小写转换//////////</span></span><br><span class="line">    <span class="built_in">NSString</span> *string = <span class="string">@"string"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"大写:         %@"</span>, string.uppercaseString);</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"小写:         %@"</span>, string.lowercaseString);</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"首字母大写:    %@"</span>, string.capitalizedString);</span><br><span class="line">    <span class="comment">//输出:   大写:         STRING</span></span><br><span class="line">    <span class="comment">//输出:   小写:         string</span></span><br><span class="line">    <span class="comment">//输出:   首字母大写:    String</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//本地化(大写)</span></span><br><span class="line">- (<span class="built_in">NSString</span> *)uppercaseStringWithLocale:(nullable <span class="built_in">NSLocale</span> *)locale; </span><br><span class="line"><span class="comment">//本地化(小写)</span></span><br><span class="line">- (<span class="built_in">NSString</span> *)lowercaseStringWithLocale:(nullable <span class="built_in">NSLocale</span> *)locale;</span><br><span class="line"><span class="comment">//本地化(首字母大写)</span></span><br><span class="line">- (<span class="built_in">NSString</span> *)capitalizedStringWithLocale:(nullable <span class="built_in">NSLocale</span> *)locale;</span><br></pre></td></tr></table></figure>
-<h4 id="字符串分行-分段"><a href="#字符串分行-分段" class="headerlink" title="字符串分行,分段"></a>字符串分行,分段</h4><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">   <span class="comment">//////////分行//////////</span></span><br><span class="line"><span class="comment">//1.指定范围,分行取字符串</span></span><br><span class="line">- (<span class="keyword">void</span>)getLineStart:(nullable <span class="built_in">NSUInteger</span> *)startPtr end:(nullable <span class="built_in">NSUInteger</span> *)lineEndPtr contentsEnd:(nullable <span class="built_in">NSUInteger</span> *)contentsEndPtr forRange:(<span class="built_in">NSRange</span>)range;</span><br><span class="line"><span class="comment">//2.获取指定范围该行的范围</span></span><br><span class="line">- (<span class="built_in">NSRange</span>)lineRangeForRange:(<span class="built_in">NSRange</span>)range;</span><br><span class="line"></span><br><span class="line">   <span class="comment">//////////分段//////////</span></span><br><span class="line"><span class="comment">//3.指定范围,分段取字符串</span></span><br><span class="line">- (<span class="keyword">void</span>)getParagraphStart:(nullable <span class="built_in">NSUInteger</span> *)startPtr end:(nullable <span class="built_in">NSUInteger</span> *)parEndPtr contentsEnd:(nullable <span class="built_in">NSUInteger</span> *)contentsEndPtr forRange:(<span class="built_in">NSRange</span>)range;</span><br><span class="line"><span class="comment">//4.获取指定范围该段落的范围</span></span><br><span class="line">- (<span class="built_in">NSRange</span>)paragraphRangeForRange:(<span class="built_in">NSRange</span>)range;</span><br><span class="line"></span><br><span class="line">  <span class="comment">//////////字符串分行,分段//////////</span></span><br><span class="line">    <span class="built_in">NSString</span> *string = <span class="string">@"123 456\nABC,DEF\nabc.def"</span>;</span><br><span class="line">    <span class="comment">//获取该行的范围(指定范围)</span></span><br><span class="line">    <span class="built_in">NSRange</span> range1 = [string lineRangeForRange:<span class="built_in">NSMakeRange</span>(<span class="number">0</span>, <span class="number">10</span>)];</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%ld 行长度:     %ld"</span>, range1.location, range1.length);</span><br><span class="line">    <span class="comment">//输出:       0 行长度:     16</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//获取该段落范围(指定范围)</span></span><br><span class="line">    <span class="built_in">NSRange</span> range2 = [string paragraphRangeForRange:<span class="built_in">NSMakeRange</span>(<span class="number">0</span>, <span class="number">3</span>)];</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%ld 段落长度:   %ld"</span>, range2.location, range2.length);</span><br><span class="line">    <span class="comment">//输出:       0 段落长度:   8</span></span><br></pre></td></tr></table></figure>
-<h4 id="字符串列举-按条件"><a href="#字符串列举-按条件" class="headerlink" title="字符串列举(按条件)"></a>字符串列举(按条件)</h4><h6 id="列举选项"><a href="#列举选项" class="headerlink" title="列举选项:"></a>列举选项:</h6><table>
-<thead>
-<tr>
-<th>NSStringEnumerationOptions</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>NSStringEnumerationByLines</td>
-<td>按行</td>
-</tr>
-<tr>
-<td>NSStringEnumerationByParagraphs</td>
-<td>按段落</td>
-</tr>
-<tr>
-<td>NSStringEnumerationByComposedCharacterSequences</td>
-<td>按字符顺序</td>
-</tr>
-<tr>
-<td>NSStringEnumerationByWords</td>
-<td>按单词,字</td>
-</tr>
-<tr>
-<td>NSStringEnumerationBySentences</td>
-<td>按句子</td>
-</tr>
-<tr>
-<td>NSStringEnumerationReverse</td>
-<td>反向遍历</td>
-</tr>
-<tr>
-<td>NSStringEnumerationSubstringNotRequired</td>
-<td>不需要子字符串</td>
-</tr>
-<tr>
-<td>NSStringEnumerationLocalized</td>
-<td>本地化</td>
-</tr>
-</tbody>
-</table>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">//////////字符串列举//////////    </span><br><span class="line">NSString *string = @"123456\nABCDEF\nabcdef</span><br><span class="line">    //1.列举(按行)</span><br><span class="line">   [string enumerateLinesUsingBlock:^(NSString * _Nonnull line, BOOL * _Nonnull stop) &#123;</span><br><span class="line">       NSLog(@"每行:   %@", line);</span><br><span class="line">   &#125;];</span><br><span class="line">    //输出:    每行:   123456</span><br><span class="line">    //输出:    每行:   ABCDEF</span><br><span class="line">    //输出:    每行:   abcdef</span><br><span class="line">    </span><br><span class="line"> </span><br><span class="line">    //2.列举(范围,条件)</span><br><span class="line">    [string enumerateSubstringsInRange:NSMakeRange(5, 10) options:NSStringEnumerationByLines usingBlock:^(NSString * _Nullable substring, NSRange substringRange, NSRange enclosingRange, BOOL * _Nonnull stop) &#123;</span><br><span class="line">       </span><br><span class="line">        NSLog(@"%@", substring);</span><br><span class="line">        NSLog(@"%ld   %ld", substringRange.location, substringRange.length);</span><br><span class="line">        NSLog(@"%ld   %ld", enclosingRange.location, enclosingRange.length);</span><br><span class="line">        </span><br><span class="line">    &#125;];</span><br><span class="line">    //输出:   6</span><br><span class="line">    //输出:   5 1</span><br><span class="line">    //输出:   5 2</span><br><span class="line">    </span><br><span class="line">    //输出:   ABCDEF</span><br><span class="line">    //输出:   7   6</span><br><span class="line">    //输出:   7   7</span><br><span class="line">    </span><br><span class="line">    //输出:   a</span><br><span class="line">    //输出:   14   1</span><br><span class="line">    //输出:   14   1</span><br></pre></td></tr></table></figure>
-<h4 id="字符串编码和转换"><a href="#字符串编码和转换" class="headerlink" title="字符串编码和转换"></a>字符串编码和转换</h4><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">    <span class="comment">//////////字符串编码和转换//////////</span></span><br><span class="line">    <span class="built_in">NSString</span> *string = <span class="string">@"string"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"最快编码值(枚举):      %lu"</span>, (<span class="keyword">unsigned</span> <span class="keyword">long</span>)string.fastestEncoding);</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"最小编码值(枚举):      %lu"</span>, (<span class="keyword">unsigned</span> <span class="keyword">long</span>)string.smallestEncoding);</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"UTF8编码值:           %s"</span>, string.UTF8String);</span><br><span class="line">    <span class="comment">//输出:     最快编码值(枚举):      1</span></span><br><span class="line">    <span class="comment">//输出:     最小编码值(枚举):      1</span></span><br><span class="line">    <span class="comment">//输出:     UTF8编码值:           string</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1.选择编码,是否允许有损编码</span></span><br><span class="line">- (nullable <span class="built_in">NSData</span> *)dataUsingEncoding:(<span class="built_in">NSStringEncoding</span>)encoding allowLossyConversion:(<span class="built_in">BOOL</span>)lossy;</span><br><span class="line"><span class="comment">//2.选择编码</span></span><br><span class="line">- (nullable <span class="built_in">NSData</span> *)dataUsingEncoding:(<span class="built_in">NSStringEncoding</span>)encoding;</span><br><span class="line"><span class="comment">//3.判断是否可以无损编码</span></span><br><span class="line">- (<span class="built_in">BOOL</span>)canBeConvertedToEncoding:(<span class="built_in">NSStringEncoding</span>)encoding;</span><br><span class="line"></span><br><span class="line"><span class="comment">//4.C字符编码转换</span></span><br><span class="line">- (nullable __<span class="keyword">strong</span> <span class="keyword">const</span> <span class="keyword">char</span> *)cStringUsingEncoding:(<span class="built_in">NSStringEncoding</span>)encoding;</span><br><span class="line"><span class="comment">//5.判读C字符转化是否可以成功</span></span><br><span class="line">- (<span class="built_in">BOOL</span>)getCString:(<span class="keyword">char</span> *)buffer maxLength:(<span class="built_in">NSUInteger</span>)maxBufferCount encoding:(<span class="built_in">NSStringEncoding</span>)encoding;</span><br><span class="line"><span class="comment">//6.指定缓存区转换</span></span><br><span class="line">- (<span class="built_in">BOOL</span>)getBytes:(nullable <span class="keyword">void</span> *)buffer maxLength:(<span class="built_in">NSUInteger</span>)maxBufferCount usedLength:(nullable <span class="built_in">NSUInteger</span> *)usedBufferCount encoding:(<span class="built_in">NSStringEncoding</span>)encoding options:(<span class="built_in">NSStringEncodingConversionOptions</span>)options range:(<span class="built_in">NSRange</span>)range remainingRange:(nullable <span class="built_in">NSRangePointer</span>)leftover;</span><br><span class="line"></span><br><span class="line"><span class="comment">//7.对字符串进行编码时所需的最大字节数</span></span><br><span class="line">- (<span class="built_in">NSUInteger</span>)maximumLengthOfBytesUsingEncoding:(<span class="built_in">NSStringEncoding</span>)enc;</span><br><span class="line"><span class="comment">//8.对字符串进行编码时所需的字节数</span></span><br><span class="line">- (<span class="built_in">NSUInteger</span>)lengthOfBytesUsingEncoding:(<span class="built_in">NSStringEncoding</span>)enc;</span><br><span class="line"></span><br><span class="line"><span class="comment">//9.可用字符串编码</span></span><br><span class="line">+ (<span class="keyword">const</span> <span class="built_in">NSStringEncoding</span> *)availableStringEncodings; </span><br><span class="line"><span class="comment">//10.本地化编码名称</span></span><br><span class="line">+ (<span class="built_in">NSString</span> *)localizedNameOfStringEncoding:(<span class="built_in">NSStringEncoding</span>)encoding;</span><br><span class="line"><span class="comment">//11.默认C字符串编码</span></span><br><span class="line">+ (<span class="built_in">NSStringEncoding</span>)defaultCStringEncoding;</span><br></pre></td></tr></table></figure>
-<h4 id="字符串分割"><a href="#字符串分割" class="headerlink" title="字符串分割"></a>字符串分割</h4><p>######字符集合:<br>| NSCharacterSet              | 说明    |<br>| ——————————– | —– |<br>| controlCharacterSet              | 控制符   |<br>| whitespaceCharacterSet           | 空格符   |<br>| whitespaceAndNewlineCharacterSet | 空格换行符 |<br>| decimalDigitCharacterSet         | 小数    |<br>| letterCharacterSet               | 文字    |<br>| lowercaseLetterCharacterSet      | 小写字母  |<br>| uppercaseLetterCharacterSet      | 大写字母  |<br>| nonBaseCharacterSet              | 非基础   |<br>| alphanumericCharacterSet         | 数字字母  |<br>| decomposableCharacterSet         | 可分解   |<br>| illegalCharacterSet              | 非法    |<br>| punctuationCharacterSet          | 标点    |<br>| capitalizedLetterCharacterSet    | 大写    |<br>| symbolCharacterSet               | 符号    |<br>| newlineCharacterSet              | 换行符   |</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">    <span class="comment">//////////字符串分割//////////</span></span><br><span class="line">    <span class="built_in">NSString</span> *string = <span class="string">@"A_B_c_D_E_F"</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//分割(指定字符串)</span></span><br><span class="line">    <span class="built_in">NSArray</span> *resultArr1 = [string componentsSeparatedByString:<span class="string">@"_"</span>];</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, resultArr1);</span><br><span class="line">    <span class="comment">//输出:   (A, B, c, D, E, F)</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//分割(指定字符集合)</span></span><br><span class="line">    <span class="built_in">NSArray</span> *resultArr2 = [string componentsSeparatedByCharactersInSet:[<span class="built_in">NSCharacterSet</span> lowercaseLetterCharacterSet]];</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, resultArr2);    </span><br><span class="line">    <span class="comment">//输出:   ("A_B_" , "_D_E_F")</span></span><br></pre></td></tr></table></figure>
-<h4 id="字符串操作-修剪-填充-折叠-替换"><a href="#字符串操作-修剪-填充-折叠-替换" class="headerlink" title="字符串操作(修剪,填充,折叠,替换)"></a>字符串操作(修剪,填充,折叠,替换)</h4><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">    <span class="built_in">NSString</span> *string = <span class="string">@"3EWRs a;af"</span>;</span><br><span class="line">  </span><br><span class="line">    <span class="comment">//////////修剪//////////</span></span><br><span class="line">    <span class="built_in">NSString</span> *result1 = [string stringByTrimmingCharactersInSet:[<span class="built_in">NSCharacterSet</span> lowercaseLetterCharacterSet]];</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, result1);</span><br><span class="line">    <span class="comment">//输出:   3EWRs a;</span></span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="comment">//////////填充//////////</span></span><br><span class="line">    <span class="built_in">NSString</span> *result2 = [string stringByPaddingToLength:<span class="number">20</span> withString:<span class="string">@"填充"</span> startingAtIndex:<span class="number">1</span>];</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, result2);</span><br><span class="line">    <span class="comment">//输出:   3EWRs a;af充填充填充填充填充填</span></span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="comment">//////////折叠//////////</span></span><br><span class="line">    <span class="built_in">NSString</span> *result3 = [string stringByFoldingWithOptions:<span class="built_in">NSNumericSearch</span> locale:[<span class="built_in">NSLocale</span> systemLocale]];</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, result3);</span><br><span class="line">    <span class="comment">//输出:   3EWRs a;af</span></span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="comment">//////////替换//////////</span></span><br><span class="line">    <span class="comment">//替换(指定字符串)</span></span><br><span class="line">    <span class="built_in">NSString</span> *result4 = [string stringByReplacingOccurrencesOfString:<span class="string">@" "</span> withString:<span class="string">@"替换"</span>];</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, result4);</span><br><span class="line">    <span class="comment">//输出:   3EWRs替换a;af</span></span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    <span class="comment">//替换(指定字符串,条件,范围)</span></span><br><span class="line">    <span class="built_in">NSString</span> *result5 = [string stringByReplacingOccurrencesOfString:<span class="string">@"a"</span> withString:<span class="string">@"替换"</span> options:<span class="built_in">NSRegularExpressionSearch</span> range:<span class="built_in">NSMakeRange</span>(<span class="number">0</span>, string.length - <span class="number">2</span>)];</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, result5);</span><br><span class="line">    <span class="comment">//输出:   3EWRs 替换;af</span></span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="comment">//替换(指定范围)</span></span><br><span class="line">    <span class="built_in">NSString</span> *result6 = [string stringByReplacingCharactersInRange:<span class="built_in">NSMakeRange</span>(<span class="number">0</span>, string.length) withString:<span class="string">@"替换"</span>];</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, result6);</span><br><span class="line">    <span class="comment">//输出:   替换</span></span><br></pre></td></tr></table></figure>
-<h4 id="字符串翻译"><a href="#字符串翻译" class="headerlink" title="字符串翻译"></a>字符串翻译</h4><p>######翻译选项:</p>
-<table>
-<thead>
-<tr>
-<th>翻译选择</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>NSStringTransformLatinToKatakana</td>
-<td>拉丁-&gt;片假名</td>
-</tr>
-<tr>
-<td>NSStringTransformLatinToHiragana</td>
-<td>拉丁-&gt;平假名</td>
-</tr>
-<tr>
-<td>NSStringTransformLatinToHangul</td>
-<td>拉丁-&gt;韩语</td>
-</tr>
-<tr>
-<td>NSStringTransformLatinToArabic</td>
-<td>拉丁-&gt;阿拉伯语</td>
-</tr>
-<tr>
-<td>NSStringTransformLatinToHebrew</td>
-<td>拉丁-&gt;希伯来语</td>
-</tr>
-<tr>
-<td>NSStringTransformLatinToThai</td>
-<td>拉丁-&gt;泰国</td>
-</tr>
-<tr>
-<td>NSStringTransformLatinToCyrillic</td>
-<td>拉丁-&gt;西里尔字母</td>
-</tr>
-<tr>
-<td>NSStringTransformLatinToGreek</td>
-<td>拉丁-&gt;希腊</td>
-</tr>
-<tr>
-<td>NSStringTransformToLatin</td>
-<td>拉丁</td>
-</tr>
-<tr>
-<td>NSStringTransformMandarinToLatin</td>
-<td>普通话-&gt;拉丁</td>
-</tr>
-<tr>
-<td>NSStringTransformHiraganaToKatakana</td>
-<td>平假名-&gt;片假名</td>
-</tr>
-<tr>
-<td>NSStringTransformFullwidthToHalfwidth</td>
-<td>全角-&gt;半角</td>
-</tr>
-<tr>
-<td>NSStringTransformToXMLHex</td>
-<td>XML16进制</td>
-</tr>
-<tr>
-<td>NSStringTransformToUnicodeName</td>
-<td>Unicode名</td>
-</tr>
-<tr>
-<td>NSStringTransformStripCombiningMarks</td>
-<td>结合地带商标</td>
-</tr>
-<tr>
-<td>NSStringTransformStripDiacritics</td>
-<td>带音符</td>
-</tr>
-</tbody>
-</table>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">    <span class="comment">//////////字符串翻译//////////</span></span><br><span class="line">    <span class="built_in">NSString</span> *dalian = <span class="string">@"大连"</span>;</span><br><span class="line">    <span class="built_in">NSString</span> *result = [dalian stringByApplyingTransform:<span class="built_in">NSStringTransformMandarinToLatin</span> reverse:<span class="literal">NO</span>];</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, result);</span><br><span class="line">    <span class="comment">//输出:   dà lián</span></span><br></pre></td></tr></table></figure>
-<h4 id="字符串写入"><a href="#字符串写入" class="headerlink" title="字符串写入"></a>字符串写入</h4><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">    <span class="comment">//////////字符串写入//////////</span></span><br><span class="line">    <span class="comment">//写入到指定路径,编码的文件中</span></span><br><span class="line">    [string writeToFile:<span class="string">@"/Users/Desktop/LuisX.txt"</span> atomically:<span class="literal">YES</span> encoding:<span class="built_in">NSUTF8StringEncoding</span> error:<span class="literal">nil</span>];</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//写入到指定URL,编码的文件中</span></span><br><span class="line">    [string writeToURL:[<span class="built_in">NSURL</span> URLWithString:<span class="string">@"file://LuisX.text"</span>] atomically:<span class="literal">YES</span> encoding:<span class="built_in">NSUTF8StringEncoding</span> error:<span class="literal">nil</span>];</span><br></pre></td></tr></table></figure>
-<h1 id="NSMutableString"><a href="#NSMutableString" class="headerlink" title="NSMutableString"></a>NSMutableString</h1><blockquote>
-<p>继承自NSString<br>NSString中的方法在NSMutableString都可以使用<br>NSMutableString是动态的字符串，可以动态的添加，修改，删除等</p>
-</blockquote>
-<h4 id="可变字符串分配容量"><a href="#可变字符串分配容量" class="headerlink" title="可变字符串分配容量"></a>可变字符串分配容量</h4><blockquote>
-<p>提前指定的容量，知识用于内存优化，实际大小可以大于设置的容量capacity</p>
-</blockquote>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">   <span class="comment">//////////字符串分配容量//////////</span></span><br><span class="line">    </span><br><span class="line">   <span class="comment">//1.初始化容量为Capacity大小的字符串  (需要手动释放内存)</span></span><br><span class="line">   <span class="built_in">NSMutableString</span> *mutableStr1 = [[<span class="built_in">NSMutableString</span> alloc] initWithCapacity:<span class="number">20</span>];</span><br><span class="line">    </span><br><span class="line">   <span class="comment">//2.初始化容量为Capacity大小的字符串  (不需要手动释放内存)</span></span><br><span class="line">   <span class="built_in">NSMutableString</span> *mutableStr2 = [<span class="built_in">NSMutableString</span> stringWithCapacity:<span class="number">20</span>];</span><br></pre></td></tr></table></figure>
-<h4 id="可变字符串扩展方法"><a href="#可变字符串扩展方法" class="headerlink" title="可变字符串扩展方法"></a>可变字符串扩展方法</h4><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">    <span class="built_in">NSMutableString</span> *str = [<span class="built_in">NSMutableString</span> stringWithString:<span class="string">@"string"</span>];</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//////////插入//////////</span></span><br><span class="line">    [str insertString:<span class="string">@"123"</span> atIndex:<span class="number">2</span>];</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, str);</span><br><span class="line">    <span class="comment">//输出:   st123ring</span></span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="comment">//////////删除//////////</span></span><br><span class="line">    [str deleteCharactersInRange:<span class="built_in">NSMakeRange</span>(<span class="number">2</span>, <span class="number">2</span>)];</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, str);</span><br><span class="line">    <span class="comment">//输出:   st3ring</span></span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="comment">//////////拼接//////////</span></span><br><span class="line">    [str appendString:<span class="string">@"456"</span>];</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, str);</span><br><span class="line">    <span class="comment">//输出:   st3ring456</span></span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="comment">//////////格式化拼接//////////</span></span><br><span class="line">    [str appendFormat:<span class="string">@"7 89"</span>];</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, str);</span><br><span class="line">    <span class="comment">//输出:   st3ring4567 89</span></span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="comment">//////////设置新字符串//////////</span></span><br><span class="line">    [str setString:<span class="string">@"string"</span>];</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, str);</span><br><span class="line">    <span class="comment">//输出:   string</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//////////字符串替换//////////</span></span><br><span class="line">    <span class="comment">//1.指定范围替换</span></span><br><span class="line">    [str1 replaceCharactersInRange:<span class="built_in">NSMakeRange</span>(<span class="number">2</span>, <span class="number">2</span>) withString:<span class="string">@"123"</span>];</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, str1);</span><br><span class="line">    <span class="comment">//输出:   st123ng</span></span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="comment">//2.指定字符串,条件,范围替换</span></span><br><span class="line">    [str1 replaceOccurrencesOfString:<span class="string">@"123"</span> withString:<span class="string">@"--"</span> options:<span class="built_in">NSRegularExpressionSearch</span> range:<span class="built_in">NSMakeRange</span>(<span class="number">0</span>, str1.length)];</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, str1);</span><br><span class="line">    <span class="comment">//输出:   st--ng</span></span><br></pre></td></tr></table></figure>
+            <h4 id="NSRange-范围"><a href="#NSRange-范围" class="headerlink" title="NSRange  (范围)"></a>NSRange  (范围)</h4><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">    <span class="comment">//////////范围结构体//////////</span></span><br><span class="line">    <span class="built_in">NSRange</span> range = <span class="built_in">NSMakeRange</span>(<span class="number">0</span>, <span class="number">10</span>);</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"位置:%ld  长度:%ld"</span>, range.location, range.length);</span><br><span class="line">    <span class="comment">//输出:   位置:0  长度:10</span></span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    <span class="comment">//////////结构体转字符串//////////</span></span><br><span class="line">    <span class="built_in">NSString</span> *rangeStr = <span class="built_in">NSStringFromRange</span>(range);</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, rangeStr);</span><br><span class="line">    <span class="comment">//输出:   &#123;0, 10&#125;</span></span><br></pre></td></tr></table></figure>
+<h4 id="CGPoint-点坐标"><a href="#CGPoint-点坐标" class="headerlink" title="CGPoint  (点坐标)"></a>CGPoint  (点坐标)</h4><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">    <span class="comment">//////////点坐标结构体//////////</span></span><br><span class="line"><span class="built_in">CGPoint</span> point = <span class="built_in">CGPointMake</span>(<span class="number">0</span>, <span class="number">10</span>);</span><br><span class="line">    <span class="built_in">CGPoint</span> point0 = <span class="built_in">CGPointZero</span>;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"X坐标:%.f    Y坐标:%.f"</span>, point.x, point.y);</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"X坐标:%.f    Y坐标:%.f"</span>, point0.x, point0.y);</span><br><span class="line">    <span class="comment">//输出:   X坐标:0    Y坐标:10</span></span><br><span class="line">    <span class="comment">//输出:   X坐标:0    Y坐标:0</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//////////结构体转字符串//////////</span></span><br><span class="line">    <span class="built_in">NSString</span> *pointStr = <span class="built_in">NSStringFromCGPoint</span>(point);</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, pointStr);</span><br><span class="line">    <span class="comment">//输出:   &#123;0, 10&#125;</span></span><br></pre></td></tr></table></figure>
+<h4 id="CGSize-尺寸"><a href="#CGSize-尺寸" class="headerlink" title="CGSize  (尺寸)"></a>CGSize  (尺寸)</h4><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">    <span class="comment">//////////尺寸结构体//////////</span></span><br><span class="line"><span class="built_in">CGSize</span> size = <span class="built_in">CGSizeMake</span>(<span class="number">0</span>, <span class="number">10</span>);</span><br><span class="line">    <span class="built_in">CGSize</span> size0 = <span class="built_in">CGSizeZero</span>;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"宽:%.f    高:%.f"</span>, size.width, size.height);</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"宽:%.f    高:%.f"</span>, size0.width, size0.height);</span><br><span class="line">    <span class="comment">//输出:   宽:0    高:10</span></span><br><span class="line">    <span class="comment">//输出:   宽:0    高:0</span></span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"><span class="comment">//////////结构体转字符串//////////</span></span><br><span class="line">    <span class="built_in">NSString</span> *sizeStr = <span class="built_in">NSStringFromCGSize</span>(size);</span><br><span class="line"><span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, sizeStr);</span><br><span class="line">    <span class="comment">//输出:   &#123;0, 10&#125;</span></span><br></pre></td></tr></table></figure>
+<h4 id="CGRect-矩形"><a href="#CGRect-矩形" class="headerlink" title="CGRect  (矩形)"></a>CGRect  (矩形)</h4><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">    <span class="comment">//////////矩形结构体//////////</span></span><br><span class="line"><span class="built_in">CGRect</span> rect = <span class="built_in">CGRectMake</span>(<span class="number">0</span>, <span class="number">10</span>, <span class="number">0</span>, <span class="number">10</span>);</span><br><span class="line">    <span class="built_in">CGRect</span> rect0 = <span class="built_in">CGRectZero</span>;</span><br><span class="line">    <span class="built_in">CGRect</span> rectNull = <span class="built_in">CGRectNull</span>;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"X坐标:%.f  Y坐标:%.f  宽:%.f    高:%.f"</span>, rect.origin.x, rect.origin.y, rect.size.width, rect.size.height);</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"X坐标:%.f  Y坐标:%.f  宽:%.f    高:%.f"</span>, rect0.origin.x, rect0.origin.y, rect0.size.width, rect0.size.height);</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"X坐标:%.f  Y坐标:%.f  宽:%.f    高:%.f"</span>, rectNull.origin.x, rectNull.origin.y, rectNull.size.width, rectNull.size.height);</span><br><span class="line">    <span class="comment">//输出:   X坐标:0       Y坐标:10      宽:0    高:10</span></span><br><span class="line">    <span class="comment">//输出:   X坐标:0       Y坐标:0       宽:0    高:0</span></span><br><span class="line">    <span class="comment">//输出:   X坐标:inf     Y坐标:inf     宽:0    高:0</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//////////结构体转字符串//////////</span></span><br><span class="line">    <span class="built_in">NSString</span> *rectStr = <span class="built_in">NSStringFromCGRect</span>(rect);</span><br><span class="line"><span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, rectStr);</span><br><span class="line"><span class="comment">//输出:   &#123;&#123;0, 10&#125;, &#123;0, 10&#125;&#125;</span></span><br></pre></td></tr></table></figure>
+<h4 id="CGVector-矢量"><a href="#CGVector-矢量" class="headerlink" title="CGVector  (矢量)"></a>CGVector  (矢量)</h4><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">    <span class="comment">//////////矢量结构体//////////</span></span><br><span class="line"><span class="built_in">CGVector</span> vector = <span class="built_in">CGVectorMake</span>(<span class="number">0</span>, <span class="number">10</span>);</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"xy:%.f  dy:%.f"</span>, vector.dx, vector.dy);</span><br><span class="line">    <span class="comment">//输出:   xy:0  dy:10</span></span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line"><span class="comment">//////////结构体转字符串//////////</span></span><br><span class="line">    <span class="built_in">NSString</span> *vectorStr = <span class="built_in">NSStringFromCGVector</span>(vector);</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, vectorStr);</span><br><span class="line">    <span class="comment">//输出:   &#123;0, 10&#125;</span></span><br></pre></td></tr></table></figure>
+<h4 id="UIEdgeInsets-UI边缘"><a href="#UIEdgeInsets-UI边缘" class="headerlink" title="UIEdgeInsets  (UI边缘)"></a>UIEdgeInsets  (UI边缘)</h4><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">    <span class="comment">//////////UI边缘结构体//////////</span></span><br><span class="line"><span class="built_in">UIEdgeInsets</span> edgeInsets = <span class="built_in">UIEdgeInsetsMake</span>(<span class="number">10</span>, <span class="number">10</span>, <span class="number">10</span>, <span class="number">10</span>);</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"上:%.f   左:%.f   下:%.f   右:%.f"</span>, edgeInsets.top, edgeInsets.left, edgeInsets.bottom, edgeInsets.right);</span><br><span class="line">    <span class="comment">//输出:   上:10   左:10   下:10   右:10</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//////////结构体转字符串//////////</span></span><br><span class="line">    <span class="built_in">NSString</span> *edgeInsetsStr = <span class="built_in">NSStringFromUIEdgeInsets</span>(edgeInsets);</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, edgeInsetsStr);</span><br><span class="line">    <span class="comment">//输出:   &#123;10, 10, 10, 10&#125;</span></span><br></pre></td></tr></table></figure>
+<h4 id="UIOffset-UI偏移"><a href="#UIOffset-UI偏移" class="headerlink" title="UIOffset  (UI偏移)"></a>UIOffset  (UI偏移)</h4><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">    <span class="comment">//////////UI偏移结构体//////////</span></span><br><span class="line"><span class="built_in">UIOffset</span> offset = <span class="built_in">UIOffsetMake</span>(<span class="number">10</span>, <span class="number">10</span>);</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"水平:%.f 竖直:%.f"</span>, offset.horizontal, offset.vertical);</span><br><span class="line"></span><br><span class="line"><span class="comment">//////////结构体转字符串//////////</span></span><br><span class="line">    <span class="built_in">NSString</span> *offsetStr = <span class="built_in">NSStringFromUIOffset</span>(offset);</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, offsetStr);</span><br><span class="line">    <span class="comment">//输出:   &#123;10, 10&#125;</span></span><br></pre></td></tr></table></figure>
 
           
         
@@ -2193,16 +1984,7 @@
   <span class="author" itemprop="copyrightHolder">LuisX</span>
 </div>
 
-<div class="powered-by">
-  由 <a class="theme-link" href="https://luis-x.github.io/">LuisX</a> 强力驱动
-</div>
 
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/Luis-X">
-    NexT.Pisces
-  </a>
-</div>
 
         
 
