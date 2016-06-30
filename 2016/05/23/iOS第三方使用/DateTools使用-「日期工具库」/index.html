@@ -1,0 +1,954 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="iOS第三方使用," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="准备:DateTools_下载
+
+DateTools是Objective-C中简化日期和时间处理的工具.
+安装
+CocoaPodspod &amp;#39;DateTools&amp;#39;
+手动安装DataTools所需的所有类包含在DataTools文件夹下,如下:
+
+DateTools.h
+NSDate+DateTools.{h,m}
+DTConstants.h
+DTError.{h,m}
+DTTimeP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DateTools使用-「日期工具库」">
+<meta property="og:url" content="http://yoursite.com/2016/05/23/iOS第三方使用/DateTools使用-「日期工具库」/index.html">
+<meta property="og:site_name" content="LuisX">
+<meta property="og:description" content="准备:DateTools_下载
+
+DateTools是Objective-C中简化日期和时间处理的工具.
+安装
+CocoaPodspod &amp;#39;DateTools&amp;#39;
+手动安装DataTools所需的所有类包含在DataTools文件夹下,如下:
+
+DateTools.h
+NSDate+DateTools.{h,m}
+DTConstants.h
+DTError.{h,m}
+DTTimeP">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1519620-d46e6093d1b908ad.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1519620-08559682da0019c5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1519620-5f021e572c33fe7c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1519620-744f6c23e42ba9cf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1519620-47f03274197b2b7d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1519620-41268168b28732f0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1519620-7ba366c7eed87130.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1519620-91a5b31369258663.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1519620-69baf4c618a0f819.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1519620-cbbad67f693add54.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1519620-86e77e6702994c9d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1519620-ab1906f0c9072672.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1519620-311a276adfc57db4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1519620-4cf67b76c3d9b7f2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1519620-07e96890e70d7544.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1519620-cdee50632603a47a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2016-06-30T03:31:05.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="DateTools使用-「日期工具库」">
+<meta name="twitter:description" content="准备:DateTools_下载
+
+DateTools是Objective-C中简化日期和时间处理的工具.
+安装
+CocoaPodspod &amp;#39;DateTools&amp;#39;
+手动安装DataTools所需的所有类包含在DataTools文件夹下,如下:
+
+DateTools.h
+NSDate+DateTools.{h,m}
+DTConstants.h
+DTError.{h,m}
+DTTimeP">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1519620-d46e6093d1b908ad.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6282565193692087000,
+      author: 'LuisX'
+    }
+  };
+</script>
+
+  <title> DateTools使用-「日期工具库」 | LuisX </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?1b0cfad2dc7c9d6f56774264e9a58985";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">LuisX</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">iOS开发工程师</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                DateTools使用-「日期工具库」
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-23T00:00:00+08:00" content="2016-05-23">
+              2016-05-23
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/iOS第三方使用/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS第三方使用</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/23/iOS第三方使用/DateTools使用-「日期工具库」/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/23/iOS第三方使用/DateTools使用-「日期工具库」/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="准备"><a href="#准备" class="headerlink" title="准备:"></a>准备:</h3><p><a href="https://github.com/MatthewYork/DateTools" target="_blank" rel="external">DateTools_下载</a></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1519620-d46e6093d1b908ad.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="DateTools"></p>
+<p>DateTools是Objective-C中简化日期和时间处理的工具.</p>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><hr>
+<p><strong>CocoaPods</strong><br><code>pod &#39;DateTools&#39;</code></p>
+<p><strong>手动安装</strong><br>DataTools所需的所有类包含在DataTools文件夹下,如下:</p>
+<ul>
+<li><code>DateTools.h</code></li>
+<li><code>NSDate+DateTools.{h,m}</code></li>
+<li><code>DTConstants.h</code></li>
+<li><code>DTError.{h,m}</code></li>
+<li><code>DTTimePeriod.{h,m}</code></li>
+<li><code>DTTimePeriodGroup.{h,m}</code></li>
+<li><code>DTTimePeriodCollection.{h,m}</code></li>
+<li><code>DTTimePeriodChain.{h,m}</code></li>
+</ul>
+<p>如果你的工程想要支持国际化或者使用”TimeAgo”功能必须要导入bundle文件<br>你可以在工程中Info下添加Localizations来添加支持的语言</p>
+<ul>
+<li><p><code>DateTools.bundle</code></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1519620-08559682da0019c5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+</li>
+</ul>
+<p><code>DateTools.h</code> 包含了所有其他文件的头文件.在你的工程中导入DateTools.h头文件即可</p>
+<h5 id="DateTools中包含3个子库"><a href="#DateTools中包含3个子库" class="headerlink" title="DateTools中包含3个子库"></a>DateTools中包含3个子库</h5><hr>
+<ul>
+<li>NSDate+DateTools</li>
+<li>Time Periods</li>
+<li>Time Period Groups</li>
+</ul>
+<h1 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h1><h1 id="NSDate-DateTools"><a href="#NSDate-DateTools" class="headerlink" title="NSDate+DateTools"></a>NSDate+DateTools</h1><hr>
+<h4 id="1-Time-Ago-相对日期形式"><a href="#1-Time-Ago-相对日期形式" class="headerlink" title="1.Time Ago(相对日期形式)"></a>1.Time Ago(相对日期形式)</h4><blockquote>
+<p>Time ago 就是将日期转变为相对日期的形式，即我们常用的“昨天、今天、明天、几天前，一周以后……”这样的表述方式。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">NSDate *timeAgoDate = [NSDate dateWithTimeIntervalSinceNow:-4];</span><br><span class="line">NSLog(@&quot;Time Ago: %@&quot;, timeAgoDate.timeAgoSinceNow);</span><br><span class="line">NSLog(@&quot;Time Ago: %@&quot;, timeAgoDate.shortTimeAgoSinceNow);</span><br><span class="line"></span><br><span class="line">//输出:</span><br><span class="line">//Time Ago: 4 seconds ago </span><br><span class="line">//Time Ago: 4s </span><br><span class="line"></span><br><span class="line">//设置好支持中文输出:</span><br><span class="line">//Time Ago: 4秒钟前 </span><br><span class="line">//Time Ago: 4秒</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>DateTools提供了多达33种语言的支持<br>如果想修改相对日期显示的文字,可以修改DateTools/Resources/DateTools.bundle下相应的文件<br>下图以简体中文为例:</p>
+</blockquote>
+<p><img src="http://upload-images.jianshu.io/upload_images/1519620-5f021e572c33fe7c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="修改相对日期显示文字"></p>
+<h4 id="2-Date-Components-日期组成部分"><a href="#2-Date-Components-日期组成部分" class="headerlink" title="2.Date Components(日期组成部分)"></a>2.Date Components(日期组成部分)</h4><blockquote>
+<p>获取日期的组成部分:</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">NSDate *date = [NSDate date];</span><br><span class="line">NSInteger year = date.year;</span><br><span class="line">NSInteger month = date.month;</span><br><span class="line">NSInteger day = date.day;</span><br><span class="line">NSInteger hour = date.hour;</span><br><span class="line">NSInteger minute = date.minute;</span><br><span class="line">NSInteger second = date.second;</span><br><span class="line">    </span><br><span class="line">NSLog(@&quot;year:%ld month:%ld day:%ld hour:%ld minute:%ld second:%ld&quot;, year, month, day, hour, minute, second);</span><br><span class="line">//输出: year:2016 month:5 day:23 hour:10 minute:54 second:1</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>DateTools默认日历为公历!!!<br>使用其他日历:<br>(如果想全局使用其他日历,修改DateTools默认日历,可以改写 <code>NSDate+DateTools.m</code> 中的 <code>defaultCalendar</code> 方法)</p>
+</blockquote>
+<p><img src="http://upload-images.jianshu.io/upload_images/1519620-744f6c23e42ba9cf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="日历枚举"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">  *  使用中国农历</span><br><span class="line">  */</span><br><span class="line">NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSChineseCalendar];</span><br><span class="line">    </span><br><span class="line">NSDate *date = [NSDate date];</span><br><span class="line">NSInteger year = [date yearWithCalendar:calendar];</span><br><span class="line">NSInteger month = [date monthWithCalendar:calendar];</span><br><span class="line">NSInteger day = [date dayWithCalendar:calendar];</span><br><span class="line">NSInteger hour = [date hourWithCalendar:calendar];</span><br><span class="line">NSInteger minute = [date minuteWithCalendar:calendar];</span><br><span class="line">NSInteger second = [date secondWithCalendar:calendar];</span><br><span class="line">    </span><br><span class="line">NSLog(@&quot;农历: %ld-%ld-%ld %ld:%ld:%ld&quot;, year, month, day, hour, minute, second);</span><br><span class="line">NSLog(@&quot;公历: %ld-%ld-%ld %ld:%ld:%ld&quot;, date.year, date.month, date.day, date.hour, date.minute, date.second);</span><br><span class="line">//输出: 农历: 33-4-17 11:41:51</span><br><span class="line">//输出: 公历: 2016-5-23 11:41:51</span><br></pre></td></tr></table></figure></p>
+<h4 id="3-日期编辑"><a href="#3-日期编辑" class="headerlink" title="3.日期编辑"></a>3.日期编辑</h4><blockquote>
+<p>对日期进行编辑(年,月,日,星期,时,分,秒)<br> 增加/减少方法:</p>
+</blockquote>
+<p><img src="http://upload-images.jianshu.io/upload_images/1519620-47f03274197b2b7d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="日期编辑"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">  *  日期增加1年</span><br><span class="line">  */</span><br><span class="line">NSDate *date = [NSDate date];</span><br><span class="line">NSDate *newDate = [date dateByAddingYears:1];</span><br><span class="line"> </span><br><span class="line">NSLog(@&quot;year:%ld newYear:%ld&quot;, date.year, newDate.year);</span><br><span class="line">//输出: year:2016 newYear:2017</span><br></pre></td></tr></table></figure></p>
+<h4 id="4-日期比较"><a href="#4-日期比较" class="headerlink" title="4.日期比较"></a>4.日期比较</h4><blockquote>
+<p>比较两个日期大小返回一个布尔值:</p>
+</blockquote>
+<p><img src="http://upload-images.jianshu.io/upload_images/1519620-41268168b28732f0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="日期比较"></p>
+<blockquote>
+<p>更多日期比较方法:<br>(很容易的得到两个日期相差的年,月,星期,日,时,分,秒)</p>
+</blockquote>
+<p><img src="http://upload-images.jianshu.io/upload_images/1519620-7ba366c7eed87130.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="更多日期比较方法"></p>
+<h4 id="5-格式化日期字符串"><a href="#5-格式化日期字符串" class="headerlink" title="5.格式化日期字符串"></a>5.格式化日期字符串</h4><blockquote>
+<p>formattedDateWithStyle:(系统格式)<br> formattedDateWithFormat:(自定义格式)</p>
+</blockquote>
+<p><img src="http://upload-images.jianshu.io/upload_images/1519620-91a5b31369258663.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="格式化日期字符串"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">  *  formattedDateWithStyle(系统格式)</span><br><span class="line">  */</span><br><span class="line">NSDate *date = [NSDate date];</span><br><span class="line">NSString *dateStringNo = [date formattedDateWithStyle:NSDateFormatterNoStyle];</span><br><span class="line">NSString *dateStringShort = [date formattedDateWithStyle:NSDateFormatterShortStyle];</span><br><span class="line">NSString *dateStringMedium = [date formattedDateWithStyle:NSDateFormatterMediumStyle];</span><br><span class="line">NSString *dateStringLong = [date formattedDateWithStyle:NSDateFormatterLongStyle];</span><br><span class="line">NSString *dateStringFull = [date formattedDateWithStyle:NSDateFormatterFullStyle];</span><br><span class="line">    </span><br><span class="line">NSLog(@&quot;No: %@&quot;, dateStringNo);               //输出:   No:</span><br><span class="line">NSLog(@&quot;Short: %@&quot;, dateStringShort);         //输出:   Short: 16/5/23</span><br><span class="line">NSLog(@&quot;Medium: %@&quot;, dateStringMedium);       //输出:   Medium: 2016年5月23日</span><br><span class="line">NSLog(@&quot;Long: %@&quot;, dateStringLong);           //输出:   Long: 2016年5月23日</span><br><span class="line">NSLog(@&quot;Full: %@&quot;, dateStringFull);           //输出:   Full: 2016年5月23日 星期一</span><br><span class="line">    </span><br><span class="line">/**</span><br><span class="line">  *  formattedDateWithFormat(自定义格式)</span><br><span class="line">  */</span><br><span class="line">NSString *dateStringCustom1 = [date formattedDateWithFormat:@&quot;yyyy-MM-dd&quot;];</span><br><span class="line">NSString *dateStringCustom2 = [date formattedDateWithFormat:@&quot;yyyy年MM月dd日&quot;];</span><br><span class="line">NSString *dateStringCustom3 = [date formattedDateWithFormat:@&quot;yyyy-MM-dd HH:mm:ss&quot;];</span><br><span class="line">NSString *dateStringCustom4 = [date formattedDateWithFormat:@&quot;yyyy年MM月dd日 HH:mm:ss&quot;];</span><br><span class="line">NSString *dateStringCustom5 = [date formattedDateWithFormat:@&quot;yyyy年MM月dd日 HH点mm分ss秒&quot;];</span><br><span class="line">    </span><br><span class="line">NSLog(@&quot;Custom1: %@&quot;, dateStringCustom1);       //输出:   Custom1: 2016-05-23</span><br><span class="line">NSLog(@&quot;Custom2: %@&quot;, dateStringCustom2);       //输出:   Custom2: 2016年05月23日</span><br><span class="line">NSLog(@&quot;Custom3: %@&quot;, dateStringCustom3);       //输出:   Custom3: 2016-05-23 13:42:53</span><br><span class="line">NSLog(@&quot;Custom4: %@&quot;, dateStringCustom4);       //输出:   Custom4: 2016年05月23日 13:42:53</span><br><span class="line">NSLog(@&quot;Custom5: %@&quot;, dateStringCustom5);       //输出:   Custom5: 2016年05月23日 13点42分53秒</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">字符</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">yy</td>
+<td>年的后2位</td>
+</tr>
+<tr>
+<td style="text-align:center">yyyy</td>
+<td>完整年</td>
+</tr>
+<tr>
+<td style="text-align:center">M</td>
+<td>1~12     月(不带0)</td>
+</tr>
+<tr>
+<td style="text-align:center">MM</td>
+<td>1~12     月(带0)</td>
+</tr>
+<tr>
+<td style="text-align:center">MMM</td>
+<td>Jan/Feb/Mar/Apr/May/Jun/Jul/Aug/Sep/Oct/Nov/Dec     (1~12月_简写)</td>
+</tr>
+<tr>
+<td style="text-align:center">MMMM</td>
+<td>January/February/March/April/May/June/July/August/September/October/November/December      (1~12月_全写)</td>
+</tr>
+<tr>
+<td style="text-align:center">d</td>
+<td>1~31     日(不带0)</td>
+</tr>
+<tr>
+<td style="text-align:center">dd</td>
+<td>1~31     日(带0)</td>
+</tr>
+<tr>
+<td style="text-align:center">EEE</td>
+<td>Sun/Mon/Tue/Wed/Thu/Fri/Sat     (星期_简写)</td>
+</tr>
+<tr>
+<td style="text-align:center">EEEE</td>
+<td>Sunday/Monday/Tuesday/Wednesday/Thursday/Friday/Saturday     (星期_全写)</td>
+</tr>
+<tr>
+<td style="text-align:center">aa</td>
+<td>AM/PM     (上午/下午)</td>
+</tr>
+<tr>
+<td style="text-align:center">H</td>
+<td>0~23     时(24小时制,不带0)</td>
+</tr>
+<tr>
+<td style="text-align:center">HH</td>
+<td>0~23     时(24小时制,带0)</td>
+</tr>
+<tr>
+<td style="text-align:center">h</td>
+<td>1~12     时(12小时制,不带0)</td>
+</tr>
+<tr>
+<td style="text-align:center">hh</td>
+<td>1~12     时(24小时制,带0)</td>
+</tr>
+<tr>
+<td style="text-align:center">m</td>
+<td>0~59     分(不带0)</td>
+</tr>
+<tr>
+<td style="text-align:center">mm</td>
+<td>0~59     分(带0)</td>
+</tr>
+<tr>
+<td style="text-align:center">s</td>
+<td>0~59     秒(不带0)</td>
+</tr>
+<tr>
+<td style="text-align:center">ss</td>
+<td>0~59     秒(带0)</td>
+</tr>
+<tr>
+<td style="text-align:center">S</td>
+<td>毫秒</td>
+</tr>
+</tbody>
+</table>
+<h1 id="Time-Periods「时间段」"><a href="#Time-Periods「时间段」" class="headerlink" title="Time Periods「时间段」"></a>Time Periods「时间段」</h1><hr>
+<blockquote>
+<p>DateTools提供DTTimePeriod来简化时间段的操作</p>
+</blockquote>
+<h4 id="初始化和获取时间段信息"><a href="#初始化和获取时间段信息" class="headerlink" title="初始化和获取时间段信息"></a>初始化和获取时间段信息</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">  *  通过起始时间来初始化时间段</span><br><span class="line">  */</span><br><span class="line">NSDate *startDate = [NSDate date];</span><br><span class="line">NSDate *endDate = [startDate dateByAddingHours:2];</span><br><span class="line">DTTimePeriod *timePeriod =[[DTTimePeriod alloc] initWithStartDate:startDate endDate:endDate];</span><br><span class="line">    </span><br><span class="line">BOOL hasStartDate = timePeriod.hasStartDate;        //是否有开始时间</span><br><span class="line">BOOL hasEndDate   = timePeriod.hasEndDate;          //是否有结束时间</span><br><span class="line">BOOL isMoment     = timePeriod.isMoment;            //是否开始时间和结束时间相同</span><br><span class="line">    </span><br><span class="line">double  durationInYears   = [timePeriod durationInYears];    //相差年</span><br><span class="line">double  durationInWeeks   = [timePeriod durationInWeeks];    //相差周</span><br><span class="line">double  durationInDays    = [timePeriod durationInDays];     //相差日</span><br><span class="line">double  durationInHours   = [timePeriod durationInHours];    //相差小时</span><br><span class="line">double  durationInMinutes = [timePeriod durationInMinutes];  //相差分</span><br><span class="line">double  durationInSeconds = [timePeriod durationInSeconds];  //相差秒</span><br><span class="line">    </span><br><span class="line">NSLog(@&quot;%f年 %f周 %f日 %f小时 %f分 %f秒&quot;,durationInYears, durationInWeeks, durationInDays, durationInHours, durationInMinutes, durationInSeconds);</span><br><span class="line">//输出: 0.000000年 0.000000周 0.000000日 2.000000小时 120.000000分 7200.000000秒</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>更多初始化时间段方法:</p>
+</blockquote>
+<p><img src="http://upload-images.jianshu.io/upload_images/1519620-69baf4c618a0f819.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="更多初始化时间段方法"></p>
+<h4 id="时间段操作"><a href="#时间段操作" class="headerlink" title="时间段操作"></a>时间段操作</h4><blockquote>
+<p>移动时间段:<br>shiftEarlierWithSize     时间段整体前移<br>shiftLaterWithSize       时间段整体后移</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">  *  移动时间段</span><br><span class="line">  */</span><br><span class="line">NSDate *startDate = [NSDate date];</span><br><span class="line">NSDate *endDate = [startDate dateByAddingDays:2];</span><br><span class="line">DTTimePeriod *timePeriod =[[DTTimePeriod alloc] initWithStartDate:startDate endDate:endDate];</span><br><span class="line">    </span><br><span class="line">NSLog(@&quot;开始:%@&quot;, [timePeriod.StartDate formattedDateWithStyle:NSDateFormatterMediumStyle]);</span><br><span class="line">NSLog(@&quot;结束:%@&quot;, [timePeriod.EndDate formattedDateWithStyle:NSDateFormatterMediumStyle]);</span><br><span class="line">//输出: 开始:2016年5月23日</span><br><span class="line">//输出: 结束:2016年5月25日</span><br><span class="line">    </span><br><span class="line">[timePeriod shiftEarlierWithSize:DTTimePeriodSizeDay];              //提前1天</span><br><span class="line">    </span><br><span class="line">NSLog(@&quot;开始:%@&quot;, [timePeriod.StartDate formattedDateWithStyle:NSDateFormatterMediumStyle]);</span><br><span class="line">NSLog(@&quot;结束:%@&quot;, [timePeriod.EndDate formattedDateWithStyle:NSDateFormatterMediumStyle]);</span><br><span class="line">//输出: 开始:2016年5月22日</span><br><span class="line">//输出: 结束:2016年5月24日</span><br><span class="line"></span><br><span class="line">[timePeriod shiftLaterWithSize:DTTimePeriodSizeDay amount:2];       //延后2天</span><br><span class="line">    </span><br><span class="line">NSLog(@&quot;开始:%@&quot;, [timePeriod.StartDate formattedDateWithStyle:NSDateFormatterMediumStyle]);</span><br><span class="line">NSLog(@&quot;结束:%@&quot;, [timePeriod.EndDate formattedDateWithStyle:NSDateFormatterMediumStyle]);</span><br><span class="line">//输出: 开始:2016年5月24日</span><br><span class="line">//输出: 结束:2016年5月26日</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>延长/缩短时间段:<br>shortenWithAnchorDate     延长(开始时间/中间时间/结束时间)<br>lengthenWithAnchorDate   缩短(开始时间/中间时间/结束时间)</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">  *  时间段延长/缩短</span><br><span class="line">  */</span><br><span class="line">NSDate *startDate = [NSDate date];</span><br><span class="line">NSDate *endDate = [startDate dateByAddingDays:2];</span><br><span class="line">DTTimePeriod *timePeriod =[[DTTimePeriod alloc] initWithStartDate:startDate endDate:endDate];</span><br><span class="line">    </span><br><span class="line">NSLog(@&quot;时长: %.2f天&quot;, [timePeriod durationInDays]);</span><br><span class="line">//输出: 时长: 2.00天</span><br><span class="line"></span><br><span class="line">[timePeriod lengthenWithAnchorDate:DTTimePeriodAnchorEnd size:DTTimePeriodSizeDay amount:1];        //延长1天(增加结束时间)</span><br><span class="line"></span><br><span class="line">NSLog(@&quot;时长: %.2f天&quot;, [timePeriod durationInDays]);</span><br><span class="line">//输出: 时长: 3.00天</span><br><span class="line"></span><br><span class="line">[timePeriod shortenWithAnchorDate:DTTimePeriodAnchorStart size:DTTimePeriodSizeDay amount:4];       //缩短4天(减少开始时间)</span><br><span class="line">    </span><br><span class="line">NSLog(@&quot;时长: %.2f天&quot;, [timePeriod durationInDays]);</span><br><span class="line">//输出: 时长: 0.00天</span><br></pre></td></tr></table></figure>
+<h4 id="时间段关系"><a href="#时间段关系" class="headerlink" title="时间段关系"></a>时间段关系</h4><blockquote>
+<p>两个时间段关系相关方法:</p>
+</blockquote>
+<p><img src="http://upload-images.jianshu.io/upload_images/1519620-cbbad67f693add54.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="时间段关系方法"></p>
+<blockquote>
+<p>两个时间段关系所有可能性:</p>
+</blockquote>
+<p><img src="http://upload-images.jianshu.io/upload_images/1519620-86e77e6702994c9d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="时间段关系可能性"></p>
+<blockquote>
+<p>时间段关系枚举DTTimePeriodRelation:</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">  *  DTTimePeriodRelation时间段关系枚举</span><br><span class="line">  */</span><br><span class="line">typedef NS_ENUM(NSUInteger, DTTimePeriodRelation)&#123;</span><br><span class="line">    DTTimePeriodRelationAfter,      </span><br><span class="line">    DTTimePeriodRelationStartTouching,    </span><br><span class="line">    DTTimePeriodRelationStartInside,</span><br><span class="line">    DTTimePeriodRelationInsideStartTouching,</span><br><span class="line">    DTTimePeriodRelationEnclosingStartTouching,</span><br><span class="line">    DTTimePeriodRelationEnclosing,</span><br><span class="line">    DTTimePeriodRelationEnclosingEndTouching,</span><br><span class="line">    DTTimePeriodRelationExactMatch,</span><br><span class="line">    DTTimePeriodRelationInside,</span><br><span class="line">    DTTimePeriodRelationInsideEndTouching,</span><br><span class="line">    DTTimePeriodRelationEndInside,</span><br><span class="line">    DTTimePeriodRelationEndTouching,</span><br><span class="line">    DTTimePeriodRelationBefore,</span><br><span class="line">    DTTimePeriodRelationNone      </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="Time-Period-Groups「时间段组」"><a href="#Time-Period-Groups「时间段组」" class="headerlink" title="#Time Period Groups「时间段组」"></a>#Time Period Groups「时间段组」</h2><blockquote>
+<p>DateTools提供两种时间段组类:<br>DTTimePeriodCollection     时间段集合 (允许存储彼此有交集的时间段)<br>DTTimePeriodChain    时间段链接 (不允许存储彼此有交集的时间段)</p>
+<p>DTTimePeriodCollection和DTTimePeriodChain就像NSArray一样,你可以像操作数组一样对它们中的DTTimePeriod对象进行添加,插入,删除,不同之处在于如何处理时间段</p>
+</blockquote>
+<h4 id="DTTimePeriodCollection-时间段集合"><a href="#DTTimePeriodCollection-时间段集合" class="headerlink" title="DTTimePeriodCollection  (时间段集合)"></a>DTTimePeriodCollection  (时间段集合)</h4><blockquote>
+<p>一个规则相对宽松的时间段集合<br>默认是无序的,但是支持通过调用方法排序<br>有自己的属性,例如StartDate和EndDate属性是根据内部时间段推测出来的<br>允许存储有重叠的时间段</p>
+</blockquote>
+<p><img src="http://upload-images.jianshu.io/upload_images/1519620-ab1906f0c9072672.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="时间段集合"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">//时间段集合</span><br><span class="line">DTTimePeriodCollection *timePeriodCollection = [DTTimePeriodCollection collection]; </span><br><span class="line">/**</span><br><span class="line">  *  时间段</span><br><span class="line">  *</span><br><span class="line">  *  当前时间为: 2016年5月24日 </span><br><span class="line">  */</span><br><span class="line">DTTimePeriod *timePeriod1 = [DTTimePeriod timePeriodWithSize:DTTimePeriodSizeDay startingAt:[NSDate date]];</span><br><span class="line">DTTimePeriod *timePeriod2 = [DTTimePeriod timePeriodWithSize:DTTimePeriodSizeDay endingAt:[NSDate date]];</span><br><span class="line">    </span><br><span class="line">NSLog(@&quot;开始:%@ 结束:%@&quot;, [timePeriod1.StartDate formattedDateWithStyle:NSDateFormatterMediumStyle], [timePeriod1.EndDate formattedDateWithStyle:NSDateFormatterMediumStyle]);</span><br><span class="line">NSLog(@&quot;开始:%@ 结束:%@&quot;, [timePeriod2.StartDate formattedDateWithStyle:NSDateFormatterMediumStyle], [timePeriod2.EndDate formattedDateWithStyle:NSDateFormatterMediumStyle]);</span><br><span class="line">//输出:   开始:2016年5月24日 结束:2016年5月25日</span><br><span class="line">//输出:   开始:2016年5月23日 结束:2016年5月24日</span><br><span class="line">    </span><br><span class="line">/**</span><br><span class="line"> *  时间段集合操作</span><br><span class="line"> */</span><br><span class="line">//添加</span><br><span class="line">[timePeriodCollection addTimePeriod:timePeriod1];</span><br><span class="line">//插入</span><br><span class="line">[timePeriodCollection insertTimePeriod:timePeriod2 atIndex:0];</span><br><span class="line">//移除</span><br><span class="line">[timePeriodCollection removeTimePeriodAtIndex:0];</span><br><span class="line">    </span><br><span class="line">/**</span><br><span class="line"> *  时间段集合排序</span><br><span class="line"> */</span><br><span class="line">//按开始时间升序</span><br><span class="line">[timePeriodCollection sortByStartAscending];</span><br><span class="line">//按开始时间降序</span><br><span class="line">[timePeriodCollection sortByStartDescending];</span><br><span class="line">//按结束时间升序</span><br><span class="line">[timePeriodCollection sortByEndAscending];</span><br><span class="line">//按结束时间降序</span><br><span class="line">[timePeriodCollection sortByEndDescending];</span><br><span class="line">//按持续时间升序</span><br><span class="line">[timePeriodCollection sortByDurationAscending];</span><br><span class="line">//按持续时间降序</span><br><span class="line">[timePeriodCollection sortByDurationDescending];</span><br><span class="line">    </span><br><span class="line">//从时间段集合中获取时间段</span><br><span class="line">DTTimePeriod *firstTimePeriod = [timePeriodCollection objectAtIndexedSubscript:0];</span><br></pre></td></tr></table></figure>
+<p><img src="http://upload-images.jianshu.io/upload_images/1519620-311a276adfc57db4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="时间段集合操作示意图"></p>
+<blockquote>
+<p>获取一个NSDate对象或一个DTTimePeriod对象与一个时间段集合的相对关系 </p>
+</blockquote>
+<p><img src="http://upload-images.jianshu.io/upload_images/1519620-4cf67b76c3d9b7f2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="时间段集合操作方法"></p>
+<h4 id="DTTimePeriodChain-时间链"><a href="#DTTimePeriodChain-时间链" class="headerlink" title="DTTimePeriodChain  (时间链)"></a>DTTimePeriodChain  (时间链)</h4><blockquote>
+<p>一个紧密耦合的时间段集合<br>通常依据开始时间和结束时间存储时间段对象<br>有自己的属性,例如StartDate和EndDate属性是根据内部时间段推测出来的<br>不允许存储有重叠的时间段</p>
+</blockquote>
+<p><img src="http://upload-images.jianshu.io/upload_images/1519620-07e96890e70d7544.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="时间链"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">    </span><br><span class="line">//创建时间链</span><br><span class="line">DTTimePeriodChain *chain = [DTTimePeriodChain chain];</span><br><span class="line">    </span><br><span class="line">//创建时间段</span><br><span class="line">NSDateFormatter * dateFormatter = [[NSDateFormatter alloc]init];</span><br><span class="line">[dateFormatter setDateFormat: @&quot;YYYY MM dd HH:mm:ss.SSS&quot;];</span><br><span class="line">    </span><br><span class="line">DTTimePeriod *firstPeriod = [DTTimePeriod timePeriodWithStartDate:[dateFormatter dateFromString:@&quot;2014 11 05 18:15:12.000&quot;] endDate:[dateFormatter dateFromString:@&quot;2015 11 05 18:15:12.000&quot;]];</span><br><span class="line">DTTimePeriod *secondPeriod = [DTTimePeriod timePeriodWithStartDate:[dateFormatter dateFromString:@&quot;2015 11 05 18:15:12.000&quot;] endDate:[dateFormatter dateFromString:@&quot;2016 11 05 18:15:12.000&quot;]];</span><br><span class="line">    </span><br><span class="line">//添加</span><br><span class="line">[chain addTimePeriod:firstPeriod];</span><br><span class="line">[chain addTimePeriod:secondPeriod];</span><br><span class="line">//插入</span><br><span class="line">[chain insertTimePeriod:firstPeriod atInedx:0];</span><br><span class="line">//移除</span><br><span class="line">[chain removeTimePeriodAtIndex:0];</span><br><span class="line">//移除最晚时间段</span><br><span class="line">[chain removeLatestTimePeriod];</span><br><span class="line">//移除最早时间段</span><br><span class="line">[chain removeEarliestTimePeriod];</span><br><span class="line">    </span><br><span class="line">//获取集合中的元素.</span><br><span class="line">firstPeriod = chain[0];</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>新加入的时间段,时长不变,起始时间变为前一个时间段的结束时间,结束时间对应前移后后移.在非零位置新插入的时间,其后的时间段相应后移.在零位置插入的时间,集合的起始时间前移</p>
+</blockquote>
+<p><img src="http://upload-images.jianshu.io/upload_images/1519620-cdee50632603a47a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="时间链操作示意图"></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS第三方使用/" rel="tag">#iOS第三方使用</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/05/21/iOS第三方使用/JSONModel使用「数据转模型」/" rel="next" title="JSONModel使用「数据转模型」">
+                <i class="fa fa-chevron-left"></i> JSONModel使用「数据转模型」
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/05/24/Objective-C/Objective-C「遍历」/" rel="prev" title="Objective-C「遍历」">
+                Objective-C「遍历」 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/05/23/iOS第三方使用/DateTools使用-「日期工具库」/"
+     data-title="DateTools使用-「日期工具库」"
+     data-content=""
+     data-url="http://yoursite.com/2016/05/23/iOS第三方使用/DateTools使用-「日期工具库」/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/05/23/iOS第三方使用/DateTools使用-「日期工具库」/"
+           data-title="DateTools使用-「日期工具库」" data-url="http://yoursite.com/2016/05/23/iOS第三方使用/DateTools使用-「日期工具库」/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpeg"
+               alt="LuisX" />
+          <p class="site-author-name" itemprop="name">LuisX</p>
+          <p class="site-description motion-element" itemprop="description">总有一天我会拥有属于我的一片天</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">17</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Luis-X/Luis-X.github.io.git" target="_blank" title="gitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  gitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/3338232200" target="_blank" title="weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#准备"><span class="nav-number">1.</span> <span class="nav-text">准备:</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装"><span class="nav-number"></span> <span class="nav-text">安装</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#DateTools中包含3个子库"><span class="nav-number">0.0.1.</span> <span class="nav-text">DateTools中包含3个子库</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基本使用"><span class="nav-number"></span> <span class="nav-text">基本使用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#NSDate-DateTools"><span class="nav-number"></span> <span class="nav-text">NSDate+DateTools</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Time-Ago-相对日期形式"><span class="nav-number">0.1.</span> <span class="nav-text">1.Time Ago(相对日期形式)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Date-Components-日期组成部分"><span class="nav-number">0.2.</span> <span class="nav-text">2.Date Components(日期组成部分)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-日期编辑"><span class="nav-number">0.3.</span> <span class="nav-text">3.日期编辑</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-日期比较"><span class="nav-number">0.4.</span> <span class="nav-text">4.日期比较</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-格式化日期字符串"><span class="nav-number">0.5.</span> <span class="nav-text">5.格式化日期字符串</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Time-Periods「时间段」"><span class="nav-number"></span> <span class="nav-text">Time Periods「时间段」</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#初始化和获取时间段信息"><span class="nav-number">0.1.</span> <span class="nav-text">初始化和获取时间段信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#时间段操作"><span class="nav-number">0.2.</span> <span class="nav-text">时间段操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#时间段关系"><span class="nav-number">0.3.</span> <span class="nav-text">时间段关系</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Time-Period-Groups「时间段组」"><span class="nav-number"></span> <span class="nav-text">#Time Period Groups「时间段组」</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#DTTimePeriodCollection-时间段集合"><span class="nav-number">0.1.</span> <span class="nav-text">DTTimePeriodCollection  (时间段集合)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DTTimePeriodChain-时间链"><span class="nav-number">0.2.</span> <span class="nav-text">DTTimePeriodChain  (时间链)</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">LuisX</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"luisx"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+      
+      <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+      <script src="/js/src/hook-duoshuo.js"></script>
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>
