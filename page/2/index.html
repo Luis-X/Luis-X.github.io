@@ -273,8 +273,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/06/02/玩转iOS/玩转NSString(不信你看)/" itemprop="url">
-                  玩转NSString(不信你看)
+                <a class="post-title-link" href="/2016/06/02/Objective-C/Objective-C「结构体」/" itemprop="url">
+                  Objective-C「结构体」
                 </a>
               
             
@@ -301,8 +301,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/玩转iOS/" itemprop="url" rel="index">
-                    <span itemprop="name">玩转iOS</span>
+                  <a href="/categories/Objective-C/" itemprop="url" rel="index">
+                    <span itemprop="name">Objective-C</span>
                   </a>
                 </span>
 
@@ -317,8 +317,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/06/02/玩转iOS/玩转NSString(不信你看)/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/02/玩转iOS/玩转NSString(不信你看)/" itemprop="commentsCount"></span>
+                <a href="/2016/06/02/Objective-C/Objective-C「结构体」/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/02/Objective-C/Objective-C「结构体」/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -343,222 +343,13 @@
       
         
           
-            <blockquote>
-<p>Objective-C里核心的处理字符串的类就是NSString和NSMutableString这两个类,这两个类完成了Objective-C中字符串大部分功能的处理</p>
-</blockquote>
-<h1 id="NSString"><a href="#NSString" class="headerlink" title="NSString"></a>NSString</h1><hr>
-<h4 id="字符串属性"><a href="#字符串属性" class="headerlink" title="字符串属性"></a>字符串属性</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">    //////////字符串属性//////////</span><br><span class="line">    NSString *str1 = @&quot;string&quot;;</span><br><span class="line">    </span><br><span class="line">    NSLog(@&quot;长度:                   %ld&quot;, str1.length);</span><br><span class="line">NSLog(@&quot;描述:                   %@&quot;, string.description);</span><br><span class="line">    NSLog(@&quot;哈希地址:                %lu&quot;, (unsigned long)string.hash);</span><br><span class="line">    NSLog(@&quot;字符串对应下标字符:        %c&quot;, [str1 characterAtIndex:2]);</span><br><span class="line">    //输出:   长度:                   6</span><br><span class="line">    //输出:   描述:                   string</span><br><span class="line">    //输出:   哈希地址:                10152471993823965</span><br><span class="line">    //输出:   字符串对应下标字符:        r</span><br></pre></td></tr></table></figure>
-<h4 id="字符串截取"><a href="#字符串截取" class="headerlink" title="字符串截取"></a>字符串截取</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//截取指定位置之后的字符串</span><br><span class="line">- (NSString *)substringFromIndex:(NSUInteger)from;</span><br><span class="line">//从0下标开始截取到指定位置的字符串</span><br><span class="line">- (NSString *)substringToIndex:(NSUInteger)to;</span><br><span class="line">//截取指定范围的字符串</span><br><span class="line">- (NSString *)substringWithRange:(NSRange)range;</span><br><span class="line">//截取字符串指定范围的字符</span><br><span class="line">- (void)getCharacters:(unichar *)buffer range:(NSRange)range;</span><br></pre></td></tr></table></figure>
-<h4 id="字符串比较"><a href="#字符串比较" class="headerlink" title="字符串比较"></a>字符串比较</h4><blockquote>
-<p>将两个字符串进行计较,返回NSComparisonResult枚举结果</p>
-</blockquote>
-<h6 id="比较结果"><a href="#比较结果" class="headerlink" title="比较结果:"></a>比较结果:</h6><table>
-<thead>
-<tr>
-<th style="text-align:left">NSComparisonResult</th>
-<th style="text-align:left">说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">NSOrderedAscending</td>
-<td style="text-align:left">升序     (左小右大)</td>
-</tr>
-<tr>
-<td style="text-align:left">NSOrderedSame</td>
-<td style="text-align:left">相同     (内容相同)</td>
-</tr>
-<tr>
-<td style="text-align:left">NSOrderedDescending</td>
-<td style="text-align:left">降序     (左大右小)</td>
-</tr>
-</tbody>
-</table>
-<h6 id="比较选项"><a href="#比较选项" class="headerlink" title="比较选项:"></a>比较选项:</h6><table>
-<thead>
-<tr>
-<th style="text-align:left">NSStringCompareOptions</th>
-<th style="text-align:left">说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">NSCaseInsensitiveSearch</td>
-<td style="text-align:left">不区分大小写比较</td>
-</tr>
-<tr>
-<td style="text-align:left">NSLiteralSearch</td>
-<td style="text-align:left">区分大小写比较</td>
-</tr>
-<tr>
-<td style="text-align:left">NSBackwardsSearch</td>
-<td style="text-align:left">从字符串末尾开始搜索</td>
-</tr>
-<tr>
-<td style="text-align:left">NSAnchoredSearch</td>
-<td style="text-align:left">搜索限制范围的字符串</td>
-</tr>
-<tr>
-<td style="text-align:left">NSNumericSearch</td>
-<td style="text-align:left">按照字符串里的数字为依据，算出顺序</td>
-</tr>
-<tr>
-<td style="text-align:left">NSDiacriticInsensitiveSearch</td>
-<td style="text-align:left">忽略 “-“ 符号的比较</td>
-</tr>
-<tr>
-<td style="text-align:left">NSWidthInsensitiveSearch</td>
-<td style="text-align:left">忽略字符串的长度，比较出结果</td>
-</tr>
-<tr>
-<td style="text-align:left">NSForcedOrderingSearch</td>
-<td style="text-align:left">忽略不区分大小写比较的选项</td>
-</tr>
-<tr>
-<td style="text-align:left">NSRegularExpressionSearch</td>
-<td style="text-align:left">只能应用于 rangeOfString:…, stringByReplacingOccurrencesOfString:…和 replaceOccurrencesOfString:…方法</td>
-</tr>
-</tbody>
-</table>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">   //////////字符串比较//////////</span><br><span class="line">//1.比较</span><br><span class="line">- (NSComparisonResult)compare:(NSString *)string;</span><br><span class="line">//2.比较(指定字符串,条件)</span><br><span class="line">- (NSComparisonResult)compare:(NSString *)string options:(NSStringCompareOptions)mask;</span><br><span class="line">//3.比较(指定字符串,条件,范围)</span><br><span class="line">- (NSComparisonResult)compare:(NSString *)string options:(NSStringCompareOptions)mask range:(NSRange)compareRange;</span><br><span class="line">//4.比较(指定字符串,条件,范围,本地化)</span><br><span class="line">- (NSComparisonResult)compare:(NSString *)string options:(NSStringCompareOptions)mask range:(NSRange)compareRange locale:(nullable id)locale;</span><br><span class="line">//5.比较(不区分大小写)</span><br><span class="line">- (NSComparisonResult)caseInsensitiveCompare:(NSString *)string;</span><br><span class="line"></span><br><span class="line">//6.本地化比较</span><br><span class="line">- (NSComparisonResult)localizedCompare:(NSString *)string;</span><br><span class="line">//7.本地化比较(不区分大小写)</span><br><span class="line">- (NSComparisonResult)localizedCaseInsensitiveCompare:(NSString *)string;</span><br><span class="line">//8.本地化比较(标准)</span><br><span class="line">- (NSComparisonResult)localizedStandardCompare:(NSString *)string;</span><br><span class="line"></span><br><span class="line">//9.判断两个字符串是否内容一致</span><br><span class="line">- (BOOL)isEqualToString:(NSString *)aString;</span><br></pre></td></tr></table></figure>
-<h4 id="字符串搜索"><a href="#字符串搜索" class="headerlink" title="字符串搜索"></a>字符串搜索</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">   //////////搜索基本//////////</span><br><span class="line">//1.是否包含前缀(以str开头)</span><br><span class="line">- (BOOL)hasPrefix:(NSString *)str;</span><br><span class="line">//2.是否包含后缀(以str结尾)</span><br><span class="line">- (BOOL)hasSuffix:(NSString *)str;</span><br><span class="line">//3.获取公共前缀</span><br><span class="line">- (NSString *)commonPrefixWithString:(NSString *)str options:(NSStringCompareOptions)mask;</span><br><span class="line">//4.是否包含字符串</span><br><span class="line">- (BOOL)containsString:(NSString *)str;</span><br><span class="line">//5.本地化是否包含字符串(不区分大小写)</span><br><span class="line">- (BOOL)localizedCaseInsensitiveContainsString:(NSString *)str;</span><br><span class="line">//6.本地化是否包含字符串(标准)</span><br><span class="line">- (BOOL)localizedStandardContainsString:(NSString *)str;</span><br><span class="line">//7.本地化搜索字符串范围(标准)</span><br><span class="line">- (NSRange)localizedStandardRangeOfString:(NSString *)str;</span><br><span class="line"></span><br><span class="line">   //////////搜索字符串//////////</span><br><span class="line">//8.搜索(指定字符串)</span><br><span class="line">- (NSRange)rangeOfString:(NSString *)searchString;</span><br><span class="line">//9.搜索(指定字符串,条件)</span><br><span class="line">- (NSRange)rangeOfString:(NSString *)searchString options:(NSStringCompareOptions)mask;</span><br><span class="line">//10.搜索(指定字符串,条件,范围)</span><br><span class="line">- (NSRange)rangeOfString:(NSString *)searchString options:(NSStringCompareOptions)mask range:(NSRange)searchRange;</span><br><span class="line">//11.搜索(指定字符串,条件,范围,本地化)</span><br><span class="line">- (NSRange)rangeOfString:(NSString *)searchString options:(NSStringCompareOptions)mask range:(NSRange)searchRange locale:(nullable NSLocale *)locale;</span><br><span class="line"></span><br><span class="line">   //////////搜索字符集合//////////</span><br><span class="line">//12.搜索(指定字符集合)</span><br><span class="line">- (NSRange)rangeOfCharacterFromSet:(NSCharacterSet *)searchSet;</span><br><span class="line">//13.搜索(指定字符集合,条件)</span><br><span class="line">- (NSRange)rangeOfCharacterFromSet:(NSCharacterSet *)searchSet options:(NSStringCompareOptions)mask;</span><br><span class="line">//14.搜索(指定字符集合,条件,范围)</span><br><span class="line">- (NSRange)rangeOfCharacterFromSet:(NSCharacterSet *)searchSet options:(NSStringCompareOptions)mask range:(NSRange)searchRange;</span><br><span class="line"></span><br><span class="line">//15.用字符串的字符编码指定索引查找位置</span><br><span class="line">- (NSRange)rangeOfComposedCharacterSequenceAtIndex:(NSUInteger)index;</span><br><span class="line">//16.用字符串的字符编码指定区域段查找位置</span><br><span class="line">- (NSRange)rangeOfComposedCharacterSequencesForRange:(NSRange)range;</span><br></pre></td></tr></table></figure>
-<h4 id="字符串拼接"><a href="#字符串拼接" class="headerlink" title="字符串拼接"></a>字符串拼接</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">    //////////字符串拼接//////////</span><br><span class="line">    NSString *string = @&quot;1&quot;;</span><br><span class="line">    NSString *appStr = @&quot;2&quot;;</span><br><span class="line">    NSString *resultStr1 = [string stringByAppendingString:appStr];</span><br><span class="line">    NSString *resultStr2 = [string stringByAppendingFormat:@&quot; + %@&quot;, appStr];</span><br><span class="line">    </span><br><span class="line">    NSLog(@&quot;普通拼接:     %@&quot;, resultStr1);</span><br><span class="line">    NSLog(@&quot;格式化拼接:   %@&quot;, resultStr2);</span><br><span class="line">    //输出:   普通拼接:     12</span><br><span class="line">    //输出:   格式化拼接:   1 + 2</span><br></pre></td></tr></table></figure>
-<h4 id="字符串基本类型转换"><a href="#字符串基本类型转换" class="headerlink" title="字符串基本类型转换"></a>字符串基本类型转换</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">    //////////字符串基本类型转换//////////</span><br><span class="line">    NSString *numStr = @&quot;87234.2345&quot;;</span><br><span class="line"></span><br><span class="line">    NSLog(@&quot;double型:        %f&quot;, numStr.doubleValue);</span><br><span class="line">    NSLog(@&quot;float型:         %f&quot;, numStr.floatValue);</span><br><span class="line">    NSLog(@&quot;int型:           %d&quot;, numStr.intValue);</span><br><span class="line">    NSLog(@&quot;NSInteger型:     %ld&quot;, numStr.integerValue);</span><br><span class="line">    NSLog(@&quot;long long型:     %lld&quot;, numStr.longLongValue);</span><br><span class="line">    NSLog(@&quot;BOOL型:          %d&quot;, numStr.boolValue);</span><br><span class="line">    //输出:   double型:        87234.234500</span><br><span class="line">    //输出:   float型:         87234.234375</span><br><span class="line">    //输出:   int型:           87234</span><br><span class="line">    //输出:   NSInteger型:     87234</span><br><span class="line">    //输出:   long long型:     87234</span><br><span class="line">    //输出:   BOOL型:          1</span><br></pre></td></tr></table></figure>
-<h4 id="字符串大小写转换"><a href="#字符串大小写转换" class="headerlink" title="字符串大小写转换"></a>字符串大小写转换</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">    //////////字符串大小写转换//////////</span><br><span class="line">    NSString *string = @&quot;string&quot;;</span><br><span class="line"></span><br><span class="line">    NSLog(@&quot;大写:         %@&quot;, string.uppercaseString);</span><br><span class="line">    NSLog(@&quot;小写:         %@&quot;, string.lowercaseString);</span><br><span class="line">    NSLog(@&quot;首字母大写:    %@&quot;, string.capitalizedString);</span><br><span class="line">    //输出:   大写:         STRING</span><br><span class="line">    //输出:   小写:         string</span><br><span class="line">    //输出:   首字母大写:    String</span><br><span class="line"></span><br><span class="line">//本地化(大写)</span><br><span class="line">- (NSString *)uppercaseStringWithLocale:(nullable NSLocale *)locale; </span><br><span class="line">//本地化(小写)</span><br><span class="line">- (NSString *)lowercaseStringWithLocale:(nullable NSLocale *)locale;</span><br><span class="line">//本地化(首字母大写)</span><br><span class="line">- (NSString *)capitalizedStringWithLocale:(nullable NSLocale *)locale;</span><br></pre></td></tr></table></figure>
-<h4 id="字符串分行-分段"><a href="#字符串分行-分段" class="headerlink" title="字符串分行,分段"></a>字符串分行,分段</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">   //////////分行//////////</span><br><span class="line">//1.指定范围,分行取字符串</span><br><span class="line">- (void)getLineStart:(nullable NSUInteger *)startPtr end:(nullable NSUInteger *)lineEndPtr contentsEnd:(nullable NSUInteger *)contentsEndPtr forRange:(NSRange)range;</span><br><span class="line">//2.获取指定范围该行的范围</span><br><span class="line">- (NSRange)lineRangeForRange:(NSRange)range;</span><br><span class="line"></span><br><span class="line">   //////////分段//////////</span><br><span class="line">//3.指定范围,分段取字符串</span><br><span class="line">- (void)getParagraphStart:(nullable NSUInteger *)startPtr end:(nullable NSUInteger *)parEndPtr contentsEnd:(nullable NSUInteger *)contentsEndPtr forRange:(NSRange)range;</span><br><span class="line">//4.获取指定范围该段落的范围</span><br><span class="line">- (NSRange)paragraphRangeForRange:(NSRange)range;</span><br><span class="line"></span><br><span class="line">  //////////字符串分行,分段//////////</span><br><span class="line">    NSString *string = @&quot;123 456\nABC,DEF\nabc.def&quot;;</span><br><span class="line">    //获取该行的范围(指定范围)</span><br><span class="line">    NSRange range1 = [string lineRangeForRange:NSMakeRange(0, 10)];</span><br><span class="line">    NSLog(@&quot;%ld 行长度:     %ld&quot;, range1.location, range1.length);</span><br><span class="line">    //输出:       0 行长度:     16</span><br><span class="line"></span><br><span class="line">    //获取该段落范围(指定范围)</span><br><span class="line">    NSRange range2 = [string paragraphRangeForRange:NSMakeRange(0, 3)];</span><br><span class="line">    NSLog(@&quot;%ld 段落长度:   %ld&quot;, range2.location, range2.length);</span><br><span class="line">    //输出:       0 段落长度:   8</span><br></pre></td></tr></table></figure>
-<h4 id="字符串列举-按条件"><a href="#字符串列举-按条件" class="headerlink" title="字符串列举(按条件)"></a>字符串列举(按条件)</h4><h6 id="列举选项"><a href="#列举选项" class="headerlink" title="列举选项:"></a>列举选项:</h6><table>
-<thead>
-<tr>
-<th>NSStringEnumerationOptions</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>NSStringEnumerationByLines</td>
-<td>按行</td>
-</tr>
-<tr>
-<td>NSStringEnumerationByParagraphs</td>
-<td>按段落</td>
-</tr>
-<tr>
-<td>NSStringEnumerationByComposedCharacterSequences</td>
-<td>按字符顺序</td>
-</tr>
-<tr>
-<td>NSStringEnumerationByWords</td>
-<td>按单词,字</td>
-</tr>
-<tr>
-<td>NSStringEnumerationBySentences</td>
-<td>按句子</td>
-</tr>
-<tr>
-<td>NSStringEnumerationReverse</td>
-<td>反向遍历</td>
-</tr>
-<tr>
-<td>NSStringEnumerationSubstringNotRequired</td>
-<td>不需要子字符串</td>
-</tr>
-<tr>
-<td>NSStringEnumerationLocalized</td>
-<td>本地化</td>
-</tr>
-</tbody>
-</table>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">//////////字符串列举//////////    </span><br><span class="line">NSString *string = @&quot;123456\nABCDEF\nabcdef</span><br><span class="line">    //1.列举(按行)</span><br><span class="line">   [string enumerateLinesUsingBlock:^(NSString * _Nonnull line, BOOL * _Nonnull stop) &#123;</span><br><span class="line">       NSLog(@&quot;每行:   %@&quot;, line);</span><br><span class="line">   &#125;];</span><br><span class="line">    //输出:    每行:   123456</span><br><span class="line">    //输出:    每行:   ABCDEF</span><br><span class="line">    //输出:    每行:   abcdef</span><br><span class="line">    </span><br><span class="line"> </span><br><span class="line">    //2.列举(范围,条件)</span><br><span class="line">    [string enumerateSubstringsInRange:NSMakeRange(5, 10) options:NSStringEnumerationByLines usingBlock:^(NSString * _Nullable substring, NSRange substringRange, NSRange enclosingRange, BOOL * _Nonnull stop) &#123;</span><br><span class="line">       </span><br><span class="line">        NSLog(@&quot;%@&quot;, substring);</span><br><span class="line">        NSLog(@&quot;%ld   %ld&quot;, substringRange.location, substringRange.length);</span><br><span class="line">        NSLog(@&quot;%ld   %ld&quot;, enclosingRange.location, enclosingRange.length);</span><br><span class="line">        </span><br><span class="line">    &#125;];</span><br><span class="line">    //输出:   6</span><br><span class="line">    //输出:   5 1</span><br><span class="line">    //输出:   5 2</span><br><span class="line">    </span><br><span class="line">    //输出:   ABCDEF</span><br><span class="line">    //输出:   7   6</span><br><span class="line">    //输出:   7   7</span><br><span class="line">    </span><br><span class="line">    //输出:   a</span><br><span class="line">    //输出:   14   1</span><br><span class="line">    //输出:   14   1</span><br></pre></td></tr></table></figure>
-<h4 id="字符串编码和转换"><a href="#字符串编码和转换" class="headerlink" title="字符串编码和转换"></a>字符串编码和转换</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">    //////////字符串编码和转换//////////</span><br><span class="line">    NSString *string = @&quot;string&quot;;</span><br><span class="line"></span><br><span class="line">    NSLog(@&quot;最快编码值(枚举):      %lu&quot;, (unsigned long)string.fastestEncoding);</span><br><span class="line">    NSLog(@&quot;最小编码值(枚举):      %lu&quot;, (unsigned long)string.smallestEncoding);</span><br><span class="line">    NSLog(@&quot;UTF8编码值:           %s&quot;, string.UTF8String);</span><br><span class="line">    //输出:     最快编码值(枚举):      1</span><br><span class="line">    //输出:     最小编码值(枚举):      1</span><br><span class="line">    //输出:     UTF8编码值:           string</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">//1.选择编码,是否允许有损编码</span><br><span class="line">- (nullable NSData *)dataUsingEncoding:(NSStringEncoding)encoding allowLossyConversion:(BOOL)lossy;</span><br><span class="line">//2.选择编码</span><br><span class="line">- (nullable NSData *)dataUsingEncoding:(NSStringEncoding)encoding;</span><br><span class="line">//3.判断是否可以无损编码</span><br><span class="line">- (BOOL)canBeConvertedToEncoding:(NSStringEncoding)encoding;</span><br><span class="line"></span><br><span class="line">//4.C字符编码转换</span><br><span class="line">- (nullable __strong const char *)cStringUsingEncoding:(NSStringEncoding)encoding;</span><br><span class="line">//5.判读C字符转化是否可以成功</span><br><span class="line">- (BOOL)getCString:(char *)buffer maxLength:(NSUInteger)maxBufferCount encoding:(NSStringEncoding)encoding;</span><br><span class="line">//6.指定缓存区转换</span><br><span class="line">- (BOOL)getBytes:(nullable void *)buffer maxLength:(NSUInteger)maxBufferCount usedLength:(nullable NSUInteger *)usedBufferCount encoding:(NSStringEncoding)encoding options:(NSStringEncodingConversionOptions)options range:(NSRange)range remainingRange:(nullable NSRangePointer)leftover;</span><br><span class="line"></span><br><span class="line">//7.对字符串进行编码时所需的最大字节数</span><br><span class="line">- (NSUInteger)maximumLengthOfBytesUsingEncoding:(NSStringEncoding)enc;</span><br><span class="line">//8.对字符串进行编码时所需的字节数</span><br><span class="line">- (NSUInteger)lengthOfBytesUsingEncoding:(NSStringEncoding)enc;</span><br><span class="line"></span><br><span class="line">//9.可用字符串编码</span><br><span class="line">+ (const NSStringEncoding *)availableStringEncodings; </span><br><span class="line">//10.本地化编码名称</span><br><span class="line">+ (NSString *)localizedNameOfStringEncoding:(NSStringEncoding)encoding;</span><br><span class="line">//11.默认C字符串编码</span><br><span class="line">+ (NSStringEncoding)defaultCStringEncoding;</span><br></pre></td></tr></table></figure>
-<h4 id="字符串分割"><a href="#字符串分割" class="headerlink" title="字符串分割"></a>字符串分割</h4><p>######字符集合:<br>| NSCharacterSet              | 说明    |<br>| ——————————– | —– |<br>| controlCharacterSet              | 控制符   |<br>| whitespaceCharacterSet           | 空格符   |<br>| whitespaceAndNewlineCharacterSet | 空格换行符 |<br>| decimalDigitCharacterSet         | 小数    |<br>| letterCharacterSet               | 文字    |<br>| lowercaseLetterCharacterSet      | 小写字母  |<br>| uppercaseLetterCharacterSet      | 大写字母  |<br>| nonBaseCharacterSet              | 非基础   |<br>| alphanumericCharacterSet         | 数字字母  |<br>| decomposableCharacterSet         | 可分解   |<br>| illegalCharacterSet              | 非法    |<br>| punctuationCharacterSet          | 标点    |<br>| capitalizedLetterCharacterSet    | 大写    |<br>| symbolCharacterSet               | 符号    |<br>| newlineCharacterSet              | 换行符   |</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">    //////////字符串分割//////////</span><br><span class="line">    NSString *string = @&quot;A_B_c_D_E_F&quot;;</span><br><span class="line">    </span><br><span class="line">    //分割(指定字符串)</span><br><span class="line">    NSArray *resultArr1 = [string componentsSeparatedByString:@&quot;_&quot;];</span><br><span class="line">    NSLog(@&quot;%@&quot;, resultArr1);</span><br><span class="line">    //输出:   (A, B, c, D, E, F)</span><br><span class="line"></span><br><span class="line">    //分割(指定字符集合)</span><br><span class="line">    NSArray *resultArr2 = [string componentsSeparatedByCharactersInSet:[NSCharacterSet lowercaseLetterCharacterSet]];</span><br><span class="line">    NSLog(@&quot;%@&quot;, resultArr2);    </span><br><span class="line">    //输出:   (&quot;A_B_&quot; , &quot;_D_E_F&quot;)</span><br></pre></td></tr></table></figure>
-<h4 id="字符串操作-修剪-填充-折叠-替换"><a href="#字符串操作-修剪-填充-折叠-替换" class="headerlink" title="字符串操作(修剪,填充,折叠,替换)"></a>字符串操作(修剪,填充,折叠,替换)</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">    NSString *string = @&quot;3EWRs a;af&quot;;</span><br><span class="line">  </span><br><span class="line">    //////////修剪//////////</span><br><span class="line">    NSString *result1 = [string stringByTrimmingCharactersInSet:[NSCharacterSet lowercaseLetterCharacterSet]];</span><br><span class="line">    NSLog(@&quot;%@&quot;, result1);</span><br><span class="line">    //输出:   3EWRs a;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    //////////填充//////////</span><br><span class="line">    NSString *result2 = [string stringByPaddingToLength:20 withString:@&quot;填充&quot; startingAtIndex:1];</span><br><span class="line">    NSLog(@&quot;%@&quot;, result2);</span><br><span class="line">    //输出:   3EWRs a;af充填充填充填充填充填</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    //////////折叠//////////</span><br><span class="line">    NSString *result3 = [string stringByFoldingWithOptions:NSNumericSearch locale:[NSLocale systemLocale]];</span><br><span class="line">    NSLog(@&quot;%@&quot;, result3);</span><br><span class="line">    //输出:   3EWRs a;af</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    //////////替换//////////</span><br><span class="line">    //替换(指定字符串)</span><br><span class="line">    NSString *result4 = [string stringByReplacingOccurrencesOfString:@&quot; &quot; withString:@&quot;替换&quot;];</span><br><span class="line">    NSLog(@&quot;%@&quot;, result4);</span><br><span class="line">    //输出:   3EWRs替换a;af</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    //替换(指定字符串,条件,范围)</span><br><span class="line">    NSString *result5 = [string stringByReplacingOccurrencesOfString:@&quot;a&quot; withString:@&quot;替换&quot; options:NSRegularExpressionSearch range:NSMakeRange(0, string.length - 2)];</span><br><span class="line">    NSLog(@&quot;%@&quot;, result5);</span><br><span class="line">    //输出:   3EWRs 替换;af</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    //替换(指定范围)</span><br><span class="line">    NSString *result6 = [string stringByReplacingCharactersInRange:NSMakeRange(0, string.length) withString:@&quot;替换&quot;];</span><br><span class="line">    NSLog(@&quot;%@&quot;, result6);</span><br><span class="line">    //输出:   替换</span><br></pre></td></tr></table></figure>
-<h4 id="字符串翻译"><a href="#字符串翻译" class="headerlink" title="字符串翻译"></a>字符串翻译</h4><p>######翻译选项:</p>
-<table>
-<thead>
-<tr>
-<th>翻译选择</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>NSStringTransformLatinToKatakana</td>
-<td>拉丁-&gt;片假名</td>
-</tr>
-<tr>
-<td>NSStringTransformLatinToHiragana</td>
-<td>拉丁-&gt;平假名</td>
-</tr>
-<tr>
-<td>NSStringTransformLatinToHangul</td>
-<td>拉丁-&gt;韩语</td>
-</tr>
-<tr>
-<td>NSStringTransformLatinToArabic</td>
-<td>拉丁-&gt;阿拉伯语</td>
-</tr>
-<tr>
-<td>NSStringTransformLatinToHebrew</td>
-<td>拉丁-&gt;希伯来语</td>
-</tr>
-<tr>
-<td>NSStringTransformLatinToThai</td>
-<td>拉丁-&gt;泰国</td>
-</tr>
-<tr>
-<td>NSStringTransformLatinToCyrillic</td>
-<td>拉丁-&gt;西里尔字母</td>
-</tr>
-<tr>
-<td>NSStringTransformLatinToGreek</td>
-<td>拉丁-&gt;希腊</td>
-</tr>
-<tr>
-<td>NSStringTransformToLatin</td>
-<td>拉丁</td>
-</tr>
-<tr>
-<td>NSStringTransformMandarinToLatin</td>
-<td>普通话-&gt;拉丁</td>
-</tr>
-<tr>
-<td>NSStringTransformHiraganaToKatakana</td>
-<td>平假名-&gt;片假名</td>
-</tr>
-<tr>
-<td>NSStringTransformFullwidthToHalfwidth</td>
-<td>全角-&gt;半角</td>
-</tr>
-<tr>
-<td>NSStringTransformToXMLHex</td>
-<td>XML16进制</td>
-</tr>
-<tr>
-<td>NSStringTransformToUnicodeName</td>
-<td>Unicode名</td>
-</tr>
-<tr>
-<td>NSStringTransformStripCombiningMarks</td>
-<td>结合地带商标</td>
-</tr>
-<tr>
-<td>NSStringTransformStripDiacritics</td>
-<td>带音符</td>
-</tr>
-</tbody>
-</table>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">    //////////字符串翻译//////////</span><br><span class="line">    NSString *dalian = @&quot;大连&quot;;</span><br><span class="line">    NSString *result = [dalian stringByApplyingTransform:NSStringTransformMandarinToLatin reverse:NO];</span><br><span class="line">    </span><br><span class="line">    NSLog(@&quot;%@&quot;, result);</span><br><span class="line">    //输出:   dà lián</span><br></pre></td></tr></table></figure>
-<h4 id="字符串写入"><a href="#字符串写入" class="headerlink" title="字符串写入"></a>字符串写入</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">    //////////字符串写入//////////</span><br><span class="line">    //写入到指定路径,编码的文件中</span><br><span class="line">    [string writeToFile:@&quot;/Users/Desktop/LuisX.txt&quot; atomically:YES encoding:NSUTF8StringEncoding error:nil];</span><br><span class="line">    </span><br><span class="line">    //写入到指定URL,编码的文件中</span><br><span class="line">    [string writeToURL:[NSURL URLWithString:@&quot;file://LuisX.text&quot;] atomically:YES encoding:NSUTF8StringEncoding error:nil];</span><br></pre></td></tr></table></figure>
-<h1 id="NSMutableString"><a href="#NSMutableString" class="headerlink" title="NSMutableString"></a>NSMutableString</h1><blockquote>
-<p>继承自NSString<br>NSString中的方法在NSMutableString都可以使用<br>NSMutableString是动态的字符串，可以动态的添加，修改，删除等</p>
-</blockquote>
-<h4 id="可变字符串分配容量"><a href="#可变字符串分配容量" class="headerlink" title="可变字符串分配容量"></a>可变字符串分配容量</h4><blockquote>
-<p>提前指定的容量，知识用于内存优化，实际大小可以大于设置的容量capacity</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">   //////////字符串分配容量//////////</span><br><span class="line">    </span><br><span class="line">   //1.初始化容量为Capacity大小的字符串  (需要手动释放内存)</span><br><span class="line">   NSMutableString *mutableStr1 = [[NSMutableString alloc] initWithCapacity:20];</span><br><span class="line">    </span><br><span class="line">   //2.初始化容量为Capacity大小的字符串  (不需要手动释放内存)</span><br><span class="line">   NSMutableString *mutableStr2 = [NSMutableString stringWithCapacity:20];</span><br></pre></td></tr></table></figure>
-<h4 id="可变字符串扩展方法"><a href="#可变字符串扩展方法" class="headerlink" title="可变字符串扩展方法"></a>可变字符串扩展方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">    NSMutableString *str = [NSMutableString stringWithString:@&quot;string&quot;];</span><br><span class="line">    </span><br><span class="line">    //////////插入//////////</span><br><span class="line">    [str insertString:@&quot;123&quot; atIndex:2];</span><br><span class="line">    NSLog(@&quot;%@&quot;, str);</span><br><span class="line">    //输出:   st123ring</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    //////////删除//////////</span><br><span class="line">    [str deleteCharactersInRange:NSMakeRange(2, 2)];</span><br><span class="line">    NSLog(@&quot;%@&quot;, str);</span><br><span class="line">    //输出:   st3ring</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    //////////拼接//////////</span><br><span class="line">    [str appendString:@&quot;456&quot;];</span><br><span class="line">    NSLog(@&quot;%@&quot;, str);</span><br><span class="line">    //输出:   st3ring456</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    //////////格式化拼接//////////</span><br><span class="line">    [str appendFormat:@&quot;7 89&quot;];</span><br><span class="line">    NSLog(@&quot;%@&quot;, str);</span><br><span class="line">    //输出:   st3ring4567 89</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    //////////设置新字符串//////////</span><br><span class="line">    [str setString:@&quot;string&quot;];</span><br><span class="line">    NSLog(@&quot;%@&quot;, str);</span><br><span class="line">    //输出:   string</span><br><span class="line"></span><br><span class="line">    //////////字符串替换//////////</span><br><span class="line">    //1.指定范围替换</span><br><span class="line">    [str1 replaceCharactersInRange:NSMakeRange(2, 2) withString:@&quot;123&quot;];</span><br><span class="line">    NSLog(@&quot;%@&quot;, str1);</span><br><span class="line">    //输出:   st123ng</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    //2.指定字符串,条件,范围替换</span><br><span class="line">    [str1 replaceOccurrencesOfString:@&quot;123&quot; withString:@&quot;--&quot; options:NSRegularExpressionSearch range:NSMakeRange(0, str1.length)];</span><br><span class="line">    NSLog(@&quot;%@&quot;, str1);</span><br><span class="line">    //输出:   st--ng</span><br></pre></td></tr></table></figure>
+            <h4 id="NSRange-范围"><a href="#NSRange-范围" class="headerlink" title="NSRange  (范围)"></a>NSRange  (范围)</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">    //////////范围结构体//////////</span><br><span class="line">    NSRange range = NSMakeRange(0, 10);</span><br><span class="line">    NSLog(@&quot;位置:%ld  长度:%ld&quot;, range.location, range.length);</span><br><span class="line">    //输出:   位置:0  长度:10</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    //////////结构体转字符串//////////</span><br><span class="line">    NSString *rangeStr = NSStringFromRange(range);</span><br><span class="line">    NSLog(@&quot;%@&quot;, rangeStr);</span><br><span class="line">    //输出:   &#123;0, 10&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="CGPoint-点坐标"><a href="#CGPoint-点坐标" class="headerlink" title="CGPoint  (点坐标)"></a>CGPoint  (点坐标)</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">    //////////点坐标结构体//////////</span><br><span class="line">CGPoint point = CGPointMake(0, 10);</span><br><span class="line">    CGPoint point0 = CGPointZero;</span><br><span class="line">    NSLog(@&quot;X坐标:%.f    Y坐标:%.f&quot;, point.x, point.y);</span><br><span class="line">    NSLog(@&quot;X坐标:%.f    Y坐标:%.f&quot;, point0.x, point0.y);</span><br><span class="line">    //输出:   X坐标:0    Y坐标:10</span><br><span class="line">    //输出:   X坐标:0    Y坐标:0</span><br><span class="line"></span><br><span class="line">//////////结构体转字符串//////////</span><br><span class="line">    NSString *pointStr = NSStringFromCGPoint(point);</span><br><span class="line">    NSLog(@&quot;%@&quot;, pointStr);</span><br><span class="line">    //输出:   &#123;0, 10&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="CGSize-尺寸"><a href="#CGSize-尺寸" class="headerlink" title="CGSize  (尺寸)"></a>CGSize  (尺寸)</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">    //////////尺寸结构体//////////</span><br><span class="line">CGSize size = CGSizeMake(0, 10);</span><br><span class="line">    CGSize size0 = CGSizeZero;</span><br><span class="line">    NSLog(@&quot;宽:%.f    高:%.f&quot;, size.width, size.height);</span><br><span class="line">    NSLog(@&quot;宽:%.f    高:%.f&quot;, size0.width, size0.height);</span><br><span class="line">    //输出:   宽:0    高:10</span><br><span class="line">    //输出:   宽:0    高:0</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line">//////////结构体转字符串//////////</span><br><span class="line">    NSString *sizeStr = NSStringFromCGSize(size);</span><br><span class="line">NSLog(@&quot;%@&quot;, sizeStr);</span><br><span class="line">    //输出:   &#123;0, 10&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="CGRect-矩形"><a href="#CGRect-矩形" class="headerlink" title="CGRect  (矩形)"></a>CGRect  (矩形)</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">    //////////矩形结构体//////////</span><br><span class="line">CGRect rect = CGRectMake(0, 10, 0, 10);</span><br><span class="line">    CGRect rect0 = CGRectZero;</span><br><span class="line">    CGRect rectNull = CGRectNull;</span><br><span class="line">    NSLog(@&quot;X坐标:%.f  Y坐标:%.f  宽:%.f    高:%.f&quot;, rect.origin.x, rect.origin.y, rect.size.width, rect.size.height);</span><br><span class="line">    NSLog(@&quot;X坐标:%.f  Y坐标:%.f  宽:%.f    高:%.f&quot;, rect0.origin.x, rect0.origin.y, rect0.size.width, rect0.size.height);</span><br><span class="line">    NSLog(@&quot;X坐标:%.f  Y坐标:%.f  宽:%.f    高:%.f&quot;, rectNull.origin.x, rectNull.origin.y, rectNull.size.width, rectNull.size.height);</span><br><span class="line">    //输出:   X坐标:0       Y坐标:10      宽:0    高:10</span><br><span class="line">    //输出:   X坐标:0       Y坐标:0       宽:0    高:0</span><br><span class="line">    //输出:   X坐标:inf     Y坐标:inf     宽:0    高:0</span><br><span class="line"></span><br><span class="line">//////////结构体转字符串//////////</span><br><span class="line">    NSString *rectStr = NSStringFromCGRect(rect);</span><br><span class="line">NSLog(@&quot;%@&quot;, rectStr);</span><br><span class="line">//输出:   &#123;&#123;0, 10&#125;, &#123;0, 10&#125;&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="CGVector-矢量"><a href="#CGVector-矢量" class="headerlink" title="CGVector  (矢量)"></a>CGVector  (矢量)</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">    //////////矢量结构体//////////</span><br><span class="line">CGVector vector = CGVectorMake(0, 10);</span><br><span class="line">    NSLog(@&quot;xy:%.f  dy:%.f&quot;, vector.dx, vector.dy);</span><br><span class="line">    //输出:   xy:0  dy:10</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">//////////结构体转字符串//////////</span><br><span class="line">    NSString *vectorStr = NSStringFromCGVector(vector);</span><br><span class="line">    NSLog(@&quot;%@&quot;, vectorStr);</span><br><span class="line">    //输出:   &#123;0, 10&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="UIEdgeInsets-UI边缘"><a href="#UIEdgeInsets-UI边缘" class="headerlink" title="UIEdgeInsets  (UI边缘)"></a>UIEdgeInsets  (UI边缘)</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">    //////////UI边缘结构体//////////</span><br><span class="line">UIEdgeInsets edgeInsets = UIEdgeInsetsMake(10, 10, 10, 10);</span><br><span class="line">    NSLog(@&quot;上:%.f   左:%.f   下:%.f   右:%.f&quot;, edgeInsets.top, edgeInsets.left, edgeInsets.bottom, edgeInsets.right);</span><br><span class="line">    //输出:   上:10   左:10   下:10   右:10</span><br><span class="line"></span><br><span class="line">//////////结构体转字符串//////////</span><br><span class="line">    NSString *edgeInsetsStr = NSStringFromUIEdgeInsets(edgeInsets);</span><br><span class="line">    NSLog(@&quot;%@&quot;, edgeInsetsStr);</span><br><span class="line">    //输出:   &#123;10, 10, 10, 10&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="UIOffset-UI偏移"><a href="#UIOffset-UI偏移" class="headerlink" title="UIOffset  (UI偏移)"></a>UIOffset  (UI偏移)</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">    //////////UI偏移结构体//////////</span><br><span class="line">UIOffset offset = UIOffsetMake(10, 10);</span><br><span class="line">    NSLog(@&quot;水平:%.f 竖直:%.f&quot;, offset.horizontal, offset.vertical);</span><br><span class="line"></span><br><span class="line">//////////结构体转字符串//////////</span><br><span class="line">    NSString *offsetStr = NSStringFromUIOffset(offset);</span><br><span class="line">    NSLog(@&quot;%@&quot;, offsetStr);</span><br><span class="line">    //输出:   &#123;10, 10&#125;</span><br></pre></td></tr></table></figure>
 
           
         
