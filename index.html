@@ -456,50 +456,17 @@
 
       
         
-          
-            <h3 id="类目-Category"><a href="#类目-Category" class="headerlink" title="类目(Category)"></a>类目(Category)</h3><blockquote>
+          <h3 id="类目-Category"><a href="#类目-Category" class="headerlink" title="类目(Category)"></a>类目(Category)</h3><blockquote>
 <p>(1).为已知的类添加新的方法，无论是否知道类的源代码，这些类包括自己定义的类和系统已有的类。<br>(2).将类的实现分散到多个不同的文件中，将多个类目的声明放入同一个.h文件中，将实现放入多个.m方法中。<br>(3).使用类目创建对私有方法的前向引用，就是为类创建私有方法。<br>(4).向对象添加非正式协议，现在逐渐被正式协议做替代。<br><strong>注意:类目里面只能写方法,不能写声明和属性,所以,类目不能作为接口来用</strong></p>
 </blockquote>
 <p>注意：</p>
 <blockquote>
-<p>1、类目无法向已有类中添加实例变量。<br>2、如果类目中的方法和已有类中的方法名称冲突时，类目中的方法优先级高,如果方法名冲突,已有类中的原始方法便无法使用。<br>3、在使用类目的时候,最好是将自己扩展的方法和原始方法区分开来。</p>
-</blockquote>
-<p><img src="http://upload-images.jianshu.io/upload_images/1519620-f2e443c22e836fdb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="创建Objective-C文件"></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1519620-39cbe9350ab9be8b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="创建类目文件"></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1519620-892affeb8a90e56a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="生成类目文件"></p>
-<p>NSString+LuisX.h文件中<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">&lt;Foundation/Foundation.h&gt;</span></span></span><br><span class="line"><span class="meta">#pragma mark - NSString:分类类型 LuisX:分类名 </span></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">NSString</span> (<span class="title">LuisX</span>) </span>&#123;</span><br><span class="line">  <span class="comment">//不能在分类中定义成员</span></span><br><span class="line">&#125;   </span><br><span class="line"></span><br><span class="line">- (<span class="built_in">NSInteger</span>)getMyStringLength;         <span class="comment">//声明实例方法</span></span><br><span class="line">+ (<span class="built_in">NSString</span> *)getHomeDirectory;         <span class="comment">//声明类方法</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure></p>
-<p>NSString+LuisX.m文件中</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">"NSString+LuisX.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">NSString</span> (<span class="title">LuisX</span>)</span></span><br><span class="line"><span class="comment">//实现实例方法</span></span><br><span class="line">- (<span class="built_in">NSInteger</span>)getMyStringLength&#123;</span><br><span class="line">    <span class="built_in">NSInteger</span> stringLength = [<span class="keyword">self</span> length];</span><br><span class="line">    <span class="keyword">return</span> stringLength;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//实现类方法</span></span><br><span class="line">+ (<span class="built_in">NSString</span> *)getHomeDirectory&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">NSHomeDirectory</span>();</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
-<p>类目演示</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">    <span class="comment">//////////类目演示//////////</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#import <span class="meta-string">&lt;Foundation/Foundation.h&gt;</span></span></span><br><span class="line"><span class="meta">#import <span class="meta-string">"NSString+LuisX.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> main(<span class="keyword">int</span> argc, <span class="keyword">const</span> <span class="keyword">char</span> * argv[]) &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">@autoreleasepool</span> &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="built_in">NSString</span> *str = <span class="string">@"FengXu"</span>;</span><br><span class="line">        <span class="built_in">NSInteger</span> length = [str getMyStringLength];</span><br><span class="line">        <span class="built_in">NSString</span> *homeDicStr = [<span class="built_in">NSString</span> getHomeDirectory];</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"实例方法:  %ld"</span>, length);</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"类方法: %@"</span>, homeDicStr);</span><br><span class="line">        <span class="comment">//输出:   实例方法:  6</span></span><br><span class="line">        <span class="comment">//输出:   类方法: /Users/apple</span></span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="延展-Extension"><a href="#延展-Extension" class="headerlink" title="延展(Extension)"></a>延展(Extension)</h3><blockquote>
-<p>(1).延展的作用就是定义自己的私有方法。<br>(2).在自己类的实现文件中添加类目(匿名类目)来声明私有方法。(只有本类的.m文件中才能使用)。<br>(3).形式和类目相同，不用新创建文件，只是把类目的interface地方的文件放在了你需要扩展的类的.m文件里边。</p>
-</blockquote>
-<p>Father.h文件中</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">&lt;Foundation/Foundation.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">Father</span> : <span class="title">NSObject</span></span></span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)work;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
-<p>Father.m文件中</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">"Father.h"</span></span></span><br><span class="line"><span class="comment">//╭--------------------延展(管理私有)--------------------╮</span></span><br><span class="line"><span class="comment">//@interface...@end可省略，但不建议。(方便看出哪些是私有的方法)</span></span><br><span class="line"><span class="comment">//声明私有，()中省略了private</span></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">Father</span> ()</span></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">copy</span>) <span class="built_in">NSString</span> *company;</span><br><span class="line">- (<span class="keyword">void</span>)showMyInfo;</span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"><span class="comment">//╰--------------------延展(管理私有)--------------------╯</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">Father</span></span>&#123;</span><br><span class="line">    <span class="comment">//此处用来定义属性(私有属性)</span></span><br><span class="line">    <span class="built_in">NSString</span> *_name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)work&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"公有方法"</span>);</span><br><span class="line">    [<span class="keyword">self</span> showMyInfo];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)showMyInfo&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"私有方法"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
-<p>延展演示</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">    <span class="comment">//////////延展演示//////////</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#import <span class="meta-string">&lt;Foundation/Foundation.h&gt;</span></span></span><br><span class="line"><span class="meta">#import <span class="meta-string">"Father.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> main(<span class="keyword">int</span> argc, <span class="keyword">const</span> <span class="keyword">char</span> * argv[]) &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">@autoreleasepool</span> &#123;</span><br><span class="line">        </span><br><span class="line">        Father *father = [[Father alloc] init];</span><br><span class="line">        [father work];</span><br><span class="line">        <span class="comment">//输出:   公有方法</span></span><br><span class="line">        <span class="comment">//输出:   私有方法</span></span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="协议-Protocol"><a href="#协议-Protocol" class="headerlink" title="协议(Protocol)"></a>协议(Protocol)</h3><blockquote>
-<p>(1).协议声明了可以被其他的类实现方法。协议本身并不会去实现。<br>(2).协议不是类，只是一个其他对象可以实现的接口。<br>(3).一个类可以通过协议,用来遵循多个类中的方法,这样可以做到多继承的效果</p>
-</blockquote>
-<p>注意:</p>
-<blockquote>
-<p>@required 必须方法 (默认)<br>@optional 可选方法</p>
-</blockquote>
-<p>Girl.h文件中</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">&lt;Foundation/Foundation.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#warning ▧▧▧▧▧▧▧▧▧▧ 1.声明协议 ▧▧▧▧▧▧▧▧▧▧</span></span><br><span class="line"><span class="class"><span class="keyword">@protocol</span> <span class="title">MarriageDelegate</span> &lt;<span class="title">NSObject</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@required</span>       <span class="comment">//必须方法(默认)</span></span><br><span class="line">- (<span class="keyword">void</span>)makeMoney;</span><br><span class="line">- (<span class="keyword">void</span>)satisfyHer;</span><br><span class="line"><span class="keyword">@optional</span>       <span class="comment">//可选方法</span></span><br><span class="line">- (<span class="keyword">void</span>)cooking;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">Girl</span> : <span class="title">NSObject</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#warning ▧▧▧▧▧▧▧▧▧▧ 2.设置代理人属性 ▧▧▧▧▧▧▧▧▧▧</span></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">assign</span>) <span class="keyword">id</span>&lt;Marriage&gt; delegate;</span><br><span class="line">- (<span class="keyword">void</span>)buybuybuy;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
-<p>Girl.m文件中</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">"Girl.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">Girl</span></span></span><br><span class="line">  </span><br><span class="line">- (<span class="keyword">void</span>)buybuybuy&#123;</span><br><span class="line"><span class="meta">#warning ▧▧▧▧▧▧▧▧▧▧ 3.代理人执行方法 ▧▧▧▧▧▧▧▧▧▧</span></span><br><span class="line">    [<span class="keyword">self</span>.delegate makeMoney];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
-<p>Boy.h文件中</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">&lt;Foundation/Foundation.h&gt;</span></span></span><br><span class="line"><span class="meta">#import <span class="meta-string">"Girl.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#warning ▧▧▧▧▧▧▧▧▧▧ 4.签订协议 (当前类中要实现必须方法) ▧▧▧▧▧▧▧▧▧▧</span></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">Boy</span> : <span class="title">NSObject</span> &lt;<span class="title">MarriageDelegate</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
-<p>Boy.m文件中</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">"Boy.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">Boy</span></span></span><br><span class="line">  </span><br><span class="line"><span class="meta">#warning ▧▧▧▧▧▧▧▧▧▧ 6.实现协议中声明的必须方法 ▧▧▧▧▧▧▧▧▧▧</span></span><br><span class="line">- (<span class="keyword">void</span>)makeMoney&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"赚钱"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)satisfyHer&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"亲吻"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
-<p>协议演示</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">    <span class="comment">//////////协议演示//////////</span></span><br><span class="line"> </span><br><span class="line"><span class="meta">#import <span class="meta-string">&lt;Foundation/Foundation.h&gt;</span></span></span><br><span class="line"><span class="meta">#import <span class="meta-string">"Girl.h"</span></span></span><br><span class="line"><span class="meta">#import <span class="meta-string">"Boy.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> main(<span class="keyword">int</span> argc, <span class="keyword">const</span> <span class="keyword">char</span> * argv[]) &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//////////使用代理//////////</span></span><br><span class="line">    Girl *girl = [[Girl alloc] init];</span><br><span class="line">    Boy *boy = [[Boy alloc] init];</span><br><span class="line"><span class="meta">#warning ▧▧▧▧▧▧▧▧▧▧ 5.指定代理人 ▧▧▧▧▧▧▧▧▧▧</span></span><br><span class="line">    girl.delegate = boy;</span><br><span class="line">    [girl buybuybuy];</span><br><span class="line">    <span class="comment">//输出: 赚钱</span></span><br><span class="line">  </span><br><span class="line">    <span class="comment">//判断是否对象是否遵循某些协议</span></span><br><span class="line">    <span class="built_in">BOOL</span> result = [girl conformsToProtocol:<span class="class"><span class="keyword">@protocol</span>(<span class="title">Marriage</span>)];</span></span><br><span class="line">    <span class="keyword">if</span> (result) &#123;</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"遵循Marriage协议"</span>);</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"不遵循Marriage协议"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//输出: 不遵循Marriage协议</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
+<p>1、类目无法向已有类中添加实例变量。<br>2、如果类目中的方法和已有类中的方法名称冲突时，类目中的方法优先级高,如果方法名冲突,已有类中的原始方法便无法使用。<br>3、在使用类目的时候,最好是将自己扩展的方法和原始方法区分开来。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/06/27/Objective-C/Objective-C-「类目、延展、协议」/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -616,32 +583,17 @@
 
       
         
-          
-            <blockquote>
+          <blockquote>
 <p>RunTime简称运行时。就是系统在运行的时候的一些机制，其中最主要的是消息机制。<br>RunTime是一套比较底层的纯C语言API，属于1个C语言库，包含了很多底层的C语言API。<br>在我们平时编写的OC代码中，程序运行过程时，其实最终都是转成了runtime的C语言代码。</p>
 </blockquote>
 <p> XCode7使用Runtime:<br>objc_msgSend()报错Too many arguments to function call ,expected 0,have3</p>
 <p>解决方案:  关闭msg检查机制</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1519620-56772fc38227a61d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="关闭msg检查机制"></p>
-<p>###一、发送消息</p>
-<blockquote>
-<p><strong>本质:</strong><br>方法调用的本质，就是让对象发送消息。<br><strong>方法:</strong><br>objc_msgSend(<code>id self</code>, <code>SEL op, ...</code>)</p>
-</blockquote>
-<p>Flower.h文件中</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">&lt;Foundation/Foundation.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">Flower</span> : <span class="title">NSObject</span></span></span><br><span class="line">- (<span class="keyword">void</span>)showName;</span><br><span class="line">- (<span class="keyword">void</span>)showOtherName:(<span class="built_in">NSString</span> *)otherName;</span><br><span class="line">+ (<span class="keyword">void</span>)showPrice;</span><br><span class="line">+ (<span class="keyword">void</span>)showOtherPrice:(<span class="built_in">NSString</span> *)otherPrice;</span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
-<p>Flower.m文件中</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">"Flower.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">Flower</span></span></span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)showName&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"LuisX"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)showOtherName:(<span class="built_in">NSString</span> *)otherName&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, otherName);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">+ (<span class="keyword">void</span>)showPrice&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"100"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">+ (<span class="keyword">void</span>)showOtherPrice:(<span class="built_in">NSString</span> *)otherPrice&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, otherPrice);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
-<p>RuntimeViewController.m文件中(消息机制应用):</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#pragma     //////////消息机制//////////</span></span><br><span class="line"><span class="meta">#import <span class="meta-string">"RuntimeViewController.h"</span></span></span><br><span class="line"><span class="meta">#import <span class="meta-string">"Flower.h"</span></span></span><br><span class="line"><span class="meta">#import <span class="meta-string">&lt;objc/message.h&gt;</span>          //必须导入</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">RuntimeViewController</span> ()</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">RuntimeViewController</span></span></span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)viewDidLoad &#123;</span><br><span class="line">  </span><br><span class="line">    [<span class="keyword">super</span> viewDidLoad];</span><br><span class="line">   Flower *flower = [Flower new];</span><br><span class="line">  </span><br><span class="line">    <span class="comment">//////////调用实例方法//////////</span></span><br><span class="line">    [flower showName];</span><br><span class="line">    [flower showOtherName:<span class="string">@"FX"</span>];</span><br><span class="line">    <span class="comment">//本质(使用RunTime):对象发送消息</span></span><br><span class="line">    objc_msgSend(flower, <span class="keyword">@selector</span>(showName));</span><br><span class="line">    objc_msgSend(flower, <span class="keyword">@selector</span>(showOtherName:), <span class="string">@"FX"</span>);</span><br><span class="line">    <span class="comment">//输出:   LuisX</span></span><br><span class="line">    <span class="comment">//输出:   FX</span></span><br><span class="line">    <span class="comment">//输出:   LuisX</span></span><br><span class="line">    <span class="comment">//输出:   FX</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">//////////调用类方法//////////</span></span><br><span class="line">    [Flower showPrice];</span><br><span class="line">    [Flower showOtherPrice:<span class="string">@"200"</span>];</span><br><span class="line">    <span class="comment">//本质(使用RunTime):类发送消息</span></span><br><span class="line">    objc_msgSend([Flower class], <span class="keyword">@selector</span>(showPrice));</span><br><span class="line">    objc_msgSend([Flower class], <span class="keyword">@selector</span>(showOtherPrice:), <span class="string">@"200"</span>);</span><br><span class="line">    <span class="comment">//输出:   100</span></span><br><span class="line">    <span class="comment">//输出:   200</span></span><br><span class="line">    <span class="comment">//输出:   100</span></span><br><span class="line">    <span class="comment">//输出:   200</span></span><br><span class="line">  </span><br><span class="line">&#125; </span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
-<p>###二、方法交换</p>
-<blockquote>
-<p><strong>场景:</strong><br>系统自带的方法功能不够，保持原有的功能给系统自带的方法扩展一些功能。<br><strong>方法:</strong><br>​class_getClassMethod(<code>__unsafe_unretained Class cls</code>, <code>SEL name</code>)<br>​method_exchangeImplementations(<code>Method m1</code>, <code>Method m2</code>)<br><strong>说明:</strong><br>​Ivar : 成员变量    如果要是动态创建/修改/查看属性，可以使用Ivar。<br>Method : 成员方法  如果要是动态创建/修改/查看方法，可以使用Method。<br><strong>拓展阅读:</strong><br>​ <a href="http://blog.csdn.net/woaifen3344/article/details/50505808" target="_blank" rel="external">RunTime Method</a></p>
-</blockquote>
-<p>RuntimeViewController.m文件中(方法交换应用):</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#pragma     //////////方法交换//////////</span></span><br><span class="line"><span class="meta">#import <span class="meta-string">"RuntimeViewController.h"</span></span></span><br><span class="line"><span class="meta">#import <span class="meta-string">&lt;objc/message.h&gt;</span>          //必须导入</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">RuntimeViewController</span> ()</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">RuntimeViewController</span></span></span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)viewDidLoad &#123;</span><br><span class="line">  </span><br><span class="line">    [<span class="keyword">super</span> viewDidLoad];</span><br><span class="line">    <span class="comment">//////////调用imageNamed方法//////////</span></span><br><span class="line">    <span class="built_in">UIImage</span> *image = [<span class="built_in">UIImage</span> imageNamed:<span class="string">@"1.jpg"</span>];</span><br><span class="line">    <span class="comment">//输出: 图片为空</span></span><br><span class="line">  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">UIImage</span> (<span class="title">FXImage</span>)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> *  加载分类到内存时调用</span><br><span class="line"> *</span><br><span class="line"> *  1.获取imageWithName方法地址</span><br><span class="line"> *  2.获取imageWithName方法地址</span><br><span class="line"> *  3.交换方法地址，相当于交换实现方式</span><br><span class="line"> *</span><br><span class="line"> */</span></span><br><span class="line">+ (<span class="keyword">void</span>)load&#123;</span><br><span class="line">    </span><br><span class="line">    Method imageWithName = class_getClassMethod(<span class="keyword">self</span>, <span class="keyword">@selector</span>(imageWithName:));</span><br><span class="line">    Method imageName = class_getClassMethod(<span class="keyword">self</span>, <span class="keyword">@selector</span>(imageNamed:));</span><br><span class="line">    method_exchangeImplementations(imageWithName, imageName);</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> *  自定义imageWithName方法</span><br><span class="line"> *</span><br><span class="line"> *  1.既能加载图片,又能打印</span><br><span class="line"> *  2.此时调用imageWithName相当于调用imageName(二者已经交换)</span><br><span class="line"> *</span><br><span class="line"> *  注意:不能在分类中重写系统方法imageNamed，因为会把系统的功能给覆盖掉，而且分类中不能调用super.</span><br><span class="line"> */</span></span><br><span class="line">+ (instancetype)imageWithName:(<span class="built_in">NSString</span> *)name&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">UIImage</span> *image = [<span class="keyword">self</span> imageWithName:name];</span><br><span class="line">    <span class="keyword">if</span> (image == <span class="literal">nil</span>) &#123;</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"图片为空"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> image;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
-<p>未完待续…</p>
-
-          
+<p><img src="http://upload-images.jianshu.io/upload_images/1519620-56772fc38227a61d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="关闭msg检查机制"><br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/06/23/Objective-C/Objective-C-「RunTime运行时」/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -880,41 +832,16 @@
 
       
         
-          
-            <ul>
+          <ul>
 <li>Key Value Coding(键-值-编码)<br>-NSKeyValueCoding一个非正式的协议，提供一种机制来间接访问对象的属性。</li>
 <li>KVO 就是基于 KVC 实现的关键技术之一。</li>
 <li>它是一种使用字符串标识符，间接访问对象属性的机制，而不是直接调用getter 和 setter方法。</li>
-<li>通常我们使用valueForKey 来替代getter 方法，setValue:forKey来代替setter方法<br><strong>注意: 使用KVC赋值和取值，key和属性名要保持一致，否侧会导致崩溃</strong>。</li>
-</ul>
-<h3 id="一、使用KVC"><a href="#一、使用KVC" class="headerlink" title="一、使用KVC"></a>一、使用KVC</h3><blockquote>
-<p>使用KVC对属性赋值，取值</p>
-</blockquote>
-<p>People.h文件中<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">&lt;Foundation/Foundation.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">People</span> : <span class="title">NSObject</span></span>&#123;</span><br><span class="line">    <span class="built_in">NSString</span> *name;  <span class="comment">//属性</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure></p>
-<p>KVC使用<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#pragma mark     //////////KVC使用//////////</span></span><br><span class="line">    People *people = [[People alloc] init];</span><br><span class="line">    <span class="comment">//使用KVC赋值</span></span><br><span class="line">    [people setValue:<span class="string">@"LuisX"</span> forKey:<span class="string">@"name"</span>];</span><br><span class="line">    <span class="comment">//使用KVC取值</span></span><br><span class="line">    <span class="built_in">NSString</span> *name = [people valueForKey:<span class="string">@"name"</span>];</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, name);</span><br><span class="line">    <span class="comment">//输出: LuisX</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="二、键路径访问"><a href="#二、键路径访问" class="headerlink" title="二、键路径访问"></a>二、键路径访问</h3><blockquote>
-<p>使用KVC对属性的属性赋值，取值<br>KVC在按照键值路径取值时，会自动层层深入，获取对应的键值</p>
-</blockquote>
-<p>People.h文件中</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">&lt;Foundation/Foundation.h&gt;</span></span></span><br><span class="line"><span class="meta">#import <span class="meta-string">"Address.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">People</span> : <span class="title">NSObject</span></span>&#123;</span><br><span class="line">    <span class="built_in">NSString</span> *name;</span><br><span class="line">    Address *address; <span class="comment">//添加其他类属性</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
-<p>Address.h文件中</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">&lt;Foundation/Foundation.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">Address</span> : <span class="title">NSObject</span></span>&#123;    </span><br><span class="line">    <span class="built_in">NSString</span> *code;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
-<p>键路径访问<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#pragma mark     //////////键路径访问//////////</span></span><br><span class="line">    People *people = [[People alloc] init];</span><br><span class="line">    [people setValue:<span class="string">@"LuisX"</span> forKey:<span class="string">@"name"</span>];</span><br><span class="line">    <span class="built_in">NSString</span> *name = [people valueForKey:<span class="string">@"name"</span>];</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, name);</span><br><span class="line">    <span class="comment">//输出:   LuisX</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//方式一:  使用setValue...forKey赋值   valueForKeyPath取值</span></span><br><span class="line">    Address *address = [[Address alloc] init];</span><br><span class="line">    [address setValue:<span class="string">@"10010"</span> forKey:<span class="string">@"code"</span>];</span><br><span class="line">    [people setValue:address forKey:<span class="string">@"address"</span>];</span><br><span class="line">    <span class="built_in">NSString</span> *code1 = [people valueForKeyPath:<span class="string">@"address.code"</span>];</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"方式1:%@"</span>, code1);</span><br><span class="line">    <span class="comment">//输出:   方式1:10010</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//方式二:  使用setValue...forKeyPath赋值   valueForKeyPath取值</span></span><br><span class="line">    [people setValue:<span class="string">@"10010"</span> forKeyPath:<span class="string">@"address.code"</span>];</span><br><span class="line">    <span class="built_in">NSString</span> *code2 = [people valueForKeyPath:<span class="string">@"address.code"</span>];</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"方式2:%@"</span>, code2);</span><br><span class="line">    <span class="comment">//输出:   方式2:10010</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="三、自动封装基本数据类型"><a href="#三、自动封装基本数据类型" class="headerlink" title="三、自动封装基本数据类型"></a>三、自动封装基本数据类型</h3><blockquote>
-<p>使用KVC间接修改对象属性时，系统会自动判断对象属性的类型，并完成转换。</p>
-</blockquote>
-<p>People.h文件中</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">&lt;Foundation/Foundation.h&gt;</span></span></span><br><span class="line"><span class="meta">#import <span class="meta-string">"Address.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">People</span> : <span class="title">NSObject</span></span>&#123;</span><br><span class="line">    <span class="built_in">NSString</span> *name;</span><br><span class="line">    Address *address;</span><br><span class="line">    <span class="built_in">NSInteger</span> number; <span class="comment">//添加基本数据类型属性</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
-<p>自动封装基本数据类型<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#pragma mark     //////////自动封装基本数据类型//////////</span></span><br><span class="line">    People *people = [[People alloc] init];</span><br><span class="line">    [people setValue:<span class="string">@"88"</span> forKey:<span class="string">@"number"</span>];</span><br><span class="line">    <span class="built_in">NSString</span> *number = [people valueForKey:<span class="string">@"number"</span>];  <span class="comment">//NSInteger类型转字符串</span></span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, number);</span><br><span class="line">    <span class="comment">//输出: 88</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="四、操作集合"><a href="#四、操作集合" class="headerlink" title="四、操作集合"></a>四、操作集合</h3><blockquote>
-<p>KVC按照键值路径取值时，如果对象不包含指定的键值，会自动进入对象内部，查找对象属性(例如数组内部)</p>
-</blockquote>
-<p>People.h文件中</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">&lt;Foundation/Foundation.h&gt;</span></span></span><br><span class="line"><span class="meta">#import <span class="meta-string">"Address.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">People</span> : <span class="title">NSObject</span></span>&#123;</span><br><span class="line">    <span class="built_in">NSString</span> *name;</span><br><span class="line">    Address *address;</span><br><span class="line">    <span class="built_in">NSInteger</span> number;</span><br><span class="line">    <span class="built_in">NSArray</span> *morePeople;    <span class="comment">//添加集合类型属性</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
-<p>操作集合<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#pragma mark     //////////操作集合//////////</span></span><br><span class="line">    People *people = [[People alloc] init];</span><br><span class="line">    </span><br><span class="line">    People *p1 = [[People alloc] init];</span><br><span class="line">    People *p2 = [[People alloc] init];</span><br><span class="line">    People *p3 = [[People alloc] init];</span><br><span class="line">    [p1 setValue:<span class="string">@"65"</span> forKey:<span class="string">@"number"</span>];</span><br><span class="line">    [p2 setValue:<span class="string">@"77"</span> forKey:<span class="string">@"number"</span>];</span><br><span class="line">    [p3 setValue:<span class="string">@"99"</span> forKey:<span class="string">@"number"</span>];</span><br><span class="line">    <span class="built_in">NSArray</span> *array = [<span class="built_in">NSArray</span> arrayWithObjects:p1, p2, p3, <span class="literal">nil</span>];</span><br><span class="line">    [people setValue:array forKey:<span class="string">@"morePeople"</span>];</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"数组中元素的number值:%@"</span>, [people valueForKeyPath:<span class="string">@"morePeople.number"</span>]);</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"元素个数:%@"</span>, [people valueForKeyPath:<span class="string">@"morePeople.@count"</span>]);</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"元素最大:%@"</span>, [people valueForKeyPath:<span class="string">@"morePeople.@max.number"</span>]);</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"元素最小:%@"</span>, [people valueForKeyPath:<span class="string">@"morePeople.@min.number"</span>]);</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"元素平均:%@"</span>, [people valueForKeyPath:<span class="string">@"morePeople.@avg.number"</span>]);</span><br><span class="line">    <span class="comment">//输出: 数组中元素的number值:(65, 77, 99)</span></span><br><span class="line">    <span class="comment">//输出: 元素个数:3</span></span><br><span class="line">    <span class="comment">//输出: 元素最大:99</span></span><br><span class="line">    <span class="comment">//输出: 元素最小:65</span></span><br><span class="line">    <span class="comment">//输出: 元素平均:80.333333333333333333333333333333333333</span></span><br></pre></td></tr></table></figure></p>
-<p>拓展阅读:<br><a href="http://blog.csdn.net/omegayy/article/details/7381301" target="_blank" rel="external">Objective-C KVC机制</a><br><a href="http://blog.csdn.net/wzzvictory/article/details/9674431" target="_blank" rel="external">KVC/KVO原理详解及编程指南</a><br><a href="http://www.cocoachina.com/industry/20140224/7866.html" target="_blank" rel="external">iOS KVC &amp; KVO</a></p>
-
-          
+<li>通常我们使用valueForKey 来替代getter 方法，setValue:forKey来代替setter方法<br><strong>注意: 使用KVC赋值和取值，key和属性名要保持一致，否侧会导致崩溃</strong>。
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/06/21/Objective-C/Objective-C-「KVC键值编码」/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -1031,31 +958,16 @@
 
       
         
-          
-            <ul>
+          <ul>
 <li>Key Value Observing(键-值-观察)</li>
 <li>被观察者和观察者同时实现一个协议: NSKeyValueObserving</li>
 <li>源于设计模式中的观察者模式。</li>
-<li>指定被观察对象的属性被修改后，KVO就会自动通知相应的观察者。<br><strong>注意:不要忘记解除注册，否则会导致资源泄露</strong></li>
-</ul>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#pragma mark   //////////KVO方法//////////</span></span><br><span class="line"><span class="comment">//注册监听</span></span><br><span class="line">- (<span class="keyword">void</span>)addObserver:(<span class="built_in">NSObject</span> *)observer forKeyPath:(<span class="built_in">NSString</span> *)keyPath options:(<span class="built_in">NSKeyValueObservingOptions</span>)options context:(nullable <span class="keyword">void</span> *)context;</span><br><span class="line"><span class="comment">//移除监听</span></span><br><span class="line">- (<span class="keyword">void</span>)removeObserver:(<span class="built_in">NSObject</span> *)observer forKeyPath:(<span class="built_in">NSString</span> *)keyPath;</span><br><span class="line"><span class="comment">//监听回调</span></span><br><span class="line">- (<span class="keyword">void</span>)observeValueForKeyPath:(nullable <span class="built_in">NSString</span> *)keyPath ofObject:(nullable <span class="keyword">id</span>)object change:(nullable <span class="built_in">NSDictionary</span>&lt;<span class="built_in">NSString</span>*, <span class="keyword">id</span>&gt; *)change context:(nullable <span class="keyword">void</span> *)context;</span><br></pre></td></tr></table></figure>
-<h3 id="使用KVO"><a href="#使用KVO" class="headerlink" title="使用KVO"></a>使用KVO</h3><p>Student.h文件<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">&lt;Foundation/Foundation.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">Student</span> : <span class="title">NSObject</span></span></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">copy</span>) <span class="built_in">NSString</span> *name;</span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">assign</span>) <span class="built_in">NSInteger</span> age;</span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure></p>
-<p>KVOViewController.m文件中<br>1.监听Student的属性</p>
-<blockquote>
-<p>observer:     观察者对象<br>keyPath:      被观察的属性<br>options:      设定通知观察者时传递的属性值<br>context:      一些其他的需要传递给观察者的上下文信息</p>
-</blockquote>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">"KVOViewController.h"</span></span></span><br><span class="line"><span class="meta">#import <span class="meta-string">"Student.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">KVOViewController</span> ()</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">KVOViewController</span></span>&#123;</span><br><span class="line">    Student *_student;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)viewDidLoad &#123;</span><br><span class="line">    [<span class="keyword">super</span> viewDidLoad];</span><br><span class="line">    </span><br><span class="line">    _student = [[Student alloc] init];</span><br><span class="line">    _student.name = <span class="string">@"LuisX"</span>;</span><br><span class="line">    _student.age = <span class="number">24</span>;</span><br><span class="line">    <span class="comment">//为属性添加观察者</span></span><br><span class="line">    [_student addObserver:<span class="keyword">self</span> forKeyPath:<span class="string">@"age"</span> options:<span class="built_in">NSKeyValueObservingOptionNew</span>|<span class="built_in">NSKeyValueObservingOptionOld</span> context:<span class="literal">NULL</span>];</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">UIButton</span> *button = [<span class="built_in">UIButton</span> buttonWithType:<span class="built_in">UIButtonTypeCustom</span>];</span><br><span class="line">    button.frame = <span class="built_in">CGRectMake</span>(<span class="number">100</span>, <span class="number">100</span>, <span class="number">100</span>, <span class="number">100</span>);</span><br><span class="line">    button.backgroundColor = [<span class="built_in">UIColor</span> orangeColor];</span><br><span class="line">    [<span class="keyword">self</span>.view addSubview:button];</span><br><span class="line">    [button addTarget:<span class="keyword">self</span> action:<span class="keyword">@selector</span>(changeStudentAgeValue:) forControlEvents:<span class="built_in">UIControlEventTouchUpInside</span>];</span><br><span class="line">  </span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
-<p>2.点击button修改student的属性</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- (void)changeStudentAgeValue:(UIButton *)button&#123;</span><br><span class="line">    _student.age++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>3.实现监听回调方法</p>
-<blockquote>
-<p>keyPath:   被观察的属性<br>object:     被观察者的对象<br>change:   属性值，根据上面提到的Options设置，给出对应的属性值<br>context:  上面传递的context对象</p>
-</blockquote>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//观察者通过实现下面的方法，完成对属性改变的响应</span></span><br><span class="line">- (<span class="keyword">void</span>)observeValueForKeyPath:(<span class="built_in">NSString</span> *)keyPath ofObject:(<span class="keyword">id</span>)object change:(<span class="built_in">NSDictionary</span>&lt;<span class="built_in">NSString</span> *,<span class="keyword">id</span>&gt; *)change context:(<span class="keyword">void</span> *)context&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> ([keyPath isEqualToString:<span class="string">@"age"</span>] &amp;&amp; object == _student) &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"age:%ld"</span>, _student.age);</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"old age:%@"</span>, [change objectForKey:<span class="string">@"old"</span>]);</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"new age:%@"</span>, [change objectForKey:<span class="string">@"new"</span>]);</span><br><span class="line">        <span class="comment">//输出: age:25</span></span><br><span class="line">        <span class="comment">//输出: old age:24</span></span><br><span class="line">        <span class="comment">//输出: new age:25</span></span><br><span class="line">      </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>4.移除监听</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)viewDidDisappear:(<span class="built_in">BOOL</span>)animated&#123;</span><br><span class="line">    [<span class="keyword">super</span> viewDidDisappear:animated];</span><br><span class="line">    <span class="comment">//移除观察者</span></span><br><span class="line">    [_student removeObserver:<span class="keyword">self</span> forKeyPath:<span class="string">@"age"</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
+<li>指定被观察对象的属性被修改后，KVO就会自动通知相应的观察者。<br><strong>注意:不要忘记解除注册，否则会导致资源泄露</strong>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/06/21/Objective-C/Objective-C-「KVO键值观察」/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -1172,51 +1084,17 @@
 
       
         
-          
-            <h2 id="一、属性传值"><a href="#一、属性传值" class="headerlink" title="###一、属性传值"></a>###一、属性传值</h2><blockquote>
+          <h2 id="一、属性传值"><a href="#一、属性传值" class="headerlink" title="###一、属性传值"></a>###一、属性传值</h2><blockquote>
 <p>A界面-&gt;B界面传值</p>
 </blockquote>
 <p>B_界面.h文件(接收者)<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">        <span class="comment">//////////B界面.h//////////</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//1.声明属性</span></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">copy</span>) <span class="built_in">NSString</span> *bString;</span><br></pre></td></tr></table></figure></p>
 <p>A_界面.m文件(发送者)<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">        <span class="comment">//////////A界面.m//////////</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//2.属性传值</span></span><br><span class="line">    BViewController *bVC = [BViewController new];</span><br><span class="line">    bVC.bString = <span class="string">@"A"</span>;</span><br><span class="line">    [<span class="keyword">self</span>.navigationController pushViewController:bVC animated:<span class="literal">YES</span>];</span><br></pre></td></tr></table></figure></p>
 <p>B_界面.m文件(接收者)<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">        <span class="comment">//////////B界面.m//////////</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//3.结果</span></span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"A界面→B界面:%@"</span>, <span class="keyword">self</span>.bString);</span><br><span class="line">    <span class="comment">//输出:   A界面→B界面:A</span></span><br></pre></td></tr></table></figure></p>
-<h2 id="二、方法传值"><a href="#二、方法传值" class="headerlink" title="###二、方法传值"></a>###二、方法传值</h2><blockquote>
-<p>A界面-&gt;B界面传值</p>
-</blockquote>
-<p>B_界面.m文件(接收者)<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">        <span class="comment">//////////B界面.m//////////</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//1.自定义初始化方法</span></span><br><span class="line">- (instancetype)initWithOne:(<span class="built_in">NSString</span> *)one Two:(<span class="built_in">CGFloat</span>)two&#123;</span><br><span class="line">   <span class="keyword">self</span> = [<span class="keyword">super</span> init];</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">self</span>) &#123;</span><br><span class="line"><span class="comment">//4.结果</span></span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"A界面→B界面:%@ %.2f"</span>, one, two);</span><br><span class="line">        <span class="comment">//输出: A界面→B界面:A 99.90</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">self</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>B_界面.h文件(接收者)<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">        <span class="comment">//////////B界面.h//////////</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//2.声明初始化方法</span></span><br><span class="line">- (instancetype)initWithOne:(<span class="built_in">NSString</span> *)one Two:(<span class="built_in">CGFloat</span>)two;</span><br></pre></td></tr></table></figure></p>
-<p>A_界面.m文件(发送者)<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">        <span class="comment">//////////A界面.m//////////</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//3.方法传值</span></span><br><span class="line">    BViewController *bVC = [[BViewController alloc] initWithOne:<span class="string">@"A"</span> Two:<span class="number">99.9</span>];</span><br><span class="line">    [<span class="keyword">self</span>.navigationController pushViewController:bVC animated:<span class="literal">YES</span>];</span><br></pre></td></tr></table></figure></p>
-<h2 id="三、代理传值"><a href="#三、代理传值" class="headerlink" title="###三、代理传值"></a>###三、代理传值</h2><blockquote>
-<p>B界面-&gt;A界面传值</p>
-</blockquote>
-<p>B_界面.h文件(发送者)<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">        <span class="comment">//////////B界面.h//////////</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#import <span class="meta-string">&lt;UIKit/UIKit.h&gt;</span></span></span><br><span class="line"><span class="comment">//1.声明协议和代理方法</span></span><br><span class="line"><span class="class"><span class="keyword">@protocol</span> <span class="title">BViewControllerDelegate</span> &lt;<span class="title">NSObject</span>&gt;</span></span><br><span class="line">- (<span class="keyword">void</span>)protocolSendValue:(<span class="built_in">NSString</span> *)value;</span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">BViewController</span> : <span class="title">UIViewController</span></span></span><br><span class="line"><span class="comment">//2.设置代理(ARC用weak,MRC用assign)</span></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">weak</span>) <span class="keyword">id</span> &lt;BViewControllerDelegate&gt; myDelegate;</span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure></p>
-<p>B_界面.m文件(发送者)<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">        <span class="comment">//////////B界面.m//////////</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//3.让代理执行代理方法(代理传值)</span></span><br><span class="line">    [<span class="keyword">self</span>.myDelegate protocolSendValue:<span class="string">@"B"</span>];</span><br></pre></td></tr></table></figure></p>
-<p>A_界面.m文件(接收者)<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">        <span class="comment">//////////A界面.m//////////</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//4.签订代理协议</span></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">AViewController</span> ()&lt;<span class="title">BViewControllerDelegate</span>&gt;</span></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line">  </span><br><span class="line">- (<span class="keyword">void</span>)viewDidLoad &#123;</span><br><span class="line">    [<span class="keyword">super</span> viewDidLoad];</span><br><span class="line"><span class="comment">//5.指定代理</span></span><br><span class="line">    BViewController *bVC = [BViewController new];</span><br><span class="line">    bVC.myDelegate = <span class="keyword">self</span>;</span><br><span class="line">    [<span class="keyword">self</span>.navigationController pushViewController:bVC animated:<span class="literal">YES</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#pragma mark -BViewControllerDelegate</span></span><br><span class="line"><span class="comment">//6.实现代理方法(结果)</span></span><br><span class="line">- (<span class="keyword">void</span>)protocolSendValue:(<span class="built_in">NSString</span> *)value&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"B界面→A界面:%@"</span>, value);</span><br><span class="line">    <span class="comment">//输出: B界面→A界面:B</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>#### </p>
-<h2 id="四、Block传值"><a href="#四、Block传值" class="headerlink" title="###四、Block传值"></a>###四、Block传值</h2><blockquote>
-<p>B界面-&gt;A界面传值<br>注:Block中要防止在文件中循环引用</p>
-</blockquote>
-<p>B_界面.h文件(发送者)<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">        <span class="comment">//////////B界面.h//////////</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//1.声明Block属性</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">void</span>(^ValueBlock)(<span class="built_in">NSString</span> *);</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">BViewController</span> : <span class="title">UIViewController</span></span></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">copy</span>) ValueBlock valueBlock;</span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure></p>
-<p>B_界面.m文件(发送者)<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">        <span class="comment">//////////B界面.m//////////</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//2.Block传值(代码块属性不为空)</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">self</span>.valueBlock) &#123;</span><br><span class="line">        <span class="keyword">self</span>.valueBlock(<span class="string">@"B"</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
-<p>A_界面.m文件(接收者)<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">        <span class="comment">//////////A界面.m//////////</span></span><br><span class="line"></span><br><span class="line">    BViewController *bVC = [BViewController new];</span><br><span class="line">    [<span class="keyword">self</span>.navigationController pushViewController:bVC animated:<span class="literal">YES</span>];</span><br><span class="line"><span class="comment">//3.结果(Block中要防止在文件中循环引用)</span></span><br><span class="line"> <span class="comment">//__weak typeof(self) weakSelf = self;</span></span><br><span class="line">    bVC.valueBlock = ^(<span class="built_in">NSString</span> *string)&#123;</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"B界面→A界面:%@"</span>, string);</span><br><span class="line">  <span class="comment">//输出: B界面→A界面:B</span></span><br><span class="line">    &#125;;</span><br></pre></td></tr></table></figure></p>
-<h2 id="五、通知中心传值"><a href="#五、通知中心传值" class="headerlink" title="###五、通知中心传值"></a>###五、通知中心传值</h2><blockquote>
-<p>任意界面-&gt;A界面<br>注:发送者和接收者name参数必须保持一致</p>
-</blockquote>
-<p>A_界面.m文件(接收者)<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">        <span class="comment">//////////A界面.m//////////</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//1.注册通知</span></span><br><span class="line">- (<span class="keyword">void</span>)viewDidLoad &#123;</span><br><span class="line">    [<span class="keyword">super</span> viewDidLoad];</span><br><span class="line">    [[<span class="built_in">NSNotificationCenter</span> defaultCenter] addObserver:<span class="keyword">self</span> selector:<span class="keyword">@selector</span>(acceptNotification:) name:<span class="string">@"noticeSendValue"</span> object:<span class="literal">nil</span>];</span><br><span class="line">    CViewController *cVC = [CViewController new];</span><br><span class="line">    [<span class="keyword">self</span>.navigationController pushViewController:cVC animated:<span class="literal">YES</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//2.销毁通知</span></span><br><span class="line">- (<span class="keyword">void</span>)viewDidDisappear:(<span class="built_in">BOOL</span>)animated&#123;</span><br><span class="line">    [<span class="keyword">super</span> viewDidDisappear:animated];</span><br><span class="line">    [[<span class="built_in">NSNotificationCenter</span> defaultCenter] removeObserver:<span class="keyword">self</span> name:<span class="string">@"noticeSendValue"</span> object:<span class="literal">nil</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//4.结果</span></span><br><span class="line">- (<span class="keyword">void</span>)acceptNotification:(<span class="built_in">NSNotification</span>*)notification&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>,  notification.userInfo);</span><br><span class="line">    <span class="comment">//输出:   &#123;name = text;&#125;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>C_界面.m(发送者)<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">        <span class="comment">//////////C界面.m//////////</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//3.通知传值</span></span><br><span class="line">    [[<span class="built_in">NSNotificationCenter</span> defaultCenter] postNotificationName:<span class="string">@"noticeSendValue"</span> object:<span class="keyword">self</span> userInfo:@&#123;<span class="string">@"name"</span>: <span class="string">@"text"</span>&#125;];</span><br></pre></td></tr></table></figure></p>
-<h2 id="六、单例传值"><a href="#六、单例传值" class="headerlink" title="###六、单例传值"></a>###六、单例传值</h2><blockquote>
-<p>A界面-&gt;任意界面<br>使用单例模式,编写ValueManager单例类来存储数据</p>
-</blockquote>
-<p>ValueManager.h文件(全局唯一)<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">      <span class="comment">//////////单例.h//////////</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">ValueManager</span> : <span class="title">NSObject</span></span></span><br><span class="line">+ (ValueManager *)shareValueManager;</span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">copy</span>) <span class="built_in">NSString</span> *strValue;</span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure></p>
-<p>ValueManager.m文件(全局唯一)<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">      <span class="comment">//////////单例.m//////////</span></span><br><span class="line"></span><br><span class="line">+ (ValueManager *)shareValueManager&#123;</span><br><span class="line">    <span class="keyword">static</span> ValueManager *shareValueManager = <span class="literal">nil</span>;</span><br><span class="line">    <span class="keyword">static</span> <span class="built_in">dispatch_once_t</span> onceToken;</span><br><span class="line">    <span class="built_in">dispatch_once</span>(&amp;onceToken, ^&#123;</span><br><span class="line">        shareValueManager = [ValueManager new];</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">return</span> shareValueManager;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>A_界面.m文件(发送者)<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">      <span class="comment">//////////A界面.m//////////</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//2.单例传值(存值)</span></span><br><span class="line">    ValueManager *valueManager = [ValueManager shareValueManager];</span><br><span class="line">    valueManager.strValue = <span class="string">@"Singleton"</span>;</span><br></pre></td></tr></table></figure></p>
-<p>C_界面.m文件(接收者)<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">      <span class="comment">//////////C界面.m//////////  </span></span><br><span class="line"></span><br><span class="line"><span class="comment">//3.结果(取值)</span></span><br><span class="line">    ValueManager *valueManager = [ValueManager shareValueManager];</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, valueManager.strValue);</span><br><span class="line">   <span class="comment">//输出: Singleton</span></span><br></pre></td></tr></table></figure></p>
-<h2 id="七、NSuserDefault传值"><a href="#七、NSuserDefault传值" class="headerlink" title="###七、NSuserDefault传值"></a>###七、NSuserDefault传值</h2><blockquote>
-<p>A界面-&gt;任意界面</p>
-</blockquote>
-<p>A_界面.m文件(发送者)<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">      <span class="comment">//////////A界面.m//////////</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//1.NSuserDefault传值(存值)</span></span><br><span class="line">    [[<span class="built_in">NSUserDefaults</span> standardUserDefaults] setObject:<span class="string">@"NSUserDefaults"</span> forKey:<span class="string">@"name"</span>];</span><br><span class="line">    [[<span class="built_in">NSUserDefaults</span> standardUserDefaults] synchronize];</span><br></pre></td></tr></table></figure></p>
-<p>C_界面.m文件(接收者)<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">      <span class="comment">//////////C界面.m//////////</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//2.取值</span></span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, [[<span class="built_in">NSUserDefaults</span> standardUserDefaults] objectForKey:<span class="string">@"name"</span>]);</span><br><span class="line">    <span class="comment">//输出:   NSUserDefaults</span></span><br></pre></td></tr></table></figure></p>
-
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/06/14/Objective-C/Objective-C-「传值总结」/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -1390,6 +1268,130 @@
             
               
                 
+                <a class="post-title-link" href="/2016/06/02/玩转iOS/玩转GCD(不信你看)/" itemprop="url">
+                  玩转GCD(不信你看)
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-02T00:00:00+08:00" content="2016-06-02">
+              2016-06-02
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/玩转iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">玩转iOS</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/06/02/玩转iOS/玩转GCD(不信你看)/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/02/玩转iOS/玩转GCD(不信你看)/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="GCD介绍"><a href="#GCD介绍" class="headerlink" title="GCD介绍"></a>GCD介绍</h1><hr>
+<blockquote>
+<p>Grand Central Dispatch (GCD)是Apple开发的一个多核编程的解决方法<br>基于C语言，提供了非常多强大的函数<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/06/02/玩转iOS/玩转GCD(不信你看)/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/06/02/玩转iOS/玩转NSString(不信你看)/" itemprop="url">
                   玩转NSString(不信你看)
                 </a>
@@ -1466,130 +1468,6 @@
 <h4 id="字符串属性"><a href="#字符串属性" class="headerlink" title="字符串属性"></a>字符串属性</h4><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">    <span class="comment">//////////字符串属性//////////</span></span><br><span class="line">    <span class="built_in">NSString</span> *str1 = <span class="string">@"string"</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"长度:                   %ld"</span>, str1.length);</span><br><span class="line"><span class="built_in">NSLog</span>(<span class="string">@"描述:                   %@"</span>, string.description);</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"哈希地址:                %lu"</span>, (<span class="keyword">unsigned</span> <span class="keyword">long</span>)string.hash);</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"字符串对应下标字符:        %c"</span>, [str1 characterAtIndex:<span class="number">2</span>]);</span><br><span class="line">    <span class="comment">//输出:   长度:                   6</span></span><br><span class="line">    <span class="comment">//输出:   描述:                   string</span></span><br><span class="line">    <span class="comment">//输出:   哈希地址:                10152471993823965</span></span><br><span class="line">    <span class="comment">//输出:   字符串对应下标字符:        r</span></span><br></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/06/02/玩转iOS/玩转NSString(不信你看)/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/06/02/玩转iOS/玩转GCD(不信你看)/" itemprop="url">
-                  玩转GCD(不信你看)
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-02T00:00:00+08:00" content="2016-06-02">
-              2016-06-02
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/玩转iOS/" itemprop="url" rel="index">
-                    <span itemprop="name">玩转iOS</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/06/02/玩转iOS/玩转GCD(不信你看)/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/02/玩转iOS/玩转GCD(不信你看)/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="GCD介绍"><a href="#GCD介绍" class="headerlink" title="GCD介绍"></a>GCD介绍</h1><hr>
-<blockquote>
-<p>Grand Central Dispatch (GCD)是Apple开发的一个多核编程的解决方法<br>基于C语言，提供了非常多强大的函数<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/06/02/玩转iOS/玩转GCD(不信你看)/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>

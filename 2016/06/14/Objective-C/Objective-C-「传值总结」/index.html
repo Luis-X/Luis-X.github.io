@@ -98,7 +98,7 @@ A界面-&amp;gt;B界面传值
 
 B_界面.h文件(接收者)1234        //////////B界面.h////////////1.声明属性@property (nonatomic, copy) NSString *bString;
 A_界面.m文件(发送者)123456        //////////A界面.m////////////2.属性传值    BViewC">
-<meta property="og:updated_time" content="2016-06-30T04:58:22.000Z">
+<meta property="og:updated_time" content="2016-07-01T05:48:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Objective-C-「传值总结」">
 <meta name="twitter:description" content="###一、属性传值
@@ -345,6 +345,7 @@ A_界面.m文件(发送者)123456        //////////A界面.m////////////2.属性
 <p>B_界面.h文件(接收者)<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">        <span class="comment">//////////B界面.h//////////</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//1.声明属性</span></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">copy</span>) <span class="built_in">NSString</span> *bString;</span><br></pre></td></tr></table></figure></p>
 <p>A_界面.m文件(发送者)<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">        <span class="comment">//////////A界面.m//////////</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//2.属性传值</span></span><br><span class="line">    BViewController *bVC = [BViewController new];</span><br><span class="line">    bVC.bString = <span class="string">@"A"</span>;</span><br><span class="line">    [<span class="keyword">self</span>.navigationController pushViewController:bVC animated:<span class="literal">YES</span>];</span><br></pre></td></tr></table></figure></p>
 <p>B_界面.m文件(接收者)<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">        <span class="comment">//////////B界面.m//////////</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//3.结果</span></span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"A界面→B界面:%@"</span>, <span class="keyword">self</span>.bString);</span><br><span class="line">    <span class="comment">//输出:   A界面→B界面:A</span></span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
 <h2 id="二、方法传值"><a href="#二、方法传值" class="headerlink" title="###二、方法传值"></a>###二、方法传值</h2><blockquote>
 <p>A界面-&gt;B界面传值</p>
 </blockquote>

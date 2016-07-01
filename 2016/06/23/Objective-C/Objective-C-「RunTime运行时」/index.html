@@ -95,7 +95,7 @@
 
  XCode7使用Runtime:objc_msgSend()报错Too many arguments to function">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1519620-56772fc38227a61d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2016-06-30T04:59:45.000Z">
+<meta property="og:updated_time" content="2016-07-01T05:49:33.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Objective-C-「RunTime运行时」">
 <meta name="twitter:description" content="RunTime简称运行时。就是系统在运行的时候的一些机制，其中最主要的是消息机制。RunTime是一套比较底层的纯C语言API，属于1个C语言库，包含了很多底层的C语言API。在我们平时编写的OC代码中，程序运行过程时，其实最终都是转成了runtime的C语言代码。
@@ -340,7 +340,7 @@
 </blockquote>
 <p> XCode7使用Runtime:<br>objc_msgSend()报错Too many arguments to function call ,expected 0,have3</p>
 <p>解决方案:  关闭msg检查机制</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1519620-56772fc38227a61d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="关闭msg检查机制"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1519620-56772fc38227a61d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="关闭msg检查机制"><br><a id="more"></a></p>
 <p>###一、发送消息</p>
 <blockquote>
 <p><strong>本质:</strong><br>方法调用的本质，就是让对象发送消息。<br><strong>方法:</strong><br>objc_msgSend(<code>id self</code>, <code>SEL op, ...</code>)</p>

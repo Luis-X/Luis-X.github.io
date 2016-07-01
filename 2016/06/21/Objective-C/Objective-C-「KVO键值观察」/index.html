@@ -87,9 +87,7 @@
 <meta name="description" content="Key Value Observing(键-值-观察)
 被观察者和观察者同时实现一个协议: NSKeyValueObserving
 源于设计模式中的观察者模式。
-指定被观察对象的属性被修改后，KVO就会自动通知相应的观察者。注意:不要忘记解除注册，否则会导致资源泄露
-
-1234567#pragma mark   //////////KVO方法////////////注册监听- (void)add">
+指定被观察对象的属性被修改后，KVO就会自动通知相应的观察者。注意:不要忘记解除注册，否则会导致资源泄露">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Objective-C-「KVO键值观察」">
 <meta property="og:url" content="http://yoursite.com/2016/06/21/Objective-C/Objective-C-「KVO键值观察」/index.html">
@@ -97,18 +95,14 @@
 <meta property="og:description" content="Key Value Observing(键-值-观察)
 被观察者和观察者同时实现一个协议: NSKeyValueObserving
 源于设计模式中的观察者模式。
-指定被观察对象的属性被修改后，KVO就会自动通知相应的观察者。注意:不要忘记解除注册，否则会导致资源泄露
-
-1234567#pragma mark   //////////KVO方法////////////注册监听- (void)add">
-<meta property="og:updated_time" content="2016-06-30T04:59:27.000Z">
+指定被观察对象的属性被修改后，KVO就会自动通知相应的观察者。注意:不要忘记解除注册，否则会导致资源泄露">
+<meta property="og:updated_time" content="2016-07-01T05:49:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Objective-C-「KVO键值观察」">
 <meta name="twitter:description" content="Key Value Observing(键-值-观察)
 被观察者和观察者同时实现一个协议: NSKeyValueObserving
 源于设计模式中的观察者模式。
-指定被观察对象的属性被修改后，KVO就会自动通知相应的观察者。注意:不要忘记解除注册，否则会导致资源泄露
-
-1234567#pragma mark   //////////KVO方法////////////注册监听- (void)add">
+指定被观察对象的属性被修改后，KVO就会自动通知相应的观察者。注意:不要忘记解除注册，否则会导致资源泄露">
 
 
 
@@ -346,9 +340,10 @@
 <li>Key Value Observing(键-值-观察)</li>
 <li>被观察者和观察者同时实现一个协议: NSKeyValueObserving</li>
 <li>源于设计模式中的观察者模式。</li>
-<li>指定被观察对象的属性被修改后，KVO就会自动通知相应的观察者。<br><strong>注意:不要忘记解除注册，否则会导致资源泄露</strong></li>
-</ul>
+<li>指定被观察对象的属性被修改后，KVO就会自动通知相应的观察者。<br><strong>注意:不要忘记解除注册，否则会导致资源泄露</strong><a id="more"></a>
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#pragma mark   //////////KVO方法//////////</span></span><br><span class="line"><span class="comment">//注册监听</span></span><br><span class="line">- (<span class="keyword">void</span>)addObserver:(<span class="built_in">NSObject</span> *)observer forKeyPath:(<span class="built_in">NSString</span> *)keyPath options:(<span class="built_in">NSKeyValueObservingOptions</span>)options context:(nullable <span class="keyword">void</span> *)context;</span><br><span class="line"><span class="comment">//移除监听</span></span><br><span class="line">- (<span class="keyword">void</span>)removeObserver:(<span class="built_in">NSObject</span> *)observer forKeyPath:(<span class="built_in">NSString</span> *)keyPath;</span><br><span class="line"><span class="comment">//监听回调</span></span><br><span class="line">- (<span class="keyword">void</span>)observeValueForKeyPath:(nullable <span class="built_in">NSString</span> *)keyPath ofObject:(nullable <span class="keyword">id</span>)object change:(nullable <span class="built_in">NSDictionary</span>&lt;<span class="built_in">NSString</span>*, <span class="keyword">id</span>&gt; *)change context:(nullable <span class="keyword">void</span> *)context;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
 <h3 id="使用KVO"><a href="#使用KVO" class="headerlink" title="使用KVO"></a>使用KVO</h3><p>Student.h文件<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">&lt;Foundation/Foundation.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">Student</span> : <span class="title">NSObject</span></span></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">copy</span>) <span class="built_in">NSString</span> *name;</span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">assign</span>) <span class="built_in">NSInteger</span> age;</span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure></p>
 <p>KVOViewController.m文件中<br>1.监听Student的属性</p>
 <blockquote>

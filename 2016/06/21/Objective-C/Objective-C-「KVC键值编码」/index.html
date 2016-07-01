@@ -96,7 +96,7 @@ KVO 就是基于 KVC 实现的关键技术之一。
 KVO 就是基于 KVC 实现的关键技术之一。
 它是一种使用字符串标识符，间接访问对象属性的机制，而不是直接调用getter 和 setter方法。
 通常我们使用valueForKey 来替代getter 方法，setValue:forKey来代替setter方">
-<meta property="og:updated_time" content="2016-06-30T04:59:07.000Z">
+<meta property="og:updated_time" content="2016-07-01T05:49:13.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Objective-C-「KVC键值编码」">
 <meta name="twitter:description" content="Key Value Coding(键-值-编码)-NSKeyValueCoding一个非正式的协议，提供一种机制来间接访问对象的属性。
@@ -340,9 +340,10 @@ KVO 就是基于 KVC 实现的关键技术之一。
 <li>Key Value Coding(键-值-编码)<br>-NSKeyValueCoding一个非正式的协议，提供一种机制来间接访问对象的属性。</li>
 <li>KVO 就是基于 KVC 实现的关键技术之一。</li>
 <li>它是一种使用字符串标识符，间接访问对象属性的机制，而不是直接调用getter 和 setter方法。</li>
-<li>通常我们使用valueForKey 来替代getter 方法，setValue:forKey来代替setter方法<br><strong>注意: 使用KVC赋值和取值，key和属性名要保持一致，否侧会导致崩溃</strong>。</li>
+<li>通常我们使用valueForKey 来替代getter 方法，setValue:forKey来代替setter方法<br><strong>注意: 使用KVC赋值和取值，key和属性名要保持一致，否侧会导致崩溃</strong>。<a id="more"></a>
+<h3 id="一、使用KVC"><a href="#一、使用KVC" class="headerlink" title="一、使用KVC"></a>一、使用KVC</h3></li>
 </ul>
-<h3 id="一、使用KVC"><a href="#一、使用KVC" class="headerlink" title="一、使用KVC"></a>一、使用KVC</h3><blockquote>
+<blockquote>
 <p>使用KVC对属性赋值，取值</p>
 </blockquote>
 <p>People.h文件中<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">&lt;Foundation/Foundation.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">People</span> : <span class="title">NSObject</span></span>&#123;</span><br><span class="line">    <span class="built_in">NSString</span> *name;  <span class="comment">//属性</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure></p>

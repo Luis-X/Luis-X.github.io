@@ -95,10 +95,7 @@
 
 目前最流行的AutoLayout框架,比较轻量级Masonry_下载
 
-将上述两个第三方下载后(或者使用Cocoapods)导入工程,然后创建所需文件,此时的工程目录:
-
-
-##">
+将上述两个第三方下载后(或者使用Cocoapods)导入工程,然后创建所需文件,此时的工程目录:">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Masonry和FDTemplateLayoutCell搭配使用「UITableview自适应内容高度」">
 <meta property="og:url" content="http://yoursite.com/2016/04/25/iOS第三方使用/Masonry和FDTemplateLayoutCell搭配使用「UITableview自适应内容高度」/index.html">
@@ -114,17 +111,14 @@
 
 目前最流行的AutoLayout框架,比较轻量级Masonry_下载
 
-将上述两个第三方下载后(或者使用Cocoapods)导入工程,然后创建所需文件,此时的工程目录:
-
-
-##">
+将上述两个第三方下载后(或者使用Cocoapods)导入工程,然后创建所需文件,此时的工程目录:">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1519620-9d921624a88db480.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1519620-06aea39126aa55d7.gif?imageMogr2/auto-orient/strip">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1519620-cf40eda8e4c65e57.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1519620-5458257dc93421c6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1519620-5e589aaec7be64d4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1519620-ca9064aa47b48ffe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2016-06-30T05:07:28.000Z">
+<meta property="og:updated_time" content="2016-07-01T05:47:51.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Masonry和FDTemplateLayoutCell搭配使用「UITableview自适应内容高度」">
 <meta name="twitter:description" content="#准备:
@@ -138,10 +132,7 @@
 
 目前最流行的AutoLayout框架,比较轻量级Masonry_下载
 
-将上述两个第三方下载后(或者使用Cocoapods)导入工程,然后创建所需文件,此时的工程目录:
-
-
-##">
+将上述两个第三方下载后(或者使用Cocoapods)导入工程,然后创建所需文件,此时的工程目录:">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1519620-9d921624a88db480.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
@@ -389,8 +380,7 @@
 </ul>
 <p>将上述两个第三方下载后(或者使用Cocoapods)导入工程,然后创建所需文件,此时的工程目录:</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/1519620-cf40eda8e4c65e57.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="工程目录"></p>
-<hr>
-<p>###自定义UITableView<br>MyTableViewCell.h  创建Model属性,用来传值<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">&lt;UIKit/UIKit.h&gt;</span></span></span><br><span class="line"><span class="meta">#import <span class="meta-string">"Model.h"</span></span></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">MyTableViewCell</span> : <span class="title">UITableViewCell</span></span></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">strong</span>)Model *model;</span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure></p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><p>###自定义UITableView<br>MyTableViewCell.h  创建Model属性,用来传值<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">&lt;UIKit/UIKit.h&gt;</span></span></span><br><span class="line"><span class="meta">#import <span class="meta-string">"Model.h"</span></span></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">MyTableViewCell</span> : <span class="title">UITableViewCell</span></span></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">strong</span>)Model *model;</span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure></p>
 <p>MyTableViewCell.m 使用Masonry布局<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">"MyTableViewCell.h"</span></span></span><br><span class="line"><span class="meta">#import <span class="meta-string">"Masonry.h"</span></span></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">MyTableViewCell</span></span>&#123;</span><br><span class="line">    <span class="built_in">UILabel</span> *_textLB;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (instancetype)initWithStyle:(<span class="built_in">UITableViewCellStyle</span>)style reuseIdentifier:(<span class="built_in">NSString</span> *)reuseIdentifier&#123;</span><br><span class="line">    <span class="keyword">self</span> = [<span class="keyword">super</span> initWithStyle:style reuseIdentifier:reuseIdentifier];</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">self</span>) &#123;</span><br><span class="line">        [<span class="keyword">self</span> createSubViews];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">self</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span><br><span class="line"> *  注意,不管布局多复杂,一定要有相对于cell.contentView的bottom的约束</span><br><span class="line"> */</span></span><br><span class="line">- (<span class="keyword">void</span>)createSubViews&#123;</span><br><span class="line">    _textLB = [<span class="built_in">UILabel</span> new];</span><br><span class="line">    _textLB.backgroundColor = [<span class="built_in">UIColor</span> orangeColor];</span><br><span class="line">    _textLB.numberOfLines = <span class="number">0</span>;</span><br><span class="line">    [<span class="keyword">self</span>.contentView addSubview:_textLB];</span><br><span class="line">    [_textLB mas_makeConstraints:^(MASConstraintMaker *make) &#123;</span><br><span class="line">        make.top.left.equalTo(<span class="keyword">self</span>.contentView).offset(<span class="number">10</span>);</span><br><span class="line">        make.bottom.right.equalTo(<span class="keyword">self</span>.contentView).offset(<span class="number">-10</span>);</span><br><span class="line">    &#125;];</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span><br><span class="line"> *  赋值</span><br><span class="line"> *</span><br><span class="line"> *  @param model ViewController传递过来的Model用来赋值</span><br><span class="line"> */</span></span><br><span class="line">- (<span class="keyword">void</span>)setModel:(Model *)model&#123;</span><br><span class="line">    <span class="keyword">if</span> (_model != model) &#123;</span><br><span class="line">        _model = model;</span><br><span class="line">        _textLB.text = [<span class="built_in">NSString</span> stringWithFormat:<span class="string">@"%@"</span>, model.text];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <hr>
 <p>###Model数据模型<br>Model.h  创建数据属性<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">&lt;Foundation/Foundation.h&gt;</span></span></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">Model</span> : <span class="title">NSObject</span></span></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">copy</span>)<span class="built_in">NSString</span> *text;</span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure></p>
@@ -602,7 +592,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">1.</span> <span class="nav-text"></span></a></li></ol></div>
             
           </div>
         </section>
