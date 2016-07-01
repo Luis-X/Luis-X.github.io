@@ -96,7 +96,7 @@ NSString
 
 NSString
 字符串属性1234567891011    //////////字符串属性//////////    NSString *str1 = @&quot;string&quot;;        NSLog(@&quot;长度:">
-<meta property="og:updated_time" content="2016-06-30T03:58:54.000Z">
+<meta property="og:updated_time" content="2016-07-01T05:12:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="玩转NSString(不信你看)">
 <meta name="twitter:description" content="Objective-C里核心的处理字符串的类就是NSString和NSMutableString这两个类,这两个类完成了Objective-C中字符串大部分功能的处理
@@ -341,6 +341,7 @@ NSString
 </blockquote>
 <h1 id="NSString"><a href="#NSString" class="headerlink" title="NSString"></a>NSString</h1><hr>
 <h4 id="字符串属性"><a href="#字符串属性" class="headerlink" title="字符串属性"></a>字符串属性</h4><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">    <span class="comment">//////////字符串属性//////////</span></span><br><span class="line">    <span class="built_in">NSString</span> *str1 = <span class="string">@"string"</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"长度:                   %ld"</span>, str1.length);</span><br><span class="line"><span class="built_in">NSLog</span>(<span class="string">@"描述:                   %@"</span>, string.description);</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"哈希地址:                %lu"</span>, (<span class="keyword">unsigned</span> <span class="keyword">long</span>)string.hash);</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"字符串对应下标字符:        %c"</span>, [str1 characterAtIndex:<span class="number">2</span>]);</span><br><span class="line">    <span class="comment">//输出:   长度:                   6</span></span><br><span class="line">    <span class="comment">//输出:   描述:                   string</span></span><br><span class="line">    <span class="comment">//输出:   哈希地址:                10152471993823965</span></span><br><span class="line">    <span class="comment">//输出:   字符串对应下标字符:        r</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 <h4 id="字符串截取"><a href="#字符串截取" class="headerlink" title="字符串截取"></a>字符串截取</h4><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//截取指定位置之后的字符串</span></span><br><span class="line">- (<span class="built_in">NSString</span> *)substringFromIndex:(<span class="built_in">NSUInteger</span>)from;</span><br><span class="line"><span class="comment">//从0下标开始截取到指定位置的字符串</span></span><br><span class="line">- (<span class="built_in">NSString</span> *)substringToIndex:(<span class="built_in">NSUInteger</span>)to;</span><br><span class="line"><span class="comment">//截取指定范围的字符串</span></span><br><span class="line">- (<span class="built_in">NSString</span> *)substringWithRange:(<span class="built_in">NSRange</span>)range;</span><br><span class="line"><span class="comment">//截取字符串指定范围的字符</span></span><br><span class="line">- (<span class="keyword">void</span>)getCharacters:(<span class="keyword">unichar</span> *)buffer range:(<span class="built_in">NSRange</span>)range;</span><br></pre></td></tr></table></figure>
 <h4 id="字符串比较"><a href="#字符串比较" class="headerlink" title="字符串比较"></a>字符串比较</h4><blockquote>
 <p>将两个字符串进行计较,返回NSComparisonResult枚举结果</p>
@@ -582,16 +583,16 @@ NSString
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/06/02/Objective-C/Objective-C「结构体」/" rel="next" title="Objective-C「结构体」">
-                <i class="fa fa-chevron-left"></i> Objective-C「结构体」
+              <a href="/2016/06/02/玩转iOS/玩转GCD(不信你看)/" rel="next" title="玩转GCD(不信你看)">
+                <i class="fa fa-chevron-left"></i> 玩转GCD(不信你看)
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/06/02/玩转iOS/玩转GCD(不信你看)/" rel="prev" title="玩转GCD(不信你看)">
-                玩转GCD(不信你看) <i class="fa fa-chevron-right"></i>
+              <a href="/2016/06/06/玩转iOS/玩转字体/" rel="prev" title="玩转字体">
+                玩转字体 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
