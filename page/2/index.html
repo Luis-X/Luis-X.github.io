@@ -263,8 +263,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/06/02/玩转iOS/玩转NSString(不信你看)/" itemprop="url">
-                  玩转NSString(不信你看)
+                <a class="post-title-link" href="/2016/06/02/Objective-C/Objective-C「结构体」/" itemprop="url">
+                  Objective-C「结构体」
                 </a>
               
             
@@ -291,8 +291,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/玩转iOS/" itemprop="url" rel="index">
-                    <span itemprop="name">玩转iOS</span>
+                  <a href="/categories/Objective-C/" itemprop="url" rel="index">
+                    <span itemprop="name">Objective-C</span>
                   </a>
                 </span>
 
@@ -307,8 +307,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/06/02/玩转iOS/玩转NSString(不信你看)/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/02/玩转iOS/玩转NSString(不信你看)/" itemprop="commentsCount"></span>
+                <a href="/2016/06/02/Objective-C/Objective-C「结构体」/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/02/Objective-C/Objective-C「结构体」/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -332,13 +332,9 @@
 
       
         
-          <blockquote>
-<p>Objective-C里核心的处理字符串的类就是NSString和NSMutableString这两个类,这两个类完成了Objective-C中字符串大部分功能的处理</p>
-</blockquote>
-<h1 id="NSString"><a href="#NSString" class="headerlink" title="NSString"></a>NSString</h1><hr>
-<h4 id="字符串属性"><a href="#字符串属性" class="headerlink" title="字符串属性"></a>字符串属性</h4><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">    <span class="comment">//////////字符串属性//////////</span></span><br><span class="line">    <span class="built_in">NSString</span> *str1 = <span class="string">@"string"</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"长度:                   %ld"</span>, str1.length);</span><br><span class="line"><span class="built_in">NSLog</span>(<span class="string">@"描述:                   %@"</span>, string.description);</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"哈希地址:                %lu"</span>, (<span class="keyword">unsigned</span> <span class="keyword">long</span>)string.hash);</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"字符串对应下标字符:        %c"</span>, [str1 characterAtIndex:<span class="number">2</span>]);</span><br><span class="line">    <span class="comment">//输出:   长度:                   6</span></span><br><span class="line">    <span class="comment">//输出:   描述:                   string</span></span><br><span class="line">    <span class="comment">//输出:   哈希地址:                10152471993823965</span></span><br><span class="line">    <span class="comment">//输出:   字符串对应下标字符:        r</span></span><br></pre></td></tr></table></figure>
+          <h4 id="NSRange-范围"><a href="#NSRange-范围" class="headerlink" title="NSRange  (范围)"></a>NSRange  (范围)</h4><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">    <span class="comment">//////////范围结构体//////////</span></span><br><span class="line">    <span class="built_in">NSRange</span> range = <span class="built_in">NSMakeRange</span>(<span class="number">0</span>, <span class="number">10</span>);</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"位置:%ld  长度:%ld"</span>, range.location, range.length);</span><br><span class="line">    <span class="comment">//输出:   位置:0  长度:10</span></span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    <span class="comment">//////////结构体转字符串//////////</span></span><br><span class="line">    <span class="built_in">NSString</span> *rangeStr = <span class="built_in">NSStringFromRange</span>(range);</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, rangeStr);</span><br><span class="line">    <span class="comment">//输出:   &#123;0, 10&#125;</span></span><br></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/06/02/玩转iOS/玩转NSString(不信你看)/#more" rel="contents">
+            <a class="btn" href="/2016/06/02/Objective-C/Objective-C「结构体」/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
