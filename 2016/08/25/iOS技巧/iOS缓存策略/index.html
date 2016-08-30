@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="玩转iOS," />
+  <meta name="keywords" content="iOS技巧," />
 
 
 
@@ -84,27 +84,45 @@
 
 
 
-<meta name="description" content="iOS自定义字体
+<meta name="description" content="一、思维脑图
+思维脑图详情
+二、缓存思想
+数据库底层基于Sqlite。
+每个数据库表只有Key, Value两个字段。
+直接将JSON数据存储到Value中,并设置Key。
+通过Key查找对应Value数据,来进行数据增删改查操作,并更新视图。
 
-1.将字体文件导入工程(.ttf)">
+1.使用SDWebImage缓存图片。2.使用YTKKeyValueStore更方便使用FMDB。3.使用FMDB操作数据库。
+SDWebImage官方">
 <meta property="og:type" content="article">
-<meta property="og:title" content="玩转字体">
-<meta property="og:url" content="http://yoursite.com/2016/06/06/玩转iOS/玩转字体/index.html">
+<meta property="og:title" content="iOS缓存策略">
+<meta property="og:url" content="http://yoursite.com/2016/08/25/iOS技巧/iOS缓存策略/index.html">
 <meta property="og:site_name" content="LuisX">
-<meta property="og:description" content="iOS自定义字体
+<meta property="og:description" content="一、思维脑图
+思维脑图详情
+二、缓存思想
+数据库底层基于Sqlite。
+每个数据库表只有Key, Value两个字段。
+直接将JSON数据存储到Value中,并设置Key。
+通过Key查找对应Value数据,来进行数据增删改查操作,并更新视图。
 
-1.将字体文件导入工程(.ttf)">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1519620-ef5acb1ba89f4089.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1519620-ec58d63b9d4e76fd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1519620-cdc0980bae276017.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1519620-46da613c1f387b6a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2016-07-01T05:08:57.000Z">
+1.使用SDWebImage缓存图片。2.使用YTKKeyValueStore更方便使用FMDB。3.使用FMDB操作数据库。
+SDWebImage官方">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1519620-b09046112679659c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2016-08-30T03:31:29.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="玩转字体">
-<meta name="twitter:description" content="iOS自定义字体
+<meta name="twitter:title" content="iOS缓存策略">
+<meta name="twitter:description" content="一、思维脑图
+思维脑图详情
+二、缓存思想
+数据库底层基于Sqlite。
+每个数据库表只有Key, Value两个字段。
+直接将JSON数据存储到Value中,并设置Key。
+通过Key查找对应Value数据,来进行数据增删改查操作,并更新视图。
 
-1.将字体文件导入工程(.ttf)">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1519620-ef5acb1ba89f4089.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+1.使用SDWebImage缓存图片。2.使用YTKKeyValueStore更方便使用FMDB。3.使用FMDB操作数据库。
+SDWebImage官方">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1519620-b09046112679659c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -122,7 +140,7 @@
   };
 </script>
 
-  <title> 玩转字体 | LuisX </title>
+  <title> iOS缓存策略 | LuisX </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -272,7 +290,7 @@
             
             
               
-                玩转字体
+                iOS缓存策略
               
             
           </h1>
@@ -284,8 +302,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-06T00:00:00+08:00" content="2016-06-06">
-              2016-06-06
+            <time itemprop="dateCreated" datetime="2016-08-25T00:00:00+08:00" content="2016-08-25">
+              2016-08-25
             </time>
           </span>
 
@@ -298,8 +316,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/玩转iOS/" itemprop="url" rel="index">
-                    <span itemprop="name">玩转iOS</span>
+                  <a href="/categories/iOS技巧/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS技巧</span>
                   </a>
                 </span>
 
@@ -314,8 +332,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/06/06/玩转iOS/玩转字体/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/06/玩转iOS/玩转字体/" itemprop="commentsCount"></span>
+                <a href="/2016/08/25/iOS技巧/iOS缓存策略/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/25/iOS技巧/iOS缓存策略/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -338,31 +356,57 @@
       
 
       
-        <p>iOS自定义字体</p>
-<blockquote>
-<p>1.将字体文件导入工程(.ttf)</p>
+        <h2 id="一、思维脑图"><a href="#一、思维脑图" class="headerlink" title="一、思维脑图"></a>一、思维脑图</h2><p><img src="http://upload-images.jianshu.io/upload_images/1519620-b09046112679659c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="思维脑图"></p>
+<p><a href="http://naotu.baidu.com/file/6f53185d0d7c0e5caa700c805adaa803?token=e3bdbf0f6d1ba32c" target="_blank" rel="external">思维脑图详情</a></p>
+<h2 id="二、缓存思想"><a href="#二、缓存思想" class="headerlink" title="二、缓存思想"></a>二、缓存思想</h2><ul>
+<li>数据库底层基于Sqlite。</li>
+<li><code>每个数据库表只有Key, Value两个字段。</code></li>
+<li><code>直接将JSON数据存储到Value中,并设置Key。</code></li>
+<li>通过Key查找对应Value数据,来进行数据增删改查操作,并更新视图。</li>
+</ul>
+<p>1.使用<strong>SDWebImage</strong>缓存图片。<br>2.使用<strong>YTKKeyValueStore</strong>更方便使用FMDB。<br>3.使用<strong>FMDB</strong>操作数据库。</p>
+<p>SDWebImage官方地址:  <a href="https://github.com/rs/SDWebImage" target="_blank" rel="external">https://github.com/rs/SDWebImage</a><br>YTKKeyValueStore官方地址: <a href="https://github.com/yuantiku/YTKKeyValueStore" target="_blank" rel="external">https://github.com/yuantiku/YTKKeyValueStore</a><br>FMDB官方地址:    <a href="https://github.com/ccgus/fmdb" target="_blank" rel="external">https://github.com/ccgus/fmdb</a></p>
+<hr>
+<h2 id="三、使用YTKKeyValueStore操作数据库"><a href="#三、使用YTKKeyValueStore操作数据库" class="headerlink" title="三、使用YTKKeyValueStore操作数据库"></a>三、使用YTKKeyValueStore操作数据库</h2><blockquote>
+<p>iOS端数据量不大,使用最简单直接的Key-Value存储就能带来开发上的效率优势。<br>1.Model层的代码编写简单，易于测试。<br>2.由于Value是JSON格式，所以在做Model字段更改时，易于扩展和兼容。</p>
 </blockquote>
-<p><img src="http://upload-images.jianshu.io/upload_images/1519620-ef5acb1ba89f4089.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="字体文件导入工程"><br><a id="more"></a></p>
+<ul>
+<li><strong>简单使用</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//1.打开数据库(若有),创建数据库(若无)</span><br><span class="line">YTKKeyValueStore *store = [[YTKKeyValueStore alloc] initDBWithName:@&quot;test.db&quot;];</span><br><span class="line">//2.创建数据库表(若无),忽略(若无)</span><br><span class="line">NSString *tableName = @&quot;user_table&quot;;</span><br><span class="line">[store createTableWithName:tableName];</span><br><span class="line">//3.写入数据</span><br><span class="line">NSString *key = @&quot;1&quot;;</span><br><span class="line">NSDictionary *user = @&#123;@&quot;id&quot;: @1, @&quot;name&quot;: @&quot;tangqiao&quot;, @&quot;age&quot;: @30&#125;;</span><br><span class="line">[store putObject:user withId:key intoTable:tableName];</span><br><span class="line">//4.读取数据</span><br><span class="line">NSDictionary *queryUser = [store getObjectById:key fromTable:tableName];</span><br><span class="line">NSLog(@&quot;query data result: %@&quot;, queryUser);</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>打开(创建)数据库</strong></li>
+</ul>
 <blockquote>
-<p>2.打开Build Phases -&gt; Copy Bundle Resources，确定字体文件已经添加</p>
+<p>默认创建在Document路径下。<br>若打开的数据库不存在则创建。</p>
 </blockquote>
-<p><img src="http://upload-images.jianshu.io/upload_images/1519620-ec58d63b9d4e76fd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="确保字体文件添加成功"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 打开名为test.db的数据库，如果该文件不存在，则创新一个新的。</span><br><span class="line">YTKKeyValueStore *store = [[YTKKeyValueStore alloc] initDBWithName:@&quot;test.db&quot;];</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>创建数据库表</strong></li>
+</ul>
 <blockquote>
-<p>3.编辑info.plist文件,添加Fonts provided by application并将字体文件加入到该项数组中</p>
+<p>若创建的表存在则忽略。</p>
 </blockquote>
-<p><img src="http://upload-images.jianshu.io/upload_images/1519620-cdc0980bae276017.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="编辑info.plist"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">YTKKeyValueStore *store = [[YTKKeyValueStore alloc] initDBWithName:@&quot;test.db&quot;];</span><br><span class="line">NSString *tableName = @&quot;user_table&quot;;</span><br><span class="line">// 创建名为user_table的表，如果已存在，则忽略该操作</span><br><span class="line">[store createTableWithName:tableName];</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>读写数据</strong></li>
+</ul>
 <blockquote>
-<p>4.使用如下代码显示所有字体名称</p>
+<p>通过Key-Value来读写数据库表中数据。<br>Value支持类型:NSString, NSNumber, NSDictionary,NSArray。</p>
 </blockquote>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//显示所有字体</span></span><br><span class="line">- (<span class="keyword">void</span>)showAllFontBank&#123;</span><br><span class="line">  </span><br><span class="line">    <span class="built_in">NSArray</span> *familyNames =[[<span class="built_in">NSArray</span> alloc]initWithArray:[<span class="built_in">UIFont</span> familyNames]];</span><br><span class="line">    <span class="built_in">NSArray</span> *fontNames;</span><br><span class="line">    <span class="built_in">NSInteger</span> indFamily, indFont;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"[familyNames count]===%lu"</span>,(<span class="keyword">unsigned</span> <span class="keyword">long</span>)[familyNames count]);</span><br><span class="line">  </span><br><span class="line">    <span class="keyword">for</span>(indFamily=<span class="number">0</span>;indFamily&lt;[familyNames count];++indFamily)&#123;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"Family name: %@"</span>, [familyNames objectAtIndex:indFamily]);</span><br><span class="line">        fontNames =[[<span class="built_in">NSArray</span> alloc]initWithArray:[<span class="built_in">UIFont</span> fontNamesForFamilyName:[familyNames objectAtIndex:indFamily]]];</span><br><span class="line">      </span><br><span class="line">        <span class="keyword">for</span>(indFont=<span class="number">0</span>; indFont&lt;[fontNames count]; ++indFont)&#123;</span><br><span class="line">          </span><br><span class="line">            <span class="built_in">NSLog</span>(<span class="string">@"Font name: %@"</span>,[fontNames objectAtIndex:indFont]);</span><br><span class="line">          </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//写入数据</span><br><span class="line">- (void)putString:(NSString *)string withId:(NSString *)stringId intoTable:(NSString *)tableName;</span><br><span class="line">- (void)putNumber:(NSNumber *)number withId:(NSString *)numberId intoTable:(NSString *)tableName;</span><br><span class="line">- (void)putObject:(id)object withId:(NSString *)objectId intoTable:(NSString *)tableName;</span><br><span class="line">//读取数据</span><br><span class="line">- (NSString *)getStringById:(NSString *)stringId fromTable:(NSString *)tableName;</span><br><span class="line">- (NSNumber *)getNumberById:(NSString *)numberId fromTable:(NSString *)tableName;</span><br><span class="line">- (id)getObjectById:(NSString *)objectId fromTable:(NSString *)tableName;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>删除数据</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 清除数据表中所有数据</span><br><span class="line">- (void)clearTable:(NSString *)tableName;</span><br><span class="line">// 删除指定key的数据</span><br><span class="line">- (void)deleteObjectById:(NSString *)objectId fromTable:(NSString *)tableName;</span><br><span class="line">// 批量删除一组key数组的数据</span><br><span class="line">- (void)deleteObjectsByIdArray:(NSArray *)objectIdArray fromTable:(NSString *)tableName;</span><br><span class="line">// 批量删除所有带指定前缀的数据</span><br><span class="line">- (void)deleteObjectsByIdPrefix:(NSString *)objectIdPrefix fromTable:(NSString *)tableName;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>其他</strong></li>
+</ul>
 <blockquote>
-<p>5.控制台输出中寻找字体名称<br>(字体名称可能和字体文件名不一致)</p>
+<p>YTKKeyValueItem类带有createdTime字段，可以获得该条数据的插入（或更新）时间，以便上层做复杂的处理（例如用来做缓存过期逻辑）。</p>
 </blockquote>
-<p><img src="http://upload-images.jianshu.io/upload_images/1519620-46da613c1f387b6a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="找到添加的字体"></p>
-<blockquote>
-<p>6.使用UIFont调用字体</p>
-</blockquote>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[<span class="built_in">UIFont</span> fontWithName:<span class="string">@"FZLTXHKM"</span> size:<span class="number">17</span>];</span><br><span class="line">[<span class="built_in">UIFont</span> fontWithName:<span class="string">@"FZLTHJW--GB1-0"</span> size:<span class="number">17</span>];</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 获得指定key的数据</span><br><span class="line">- (YTKKeyValueItem *)getYTKKeyValueItemById:(NSString *)objectId fromTable:(NSString *)tableName;</span><br><span class="line">// 获得所有数据</span><br><span class="line">- (NSArray *)getAllItemsFromTable:(NSString *)tableName;</span><br></pre></td></tr></table></figure>
+<p><a href="https://github.com/yuantiku/YTKKeyValueStore" target="_blank" rel="external">YTKKeyValueStore参考文档</a></p>
 
       
     </div>
@@ -384,7 +428,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/玩转iOS/" rel="tag">#玩转iOS</a>
+            <a href="/tags/iOS技巧/" rel="tag">#iOS技巧</a>
           
         </div>
       
@@ -393,16 +437,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/06/02/玩转iOS/玩转GCD(不信你看)/" rel="next" title="玩转GCD(不信你看)">
-                <i class="fa fa-chevron-left"></i> 玩转GCD(不信你看)
+              <a href="/2016/08/25/iOS技巧/Fastlane自动化构建工具(完整解决测试和发布流程)/" rel="next" title="Fastlane自动化构建工具(完整解决测试和发布流程)">
+                <i class="fa fa-chevron-left"></i> Fastlane自动化构建工具(完整解决测试和发布流程)
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/06/14/Objective-C/Objective-C-「传值总结」/" rel="prev" title="Objective-C-「传值总结」">
-                Objective-C-「传值总结」 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/08/30/iOS技巧/Jenkins使用/" rel="prev" title="Jenkins使用">
+                Jenkins使用 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -418,10 +462,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/06/06/玩转iOS/玩转字体/"
-     data-title="玩转字体"
+        <div class="ds-share flat" data-thread-key="2016/08/25/iOS技巧/iOS缓存策略/"
+     data-title="iOS缓存策略"
      data-content=""
-     data-url="http://yoursite.com/2016/06/06/玩转iOS/玩转字体/">
+     data-url="http://yoursite.com/2016/08/25/iOS技巧/iOS缓存策略/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -448,8 +492,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/06/06/玩转iOS/玩转字体/"
-           data-title="玩转字体" data-url="http://yoursite.com/2016/06/06/玩转iOS/玩转字体/">
+      <div class="ds-thread" data-thread-key="2016/08/25/iOS技巧/iOS缓存策略/"
+           data-title="iOS缓存策略" data-url="http://yoursite.com/2016/08/25/iOS技巧/iOS缓存策略/">
       </div>
     
   </div>
@@ -560,7 +604,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、思维脑图"><span class="nav-number">1.</span> <span class="nav-text">一、思维脑图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、缓存思想"><span class="nav-number">2.</span> <span class="nav-text">二、缓存思想</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、使用YTKKeyValueStore操作数据库"><span class="nav-number">3.</span> <span class="nav-text">三、使用YTKKeyValueStore操作数据库</span></a></li></ol></div>
             
           </div>
         </section>

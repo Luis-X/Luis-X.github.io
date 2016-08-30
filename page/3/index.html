@@ -87,7 +87,7 @@
 <meta name="description" content="总有一天我会拥有属于我的一片天">
 <meta property="og:type" content="website">
 <meta property="og:title" content="LuisX">
-<meta property="og:url" content="http://yoursite.com/archives/2016/03/index.html">
+<meta property="og:url" content="http://yoursite.com/page/3/index.html">
 <meta property="og:site_name" content="LuisX">
 <meta property="og:description" content="总有一天我会拥有属于我的一片天">
 <meta name="twitter:card" content="summary">
@@ -110,7 +110,7 @@
   };
 </script>
 
-  <title> 归档 | LuisX </title>
+  <title> LuisX </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -141,7 +141,9 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  page-archive  ">
+  <div class="container one-collumn sidebar-position-left 
+   page-home 
+ ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -238,66 +240,143 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
+  <section id="posts" class="posts-expand">
+    
+      
 
-  <section id="posts" class="posts-collapse">
-    <span class="archive-move-on"></span>
+  
+  
 
-    <span class="archive-page-counter">
-      
-      
-      
-        
-      
-      嗯..! 目前共计 21 篇日志。 继续努力。
-    </span>
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
+      <header class="post-header">
 
-      
-      
-      
-
-      
         
-        <div class="collection-title">
-          <h2 class="archive-year motion-element" id="archive-year-2016">2016</h2>
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/03/25/iOS技巧/UILabel修改行距,首行缩进/" itemprop="url">
+                  UILabel修改行距,首行缩进
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-25T00:00:00+08:00" content="2016-03-25">
+              2016-03-25
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/iOS技巧/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS技巧</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/03/25/iOS技巧/UILabel修改行距,首行缩进/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/25/iOS技巧/UILabel修改行距,首行缩进/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
         </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
       
       
 
       
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
         
-            <a class="post-title-link" href="/2016/03/25/iOS技巧/UILabel修改行距,首行缩进/" itemprop="url">
-              
-                <span itemprop="name">UILabel修改行距,首行缩进</span>
-              
+          <h6 id="1-UILabel修改文字行距-首行缩进"><a href="#1-UILabel修改文字行距-首行缩进" class="headerlink" title="1.UILabel修改文字行距,首行缩进"></a>1.UILabel修改文字行距,首行缩进</h6><hr>
+<ul>
+<li>lineSpacing: 行间距</li>
+<li>firstLineHeadIndent：首行缩进</li>
+<li>font: 字体</li>
+<li>textColor: 字体颜色</li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">－ (<span class="built_in">NSDictionary</span> *)settingAttributesWithLineSpacing:(<span class="built_in">CGFloat</span>)lineSpacing FirstLineHeadIndent:(<span class="built_in">CGFloat</span>)firstLineHeadIndent Font:(<span class="built_in">UIFont</span> *)font TextColor:(<span class="built_in">UIColor</span> *)textColor&#123;</span><br><span class="line">    <span class="comment">//分段样式</span></span><br><span class="line">    <span class="built_in">NSMutableParagraphStyle</span> *paragraphStyle = [[<span class="built_in">NSMutableParagraphStyle</span> alloc] init];</span><br><span class="line">    <span class="comment">//行间距</span></span><br><span class="line">    paragraphStyle.lineSpacing = lineSpacing;</span><br><span class="line">    <span class="comment">//首行缩进</span></span><br><span class="line">    paragraphStyle.firstLineHeadIndent = firstLineHeadIndent;</span><br><span class="line">    <span class="comment">//富文本样式</span></span><br><span class="line">    <span class="built_in">NSDictionary</span> *attributeDic = @&#123;</span><br><span class="line">                                   <span class="built_in">NSFontAttributeName</span> : font,</span><br><span class="line">                                   <span class="built_in">NSParagraphStyleAttributeName</span> : paragraphStyle,</span><br><span class="line">                                   <span class="built_in">NSForegroundColorAttributeName</span> : textColor</span><br><span class="line">                                   &#125;;</span><br><span class="line">    <span class="keyword">return</span> attributeDic;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/03/25/iOS技巧/UILabel修改行距,首行缩进/#more" rel="contents">
+              阅读全文 &raquo;
             </a>
+          </div>
         
-      </h1>
+      
+    </div>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-03-25T00:00:00+08:00"
-              content="2016-03-25" >
-          03-25
-        </time>
-      </div>
+    <div>
+      
+    </div>
 
-    </header>
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
   </article>
 
 
-
     
-
   </section>
 
   
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+  </nav>
 
 
 
@@ -490,12 +569,6 @@
 
 
   
-  
-    <script type="text/javascript" id="motion.page.archive">
-      $('.archive-year').velocity('transition.slideLeftIn');
-    </script>
-  
-
 
   
 

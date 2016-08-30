@@ -1,0 +1,947 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="iOS技巧," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="JDK官方地址JenKins官方地址注意:先安装JDK,再安装Jenkins!
+
+安装完成之后，就会启动浏览器，默认地址是:
+1http://localhost:8080
+
+创建Admin用户
+操作显示隐藏文件
+12defaults write com.apple.finder AppleShowAllFiles -bool true#运行后:(按command+option+esc选中Find">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Jenkins使用">
+<meta property="og:url" content="http://yoursite.com/2016/08/30/iOS技巧/Jenkins使用/index.html">
+<meta property="og:site_name" content="LuisX">
+<meta property="og:description" content="JDK官方地址JenKins官方地址注意:先安装JDK,再安装Jenkins!
+
+安装完成之后，就会启动浏览器，默认地址是:
+1http://localhost:8080
+
+创建Admin用户
+操作显示隐藏文件
+12defaults write com.apple.finder AppleShowAllFiles -bool true#运行后:(按command+option+esc选中Find">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1519620-7091f99e6089e650.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1519620-09bf94e1d45a918f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1519620-67cde456e60c84b9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1519620-b39ac992e7530c54.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1519620-f624221d7abcec8e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1519620-8bbb11c2b9047f73.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1519620-5333adb53ee3fc04.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1519620-c8ec4635bafb604c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1519620-fbc7de7c5dc2478f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1519620-31d4d0d083087632.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1519620-15e501a707d144a1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1519620-fe185b1f2d6a0784.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1519620-a1358a43e0a4eaa0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1519620-2adb481b07d097cb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1519620-20ce46cdd5345e56.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1519620-bda6486c62e199d6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1519620-eb5469545a91530e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1519620-03edc5659edb0b79.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1519620-eaf8683883feacdd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1519620-ebfd56d0dc75ea31.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1519620-5fd0c747ca72728e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2016-08-30T03:30:41.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Jenkins使用">
+<meta name="twitter:description" content="JDK官方地址JenKins官方地址注意:先安装JDK,再安装Jenkins!
+
+安装完成之后，就会启动浏览器，默认地址是:
+1http://localhost:8080
+
+创建Admin用户
+操作显示隐藏文件
+12defaults write com.apple.finder AppleShowAllFiles -bool true#运行后:(按command+option+esc选中Find">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1519620-7091f99e6089e650.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6282565193692087000,
+      author: 'LuisX'
+    }
+  };
+</script>
+
+  <title> Jenkins使用 | LuisX </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?1b0cfad2dc7c9d6f56774264e9a58985";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">LuisX</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">iOS开发工程师</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Jenkins使用
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-30T00:00:00+08:00" content="2016-08-30">
+              2016-08-30
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/iOS技巧/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS技巧</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/30/iOS技巧/Jenkins使用/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/30/iOS技巧/Jenkins使用/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p><a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="external">JDK官方地址</a><br><a href="https://jenkins.io/index.html" target="_blank" rel="external">JenKins官方地址</a><br>注意:先安装JDK,再安装Jenkins!</p>
+</blockquote>
+<p>安装完成之后，就会启动浏览器，默认地址是:</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">http://localhost:8080</span></span><br></pre></td></tr></table></figure>
+<p><img src="http://upload-images.jianshu.io/upload_images/1519620-7091f99e6089e650.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="安装等待"></p>
+<p>创建Admin用户<br><img src="http://upload-images.jianshu.io/upload_images/1519620-09bf94e1d45a918f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="创建Admin用户"></p>
+<h1 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h1><p><strong>显示隐藏文件</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">defaults write com.apple.finder AppleShowAllFiles -bool true</span><br><span class="line">#运行后:(按command+option+esc选中Finder重启开启)</span><br></pre></td></tr></table></figure>
+<p><strong>隐藏隐藏文件</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">defaults write com.apple.finder AppleShowAllFiles -bool false</span><br><span class="line">#运行后:(按command+option+esc选中Finder重启开启)</span><br></pre></td></tr></table></figure>
+<p><strong>重启</strong>___(浏览器输入):</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">http://localhost:8080/restart</span></span><br></pre></td></tr></table></figure>
+<p><strong>退出</strong>___(浏览器输入):</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">http://localhost:8080/exit</span></span><br></pre></td></tr></table></figure>
+<h1 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h1><blockquote>
+<p>自动安装: 系统管理☞插件管理☞可选插件☞勾选要安装的插件☞直接安装<br>手动安装: 系统管理☞插件管理☞高级☞下载好的插件(.hip文件)☞上传插件☞安装<br>注意:(手动安装 优先安装deploy.hpi插件)</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">插件名称</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Xcode integration</td>
+<td style="text-align:center">iOS打包必备</td>
+</tr>
+<tr>
+<td style="text-align:center">Git plugin</td>
+<td style="text-align:center">Git插件</td>
+</tr>
+<tr>
+<td style="text-align:center">GitLab Plugin</td>
+<td style="text-align:center">Gitlab插件</td>
+</tr>
+<tr>
+<td style="text-align:center">Gitlab Hook Plugin</td>
+<td style="text-align:center">Gitlab插件</td>
+</tr>
+<tr>
+<td style="text-align:center">Keychains and Provisioning Profiles Management</td>
+<td style="text-align:center">Keychain和描述文件插件</td>
+</tr>
+<tr>
+<td style="text-align:center">Credentials Binding Plugin</td>
+<td style="text-align:center">证书管理插件</td>
+</tr>
+<tr>
+<td style="text-align:center">fir-plugin</td>
+<td style="text-align:center">上传fir插件</td>
+</tr>
+</tbody>
+</table>
+<h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><table>
+<thead>
+<tr>
+<th style="text-align:center">定义代码</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">${WORKSPACE}</td>
+<td style="text-align:center">工作空间地址</td>
+</tr>
+<tr>
+<td style="text-align:center">${VERSION}</td>
+<td style="text-align:center">打包版本</td>
+</tr>
+<tr>
+<td style="text-align:center">${BUILD_DATA}</td>
+<td style="text-align:center">打包时间</td>
+</tr>
+<tr>
+<td style="text-align:center">${BUILD_NUMBER}</td>
+<td style="text-align:center">打包序号</td>
+</tr>
+</tbody>
+</table>
+<h1 id="一、向Jenkins导入开发所需证书"><a href="#一、向Jenkins导入开发所需证书" class="headerlink" title="一、向Jenkins导入开发所需证书"></a>一、向Jenkins导入开发所需证书</h1><h5 id="1-先将iOS的开发所需证书导入你的Mac上"><a href="#1-先将iOS的开发所需证书导入你的Mac上" class="headerlink" title="1.先将iOS的开发所需证书导入你的Mac上"></a>1.先将iOS的开发所需证书导入你的Mac上</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">钥匙串访问☞登录☞开发所需证书☞拷贝到☞系统</span><br></pre></td></tr></table></figure>
+<p><img src="http://upload-images.jianshu.io/upload_images/1519620-67cde456e60c84b9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="将开发所需证书导入Mac"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1519620-b39ac992e7530c54.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="允许所有程序访问"></p>
+<h5 id="2-获取keychain"><a href="#2-获取keychain" class="headerlink" title="2.获取keychain"></a>2.获取keychain</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">将/Users/apple/Library/Keychains☞拷贝到☞/Users/Shared/Jenkins/Library/Keychains</span><br></pre></td></tr></table></figure>
+<h5 id="3-获取描述文件"><a href="#3-获取描述文件" class="headerlink" title="3.获取描述文件"></a>3.获取描述文件</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">将/Users/apple/Library/MobileDevice/Provisioning Profiles☞拷贝到☞/Users/Shared/Jenkins/Library/MobileDevice/Provisioning Profiles</span><br></pre></td></tr></table></figure>
+<p>(注:apple需要替换成你的当前用户,Library下路径不存在需要创建)</p>
+<h5 id="4-操作完成"><a href="#4-操作完成" class="headerlink" title="4.操作完成"></a>4.操作完成</h5><p><img src="http://upload-images.jianshu.io/upload_images/1519620-f624221d7abcec8e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="操作完成后目录"></p>
+<h5 id="5-获取login-keychain密码"><a href="#5-获取login-keychain密码" class="headerlink" title="5.获取login.keychain密码"></a>5.获取login.keychain密码</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">钥匙串访问☞登录☞所有项目☞搜索login☞双击login.keychain☞显示密码</span><br></pre></td></tr></table></figure>
+<p><img src="http://upload-images.jianshu.io/upload_images/1519620-8bbb11c2b9047f73.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="loginKeyChain"></p>
+<h1 id="二、添加Credentials证书"><a href="#二、添加Credentials证书" class="headerlink" title="二、添加Credentials证书"></a>二、添加Credentials证书</h1><h5 id="1-添加新证书"><a href="#1-添加新证书" class="headerlink" title="1.添加新证书"></a>1.添加新证书</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">打开JenKins☞Credentials☞System☞Global credentials (unrestricted)☞Add Credentials</span><br></pre></td></tr></table></figure>
+<h5 id="2-添加SHH类型用户名-秘钥"><a href="#2-添加SHH类型用户名-秘钥" class="headerlink" title="2.添加SHH类型用户名+秘钥"></a>2.添加SHH类型用户名+秘钥</h5><p><img src="http://upload-images.jianshu.io/upload_images/1519620-5333adb53ee3fc04.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="添加证书"></p>
+<h1 id="三、创建iOS打包任务"><a href="#三、创建iOS打包任务" class="headerlink" title="三、创建iOS打包任务"></a>三、创建iOS打包任务</h1><h5 id="1-创建iOS打包任务"><a href="#1-创建iOS打包任务" class="headerlink" title="1.创建iOS打包任务"></a>1.创建iOS打包任务</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">打开JenKins☞新建☞输入任务名称☞构建一个自由风格的软件项目☞OK</span><br></pre></td></tr></table></figure>
+<h1 id="四、配置"><a href="#四、配置" class="headerlink" title="四、配置"></a>四、配置</h1><h5 id="1-General"><a href="#1-General" class="headerlink" title="1.General"></a>1.General</h5><p><img src="http://upload-images.jianshu.io/upload_images/1519620-c8ec4635bafb604c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="General"></p>
+<h5 id="2-源码管理"><a href="#2-源码管理" class="headerlink" title="2.源码管理"></a>2.源码管理</h5><blockquote>
+<p> 填写分支</p>
+</blockquote>
+<p><img src="http://upload-images.jianshu.io/upload_images/1519620-fbc7de7c5dc2478f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="填写分支"></p>
+<h5 id="3-构建环境"><a href="#3-构建环境" class="headerlink" title="3.构建环境"></a>3.构建环境</h5><blockquote>
+<p> 选择Code Signing Identity</p>
+</blockquote>
+<p><img src="http://upload-images.jianshu.io/upload_images/1519620-31d4d0d083087632.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="构建环境"></p>
+<blockquote>
+<p> 选择Provisioning Profile</p>
+</blockquote>
+<p><img src="http://upload-images.jianshu.io/upload_images/1519620-15e501a707d144a1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="构建环境"></p>
+<h5 id="4-构建"><a href="#4-构建" class="headerlink" title="4.构建"></a>4.构建</h5><blockquote>
+<p>使用Xcode构建</p>
+</blockquote>
+<p><code>General build settings</code></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Target</td>
+<td style="text-align:center">Target名称</td>
+</tr>
+<tr>
+<td style="text-align:center">Clean before build?</td>
+<td style="text-align:center">编译前清理</td>
+</tr>
+<tr>
+<td style="text-align:center">Configuration</td>
+<td style="text-align:center">打包设置( <em>Debug</em> 或 <em>Release</em>)</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>Pack application and build .ipa?</strong></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">.ipa filename pattern</td>
+<td style="text-align:center">生成ipa名字</td>
+</tr>
+<tr>
+<td style="text-align:center">Output directory</td>
+<td style="text-align:center">生成ipa输出路径</td>
+</tr>
+<tr>
+<td style="text-align:center">Manifest Plist URL</td>
+<td style="text-align:center">企业版打包填写URL</td>
+</tr>
+</tbody>
+</table>
+<p><img src="http://upload-images.jianshu.io/upload_images/1519620-fe185b1f2d6a0784.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="构建"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1519620-a1358a43e0a4eaa0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="构建"></p>
+<p><code>Code signing &amp; OS X keychain options</code></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><strong>Unlock Keychain?</strong></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">Keychain path</td>
+<td style="text-align:center">填写 ${HOME}/Library/Keychains/login.keychain或login.keychain</td>
+</tr>
+<tr>
+<td style="text-align:center">Keychain password</td>
+<td style="text-align:center">填写keychain对应</td>
+</tr>
+</tbody>
+</table>
+<p><img src="http://upload-images.jianshu.io/upload_images/1519620-2adb481b07d097cb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="构建"></p>
+<p><code>Advanced Xcode build options</code></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Clean test reports</td>
+<td style="text-align:center">清理报告</td>
+</tr>
+<tr>
+<td style="text-align:center">Xcode Schema File</td>
+<td style="text-align:center">如果采用CocoaPods,填写要打包的Scheme</td>
+</tr>
+<tr>
+<td style="text-align:center">Xcode Workspace File</td>
+<td style="text-align:center">如果采用CocoaPods,填写工程workspace文件的路径(<strong>不用带xcworkspace后缀</strong>)</td>
+</tr>
+<tr>
+<td style="text-align:center">Xcode Project Directory</td>
+<td style="text-align:center">工程目录</td>
+</tr>
+<tr>
+<td style="text-align:center">Xcode Project File</td>
+<td style="text-align:center">如果 目录下多个Project需要填写</td>
+</tr>
+<tr>
+<td style="text-align:center">Build output directory</td>
+<td style="text-align:center">输出路径</td>
+</tr>
+</tbody>
+</table>
+<p><img src="http://upload-images.jianshu.io/upload_images/1519620-20ce46cdd5345e56.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="构建"></p>
+<h5 id="5-构建后操作"><a href="#5-构建后操作" class="headerlink" title="5.构建后操作"></a>5.构建后操作</h5><blockquote>
+<p>填写要上传fir.im的Token</p>
+</blockquote>
+<p><img src="http://upload-images.jianshu.io/upload_images/1519620-bda6486c62e199d6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="构建后操作"></p>
+<p>fir插件使用教程:<a href="http://blog.fir.im/jenkins/" target="_blank" rel="external">http://blog.fir.im/jenkins/</a></p>
+<h2 id="五、立即构建"><a href="#五、立即构建" class="headerlink" title="五、立即构建"></a>五、立即构建</h2><h5 id="1-构建成功后生成ipa文件"><a href="#1-构建成功后生成ipa文件" class="headerlink" title="1.构建成功后生成ipa文件"></a>1.构建成功后生成ipa文件</h5><p><img src="http://upload-images.jianshu.io/upload_images/1519620-eb5469545a91530e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="生成ipa文件"></p>
+<h5 id="2-Console-Output输出结果"><a href="#2-Console-Output输出结果" class="headerlink" title="2.Console Output输出结果"></a>2.Console Output输出结果</h5><p><img src="http://upload-images.jianshu.io/upload_images/1519620-03edc5659edb0b79.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="控制台输出"></p>
+<h5 id="3-fir上查看上传的应用"><a href="#3-fir上查看上传的应用" class="headerlink" title="3.fir上查看上传的应用"></a>3.fir上查看上传的应用</h5><p><img src="http://upload-images.jianshu.io/upload_images/1519620-eaf8683883feacdd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="fir查看上传应用"></p>
+<hr>
+<h2 id="遇到问题"><a href="#遇到问题" class="headerlink" title="遇到问题"></a>遇到问题</h2><p>1.找不到schemes</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1519620-ebfd56d0dc75ea31.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="No Schemes"></p>
+<p> 解决方案:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">在DaRenShop点击☞Manage Schemes☞勾选☞相应的Shared☞上传Git☞立即构建</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1519620-5fd0c747ca72728e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="解决No Scheme"></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS技巧/" rel="tag">#iOS技巧</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/08/25/iOS技巧/iOS缓存策略/" rel="next" title="iOS缓存策略">
+                <i class="fa fa-chevron-left"></i> iOS缓存策略
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/08/30/iOS技巧/Jenkins配置节点(解决Linux上iOS打包)/" rel="prev" title="Jenkins配置节点(解决Linux上iOS打包)">
+                Jenkins配置节点(解决Linux上iOS打包) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/08/30/iOS技巧/Jenkins使用/"
+     data-title="Jenkins使用"
+     data-content=""
+     data-url="http://yoursite.com/2016/08/30/iOS技巧/Jenkins使用/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/08/30/iOS技巧/Jenkins使用/"
+           data-title="Jenkins使用" data-url="http://yoursite.com/2016/08/30/iOS技巧/Jenkins使用/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="LuisX" />
+          <p class="site-author-name" itemprop="name">LuisX</p>
+          <p class="site-description motion-element" itemprop="description">总有一天我会拥有属于我的一片天</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Luis-X/Luis-X.github.io.git" target="_blank" title="gitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  gitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/3338232200" target="_blank" title="weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#操作"><span class="nav-number">1.</span> <span class="nav-text">操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#插件"><span class="nav-number">2.</span> <span class="nav-text">插件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#定义"><span class="nav-number">3.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一、向Jenkins导入开发所需证书"><span class="nav-number">4.</span> <span class="nav-text">一、向Jenkins导入开发所需证书</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-先将iOS的开发所需证书导入你的Mac上"><span class="nav-number">4.0.0.0.1.</span> <span class="nav-text">1.先将iOS的开发所需证书导入你的Mac上</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-获取keychain"><span class="nav-number">4.0.0.0.2.</span> <span class="nav-text">2.获取keychain</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-获取描述文件"><span class="nav-number">4.0.0.0.3.</span> <span class="nav-text">3.获取描述文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-操作完成"><span class="nav-number">4.0.0.0.4.</span> <span class="nav-text">4.操作完成</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-获取login-keychain密码"><span class="nav-number">4.0.0.0.5.</span> <span class="nav-text">5.获取login.keychain密码</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、添加Credentials证书"><span class="nav-number">5.</span> <span class="nav-text">二、添加Credentials证书</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-添加新证书"><span class="nav-number">5.0.0.0.1.</span> <span class="nav-text">1.添加新证书</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-添加SHH类型用户名-秘钥"><span class="nav-number">5.0.0.0.2.</span> <span class="nav-text">2.添加SHH类型用户名+秘钥</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、创建iOS打包任务"><span class="nav-number">6.</span> <span class="nav-text">三、创建iOS打包任务</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-创建iOS打包任务"><span class="nav-number">6.0.0.0.1.</span> <span class="nav-text">1.创建iOS打包任务</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四、配置"><span class="nav-number">7.</span> <span class="nav-text">四、配置</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-General"><span class="nav-number">7.0.0.0.1.</span> <span class="nav-text">1.General</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-源码管理"><span class="nav-number">7.0.0.0.2.</span> <span class="nav-text">2.源码管理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-构建环境"><span class="nav-number">7.0.0.0.3.</span> <span class="nav-text">3.构建环境</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-构建"><span class="nav-number">7.0.0.0.4.</span> <span class="nav-text">4.构建</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-构建后操作"><span class="nav-number">7.0.0.0.5.</span> <span class="nav-text">5.构建后操作</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五、立即构建"><span class="nav-number">7.1.</span> <span class="nav-text">五、立即构建</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-构建成功后生成ipa文件"><span class="nav-number">7.1.0.0.1.</span> <span class="nav-text">1.构建成功后生成ipa文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-Console-Output输出结果"><span class="nav-number">7.1.0.0.2.</span> <span class="nav-text">2.Console Output输出结果</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-fir上查看上传的应用"><span class="nav-number">7.1.0.0.3.</span> <span class="nav-text">3.fir上查看上传的应用</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#遇到问题"><span class="nav-number">7.2.</span> <span class="nav-text">遇到问题</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">LuisX</span>
+</div>
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"luisx"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+      
+      <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+      <script src="/js/src/hook-duoshuo.js"></script>
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>

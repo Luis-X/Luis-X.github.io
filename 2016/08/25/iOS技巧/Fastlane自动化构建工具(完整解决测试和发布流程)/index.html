@@ -1,0 +1,790 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="iOS技巧," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="Fastlane自动化构建工具(完整解决测试和发布流程)
+
+控制整体流程和实现的框架容器支持平台:iOS、Android官方地址:https://github.com/fastlane/fastlane
+
+
+fastlane安装:
+系统要求:macOS或 Linux 使用 Ruby 2.0.0及以上版本1.终端
+
+1sudo gem install fastlane --verbose
+2.确保X">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Fastlane自动化构建工具(完整解决测试和发布流程)">
+<meta property="og:url" content="http://yoursite.com/2016/08/25/iOS技巧/Fastlane自动化构建工具(完整解决测试和发布流程)/index.html">
+<meta property="og:site_name" content="LuisX">
+<meta property="og:description" content="Fastlane自动化构建工具(完整解决测试和发布流程)
+
+控制整体流程和实现的框架容器支持平台:iOS、Android官方地址:https://github.com/fastlane/fastlane
+
+
+fastlane安装:
+系统要求:macOS或 Linux 使用 Ruby 2.0.0及以上版本1.终端
+
+1sudo gem install fastlane --verbose
+2.确保X">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1519620-d41b9fe41e8ed0fe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1519620-0253827b93b8262f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1519620-f57aa4c89aa501db.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1519620-399ded91d26931c5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1519620-0ff056b4cea13e65.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1519620-b9023d6d782d217a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2016-08-30T03:32:07.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Fastlane自动化构建工具(完整解决测试和发布流程)">
+<meta name="twitter:description" content="Fastlane自动化构建工具(完整解决测试和发布流程)
+
+控制整体流程和实现的框架容器支持平台:iOS、Android官方地址:https://github.com/fastlane/fastlane
+
+
+fastlane安装:
+系统要求:macOS或 Linux 使用 Ruby 2.0.0及以上版本1.终端
+
+1sudo gem install fastlane --verbose
+2.确保X">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1519620-d41b9fe41e8ed0fe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6282565193692087000,
+      author: 'LuisX'
+    }
+  };
+</script>
+
+  <title> Fastlane自动化构建工具(完整解决测试和发布流程) | LuisX </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?1b0cfad2dc7c9d6f56774264e9a58985";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">LuisX</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">iOS开发工程师</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Fastlane自动化构建工具(完整解决测试和发布流程)
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-25T00:00:00+08:00" content="2016-08-25">
+              2016-08-25
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/iOS技巧/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS技巧</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/25/iOS技巧/Fastlane自动化构建工具(完整解决测试和发布流程)/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/25/iOS技巧/Fastlane自动化构建工具(完整解决测试和发布流程)/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Fastlane自动化构建工具-完整解决测试和发布流程"><a href="#Fastlane自动化构建工具-完整解决测试和发布流程" class="headerlink" title="Fastlane自动化构建工具(完整解决测试和发布流程)"></a>Fastlane自动化构建工具(完整解决测试和发布流程)</h2><p><img src="http://upload-images.jianshu.io/upload_images/1519620-d41b9fe41e8ed0fe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="fastlane"></p>
+<blockquote>
+<p>控制整体流程和实现的框架容器<br>支持平台:iOS、Android<br>官方地址:<a href="https://github.com/fastlane/fastlane" target="_blank" rel="external">https://github.com/fastlane/fastlane</a></p>
+</blockquote>
+<p><img src="http://upload-images.jianshu.io/upload_images/1519620-0253827b93b8262f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="fastlane流程"></p>
+<h4 id="fastlane安装"><a href="#fastlane安装" class="headerlink" title="fastlane安装:"></a>fastlane安装:</h4><blockquote>
+<p>系统要求:macOS或 Linux 使用 Ruby 2.0.0及以上版本<br>1.终端</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gem install fastlane --verbose</span><br></pre></td></tr></table></figure>
+<p>2.确保Xcode安装了最新版本的命令行工具</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xcode-select --install</span><br></pre></td></tr></table></figure>
+<p>3.如果你的fastlane加载缓慢,请尝试运行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gem cleanup</span><br></pre></td></tr></table></figure>
+<p>4.成功 </p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1519620-f57aa4c89aa501db.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="fastlane安装成功"></p>
+<h4 id="fastlane快速使用"><a href="#fastlane快速使用" class="headerlink" title="fastlane快速使用:"></a>fastlane快速使用:</h4><p><a href="http://www.tuicool.com/articles/ZN7RruM" target="_blank" rel="external">参考文档</a></p>
+<p>1.进入要使用fastlane的项目根目录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd 你的项目根目录</span><br></pre></td></tr></table></figure>
+<p>2.初始化fastlane</p>
+<blockquote>
+<p>在项目根目录下生成fastlane文件, 包含Appfile和Fastfile配置文件</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fastlane init</span><br></pre></td></tr></table></figure>
+<p>3.根据提示,配置你的app</p>
+<p>4.进一步定制Fastfile(基于Ruby语言)文件的额外<a href="https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Actions.md" target="_blank" rel="external">活动</a></p>
+<p>5.<a href="https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Guide.md" target="_blank" rel="external">fastlane 指南</a></p>
+<h4 id="fastlane可用命令"><a href="#fastlane可用命令" class="headerlink" title="fastlane可用命令:"></a>fastlane可用命令:</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fastlane 命令名</span><br></pre></td></tr></table></figure>
+<p>其他命令:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">fastlane actions:      列出所有可用fastlane活动</span><br><span class="line">fastlane action [action_name]:   显示一个更详细的活动描述</span><br><span class="line">fastlane lanes:      列出所有可用lanes (有描述)</span><br><span class="line">fastlane list:       列出所有可用lanes (没有描述)</span><br><span class="line">fastlane new_action:     在fastlane创建一个活动(集成)</span><br></pre></td></tr></table></figure>
+<h4 id="fastlane工具"><a href="#fastlane工具" class="headerlink" title="fastlane工具:"></a>fastlane工具:</h4><blockquote>
+<p>除fastlane命令,你还可以访问以下fastlane工具</p>
+<ul>
+<li><a href="https://github.com/fastlane/fastlane/tree/master/deliver" target="_blank" rel="external"><code>deliver</code></a>: 上传截图, 元数据, app应用程序到App Store</li>
+<li><a href="https://github.com/fastlane/fastlane/tree/master/supply" target="_blank" rel="external"><code>supply</code></a>: 上传Android app应用程序和元数据到Google Play</li>
+<li><a href="https://github.com/fastlane/fastlane/tree/master/snapshot" target="_blank" rel="external"><code>snapshot</code></a>: 自动捕获iOS app应用程序本地截图</li>
+<li><a href="https://github.com/fastlane/fastlane/tree/master/screengrab" target="_blank" rel="external"><code>screengrab</code></a>: 自动捕获Android app应用程序本地截图</li>
+<li><a href="https://github.com/fastlane/fastlane/tree/master/frameit" target="_blank" rel="external"><code>frameit</code></a>: 快速截屏并将截屏放入设备中</li>
+<li><a href="https://github.com/fastlane/fastlane/tree/master/pem" target="_blank" rel="external"><code>pem</code></a>: 自动生成和更新推送通知配置文件</li>
+<li><a href="https://github.com/fastlane/fastlane/tree/master/sigh" target="_blank" rel="external"><code>sigh</code></a>: 开发证书和描述文件下载</li>
+<li><a href="https://github.com/fastlane/fastlane/tree/master/produce" target="_blank" rel="external"><code>produce</code></a>: 使用命令行在iTunes Connect上创建新的app和开发入口</li>
+<li><a href="https://github.com/fastlane/fastlane/tree/master/cert" target="_blank" rel="external"><code>cert</code></a>: 自动创建和配置iOS代码签名证书</li>
+<li><a href="https://github.com/fastlane/fastlane/tree/master/spaceship" target="_blank" rel="external"><code>spaceship</code></a>: Ruby 库访问 Apple开发者中心和 iTunes Connect</li>
+<li><a href="https://github.com/fastlane/fastlane/tree/master/pilot" target="_blank" rel="external"><code>pilot</code></a>: 最好的方式管理你的TestFlight 测试人员和从终端构建</li>
+<li><a href="https://github.com/fastlane/boarding" target="_blank" rel="external"><code>boarding</code></a>: 最简单的方式邀请你的TestFlight beta测试人员</li>
+<li><a href="https://github.com/fastlane/fastlane/tree/master/gym" target="_blank" rel="external"><code>gym</code></a>: iOS app打包签名自动化工具</li>
+<li><a href="https://github.com/fastlane/fastlane/tree/master/match" target="_blank" rel="external"><code>match</code></a>: 使用Git同步你的团队证书和配置文件</li>
+<li><a href="https://github.com/fastlane/fastlane/tree/master/scan" target="_blank" rel="external"><code>scan</code></a>: 最简单方式测试你的 iOS 和 Mac apps</li>
+</ul>
+</blockquote>
+<h2 id="gym打包签名自动化工具"><a href="#gym打包签名自动化工具" class="headerlink" title="gym打包签名自动化工具"></a>gym打包签名自动化工具</h2><p><img src="http://upload-images.jianshu.io/upload_images/1519620-399ded91d26931c5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="gym"></p>
+<blockquote>
+<h5 id="gym是fastlane的一部分"><a href="#gym是fastlane的一部分" class="headerlink" title="gym是fastlane的一部分"></a>gym是fastlane的一部分</h5><h5 id="自动构建和发放iOS和Android应用程序最简单的方式"><a href="#自动构建和发放iOS和Android应用程序最简单的方式" class="headerlink" title="自动构建和发放iOS和Android应用程序最简单的方式"></a>自动构建和发放iOS和Android应用程序最简单的方式</h5><p>gym可以构建和打包iOS和macOS应用程序,很容易的生成一个签名的ipa和app文件的所有重担<br>官方地址:<a href="https://github.com/fastlane/fastlane/tree/master/gym" target="_blank" rel="external">https://github.com/fastlane/fastlane/tree/master/gym</a></p>
+</blockquote>
+<h4 id="gym安装"><a href="#gym安装" class="headerlink" title="gym安装:"></a>gym安装:</h4><p>1.终端</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gem install gym</span><br></pre></td></tr></table></figure>
+<p>2.确保Xcode安装了最新版本的命令行工具</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xcode-select --install</span><br></pre></td></tr></table></figure>
+<h4 id="生成脚本"><a href="#生成脚本" class="headerlink" title="生成脚本:"></a>生成脚本:</h4><blockquote>
+<p>将脚本文件放在项目相同的路径下</p>
+</blockquote>
+<p>1.进入项目路径下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd 你的项目根目录</span><br></pre></td></tr></table></figure>
+<p>2.创建并编写脚本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim build_using_gym.sh</span><br></pre></td></tr></table></figure>
+<p>3.复制如下代码到build_using_gym.sh文件中,修改<strong>项目名称</strong>后保存</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#计时</span></span><br><span class="line">SECONDS=<span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#假设脚本放置在与项目相同的路径下</span></span><br><span class="line">project_path=$(pwd)</span><br><span class="line"><span class="comment">#取当前时间字符串添加到文件结尾</span></span><br><span class="line">now=$(date +<span class="string">"%Y_%m_%d_%H_%M_%S"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#指定项目的scheme名称</span></span><br><span class="line">scheme=<span class="string">"项目名称"</span></span><br><span class="line"><span class="comment">#指定要打包的配置名</span></span><br><span class="line">configuration=<span class="string">"Adhoc"</span></span><br><span class="line"><span class="comment">#指定打包所使用的输出方式，目前支持app-store, package, ad-hoc, enterprise, development, 和developer-id，即xcodebuild的method参数</span></span><br><span class="line">export_method=<span class="string">'ad-hoc'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#指定项目地址</span></span><br><span class="line">workspace_path=<span class="string">"$project_path/项目名称.xcworkspace"</span></span><br><span class="line"><span class="comment">#指定输出路径</span></span><br><span class="line">output_path=<span class="string">"project_path/APP"</span></span><br><span class="line"><span class="comment">#指定输出归档文件地址</span></span><br><span class="line">archive_path=<span class="string">"$output_path/项目名称_$&#123;now&#125;.xcarchive"</span></span><br><span class="line"><span class="comment">#指定输出ipa地址</span></span><br><span class="line">ipa_path=<span class="string">"$output_path/项目名称_$&#123;now&#125;.ipa"</span></span><br><span class="line"><span class="comment">#指定输出ipa名称</span></span><br><span class="line">ipa_name=<span class="string">"项目名称_$&#123;now&#125;.ipa"</span></span><br><span class="line"><span class="comment">#获取执行命令时的commit message</span></span><br><span class="line">commit_msg=<span class="string">"$1"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#输出设定的变量值</span></span><br><span class="line">echo <span class="string">"===workspace path: $&#123;workspace_path&#125;==="</span></span><br><span class="line">echo <span class="string">"===archive path: $&#123;archive_path&#125;==="</span></span><br><span class="line">echo <span class="string">"===ipa path: $&#123;ipa_path&#125;==="</span></span><br><span class="line">echo <span class="string">"===export method: $&#123;export_method&#125;==="</span></span><br><span class="line">echo <span class="string">"===commit msg: $1==="</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#先清空前一次build</span></span><br><span class="line">gym --workspace $&#123;workspace_path&#125; --scheme $&#123;scheme&#125; --clean --configuration $&#123;configuration&#125; --archive_path $&#123;archive_path&#125; --export_method $&#123;export_method&#125; --output_directory $&#123;output_path&#125; --output_name $&#123;ipa_name&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">#上传到fir</span></span><br><span class="line">fir publish $&#123;ipa_path&#125; -T fir_token -c <span class="string">"$&#123;commit_msg&#125;"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#输出总用时</span></span><br><span class="line">echo <span class="string">"===Finished. Total time: $&#123;SECONDS&#125;s==="</span></span><br></pre></td></tr></table></figure>
+<p>4.为脚本添加执行权限</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x build_using_gym.sh</span><br></pre></td></tr></table></figure>
+<p>5.运行build_using_gym.sh脚本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./build_using_gym.sh</span><br></pre></td></tr></table></figure>
+<p>6.自动打包完成 </p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1519620-0ff056b4cea13e65.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="iOS打包成功"></p>
+<p>7.项目根路径下APP文件夹</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1519620-b9023d6d782d217a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="APP文件夹"></p>
+<hr>
+<h4 id="gym使用"><a href="#gym使用" class="headerlink" title="gym使用:"></a>gym使用:</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">#在项目根目录下执行:</span><br><span class="line">gym</span><br><span class="line"></span><br><span class="line">#如果你想更多的控制,可以执行如下:</span><br><span class="line">gym --workspace &quot;Example.xcworkspace&quot; --scheme &quot;AppName&quot; --clean</span><br><span class="line"></span><br><span class="line">#如果你想使用不同的Xcode安装,使用xcode-select或者定义DEVELOPER_DIR</span><br><span class="line">DEVELOPER_DIR=&quot;/Applications/Xcode6.2.app&quot; gym</span><br><span class="line"></span><br><span class="line">#查看可用参数列表</span><br><span class="line">gym --help</span><br><span class="line"></span><br><span class="line">#遇到任何问题,获得更多信息</span><br><span class="line">gym --verbose</span><br><span class="line"></span><br><span class="line">#遇到任何问题,导出存档</span><br><span class="line">gym --use_legacy_build_api</span><br><span class="line"></span><br><span class="line">#如果你不想上传AppStore或TestFlight,可以设置正确的导出方法</span><br><span class="line">gym --export_method ad-hoc</span><br><span class="line"></span><br><span class="line">#通过布尔参数来确定使用gym</span><br><span class="line">gym --include_bitcode true --include_symbols false</span><br></pre></td></tr></table></figure>
+<h5 id="访问原始xcodebuild输出-Library-Logs-gym"><a href="#访问原始xcodebuild输出-Library-Logs-gym" class="headerlink" title="访问原始xcodebuild输出: ~/Library/Logs/gym"></a>访问原始xcodebuild输出: ~/Library/Logs/gym</h5>
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS技巧/" rel="tag">#iOS技巧</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/06/30/玩转iOS/玩转iOS设计模式/" rel="next" title="玩转iOS设计模式">
+                <i class="fa fa-chevron-left"></i> 玩转iOS设计模式
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/08/25/iOS技巧/iOS缓存策略/" rel="prev" title="iOS缓存策略">
+                iOS缓存策略 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/08/25/iOS技巧/Fastlane自动化构建工具(完整解决测试和发布流程)/"
+     data-title="Fastlane自动化构建工具(完整解决测试和发布流程)"
+     data-content=""
+     data-url="http://yoursite.com/2016/08/25/iOS技巧/Fastlane自动化构建工具(完整解决测试和发布流程)/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/08/25/iOS技巧/Fastlane自动化构建工具(完整解决测试和发布流程)/"
+           data-title="Fastlane自动化构建工具(完整解决测试和发布流程)" data-url="http://yoursite.com/2016/08/25/iOS技巧/Fastlane自动化构建工具(完整解决测试和发布流程)/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="LuisX" />
+          <p class="site-author-name" itemprop="name">LuisX</p>
+          <p class="site-description motion-element" itemprop="description">总有一天我会拥有属于我的一片天</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Luis-X/Luis-X.github.io.git" target="_blank" title="gitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  gitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/3338232200" target="_blank" title="weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Fastlane自动化构建工具-完整解决测试和发布流程"><span class="nav-number">1.</span> <span class="nav-text">Fastlane自动化构建工具(完整解决测试和发布流程)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#fastlane安装"><span class="nav-number">1.0.1.</span> <span class="nav-text">fastlane安装:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#fastlane快速使用"><span class="nav-number">1.0.2.</span> <span class="nav-text">fastlane快速使用:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#fastlane可用命令"><span class="nav-number">1.0.3.</span> <span class="nav-text">fastlane可用命令:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#fastlane工具"><span class="nav-number">1.0.4.</span> <span class="nav-text">fastlane工具:</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gym打包签名自动化工具"><span class="nav-number">2.</span> <span class="nav-text">gym打包签名自动化工具</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#gym是fastlane的一部分"><span class="nav-number">2.0.0.1.</span> <span class="nav-text">gym是fastlane的一部分</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#自动构建和发放iOS和Android应用程序最简单的方式"><span class="nav-number">2.0.0.2.</span> <span class="nav-text">自动构建和发放iOS和Android应用程序最简单的方式</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#gym安装"><span class="nav-number">2.0.1.</span> <span class="nav-text">gym安装:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#生成脚本"><span class="nav-number">2.0.2.</span> <span class="nav-text">生成脚本:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#gym使用"><span class="nav-number">2.0.3.</span> <span class="nav-text">gym使用:</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#访问原始xcodebuild输出-Library-Logs-gym"><span class="nav-number">2.0.3.1.</span> <span class="nav-text">访问原始xcodebuild输出: ~/Library/Logs/gym</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">LuisX</span>
+</div>
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"luisx"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+      
+      <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+      <script src="/js/src/hook-duoshuo.js"></script>
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>
